@@ -2,7 +2,7 @@ package model.vo;
 
 public class AlunoVO {
 	
-	//a
+
 private String alunoNome;
 private int alunoIdade;
 private String alunoEndereco;

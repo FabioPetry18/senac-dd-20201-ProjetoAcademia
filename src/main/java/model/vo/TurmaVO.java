@@ -4,7 +4,7 @@ public class TurmaVO {
 private int qntVagas;
 private Turno turno;
 
-//a
+
 public TurmaVO() {
 	super();
 }

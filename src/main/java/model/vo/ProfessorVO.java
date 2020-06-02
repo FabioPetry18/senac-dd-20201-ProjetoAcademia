@@ -7,7 +7,6 @@ private String professorTelefone;
 private String professorCelular;
 private String professorEmail;
 
-//a
 
 public ProfessorVO() {
 	super();
