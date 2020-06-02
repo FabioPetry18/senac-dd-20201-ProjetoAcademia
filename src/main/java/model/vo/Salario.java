@@ -4,7 +4,7 @@ public class Salario {
 private String dataSalario;
 private double valorSalario;
 
-
+//a
 
 public Salario() {
 	super();
