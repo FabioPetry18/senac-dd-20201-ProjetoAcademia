@@ -2,86 +2,85 @@ package model.vo;
 
 public class AlunoVO {
 	
+private ModalidadeAluno modalidadeAluno;
+private String observacoes;
+private String dtMatricula;
+private int numMatricula;
+private boolean situacao;  //true pra ATIVO e false pra INATIVO
+private String dataCancelamento; //data que cancelou matricula na academia.
 
-private String alunoNome;
-private int alunoIdade;
-private String alunoEndereco;
-private String alunoBairro;
-private String alunoCep;
-private String alunoCelular;
-private String alunoEmail;
-private String alunoObservacoes;
+public static void checarProfessor() {
+	
+}
 
+public static void checarHorario() {
+	
+}
 
+public static void trocarModalidade() {
+	
+}
+
+public static void editarAluno() {
+	
+}
+
+public static void deletarAluno() {
+	
+}
+public static void gerarPlanilha() {
+	
+}
 
 public AlunoVO() {
 	super();
 }
-public AlunoVO(String alunoNome, int alunoIdade, String alunoEndereco, String alunoBairro, String alunoCep,
-		String alunoCelular, String alunoEmail, String alunoObservacoes) {
+public AlunoVO(ModalidadeAluno modalidadeAluno, String observacoes, String dtMatricula, int numMatricula,
+		boolean situacao, String dataCancelamento) {
 	super();
-	this.alunoNome = alunoNome;
-	this.alunoIdade = alunoIdade;
-	this.alunoEndereco = alunoEndereco;
-	this.alunoBairro = alunoBairro;
-	this.alunoCep = alunoCep;
-	this.alunoCelular = alunoCelular;
-	this.alunoEmail = alunoEmail;
-	this.alunoObservacoes = alunoObservacoes;
+	this.modalidadeAluno = modalidadeAluno;
+	this.observacoes = observacoes;
+	this.dtMatricula = dtMatricula;
+	this.numMatricula = numMatricula;
+	this.situacao = situacao;
+	this.dataCancelamento = dataCancelamento;
 }
-public String getAlunoNome() {
-	return alunoNome;
+public ModalidadeAluno getModalidadeAluno() {
+	return modalidadeAluno;
 }
-public void setAlunoNome(String alunoNome) {
-	this.alunoNome = alunoNome;
+public void setModalidadeAluno(ModalidadeAluno modalidadeAluno) {
+	this.modalidadeAluno = modalidadeAluno;
 }
-public int getAlunoIdade() {
-	return alunoIdade;
+public String getObservacoes() {
+	return observacoes;
 }
-public void setAlunoIdade(int alunoIdade) {
-	this.alunoIdade = alunoIdade;
+public void setObservacoes(String observacoes) {
+	this.observacoes = observacoes;
 }
-public String getAlunoEndereco() {
-	return alunoEndereco;
+public String getDtMatricula() {
+	return dtMatricula;
 }
-public void setAlunoEndereco(String alunoEndereco) {
-	this.alunoEndereco = alunoEndereco;
+public void setDtMatricula(String dtMatricula) {
+	this.dtMatricula = dtMatricula;
 }
-public String getAlunoBairro() {
-	return alunoBairro;
+public int getNumMatricula() {
+	return numMatricula;
 }
-public void setAlunoBairro(String alunoBairro) {
-	this.alunoBairro = alunoBairro;
+public void setNumMatricula(int numMatricula) {
+	this.numMatricula = numMatricula;
 }
-public String getAlunoCep() {
-	return alunoCep;
+public boolean isSituacao() {
+	return situacao;
 }
-public void setAlunoCep(String alunoCep) {
-	this.alunoCep = alunoCep;
+public void setSituacao(boolean situacao) {
+	this.situacao = situacao;
 }
-public String getAlunoCelular() {
-	return alunoCelular;
+public String getDataCancelamento() {
+	return dataCancelamento;
 }
-public void setAlunoCelular(String alunoCelular) {
-	this.alunoCelular = alunoCelular;
+public void setDataCancelamento(String dataCancelamento) {
+	this.dataCancelamento = dataCancelamento;
 }
-public String getAlunoEmail() {
-	return alunoEmail;
-}
-public void setAlunoEmail(String alunoEmail) {
-	this.alunoEmail = alunoEmail;
-}
-public String getAlunoObservacoes() {
-	return alunoObservacoes;
-}
-public void setAlunoObservacoes(String alunoObservacoes) {
-	this.alunoObservacoes = alunoObservacoes;
-}
-
-
-
-
-
 
 
 }

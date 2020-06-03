@@ -5,6 +5,11 @@ private String dataSalario;
 private double valorSalario;
 
 
+
+public static void mostrarSalario() {
+	
+}
+
 public Salario() {
 	super();
 }

@@ -1,17 +1,27 @@
 package model.vo;
 
 public class TurmaVO {
+
 private int qntVagas;
-private Turno turno;
+private String horarios;
+
+
+public static void checarVagasDisp() {
+	
+}
+
+public static void validarLei() { //seguindo as normas do governo de 30% durant a pandemia.
+	
+}
 
 
 public TurmaVO() {
 	super();
 }
-public TurmaVO(int qntVagas, Turno turno) {
+public TurmaVO(int qntVagas, String horarios) {
 	super();
 	this.qntVagas = qntVagas;
-	this.turno = turno;
+	this.horarios = horarios;
 }
 public int getQntVagas() {
 	return qntVagas;
@@ -19,12 +29,14 @@ public int getQntVagas() {
 public void setQntVagas(int qntVagas) {
 	this.qntVagas = qntVagas;
 }
-public Turno getTurno() {
-	return turno;
+public String getHorarios() {
+	return horarios;
 }
-public void setTurno(Turno turno) {
-	this.turno = turno;
+public void setHorarios(String horarios) {
+	this.horarios = horarios;
 }
+
+
 
 
 }

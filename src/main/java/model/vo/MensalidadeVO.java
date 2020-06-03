@@ -8,6 +8,14 @@ private String dataUltimoPagamento;
 private double multa;
 
 
+public static void pagarSemestre() {
+	
+}
+public static void pagarMes() {
+	
+}
+
+
 public MensalidadeVO() {
 	super();
 }
