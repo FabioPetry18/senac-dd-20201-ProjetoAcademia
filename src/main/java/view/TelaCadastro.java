@@ -233,7 +233,7 @@ public class TelaCadastro extends JFrame {
 		panel.add(lblImagemFundo);
 		contentPane.setLayout(gl_contentPane);
 	}
-};
+}
 
 
 
