@@ -24,12 +24,14 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
 
-public class TelaPrincipal extends JFrame {
+public class TelaAulas extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textlogin;
-	private JTextField txtSenha;
+	private JTable table;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -51,7 +53,7 @@ public class TelaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaPrincipal() {
+	public TelaAulas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1091, 729);
 		contentPane = new JPanel();
@@ -74,56 +76,55 @@ public class TelaPrincipal extends JFrame {
 		int larguraDaTela = (int) ((dimensoesTela.getWidth() - 10));
 		int alturaDaTela = (int) (dimensoesTela.getHeight() - 10);
 		
-		JPanel panelLogin = new JPanel();
-		panelLogin.setBounds(720, 345 , 170, 240);
-		panel.add(panelLogin);
-		panelLogin.setLayout(null);
-		
-		JLabel lblLogin = new JLabel("login");
-		lblLogin.setBounds(43, 28, 86, 20);
-		panelLogin.add(lblLogin);
-		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		txtSenha = new JTextField();
-		txtSenha.setBounds(44, 104, 85, 20);
-		panelLogin.add(txtSenha);
-		txtSenha.setColumns(10);
-		
-		textlogin = new JTextField();
-		textlogin.setBounds(43, 47, 86, 20);
-		panelLogin.add(textlogin);
-		textlogin.setColumns(10);
-		
-		JLabel lblSenha = new JLabel("senha");
-		lblSenha.setBounds(43, 78, 87, 26);
-		panelLogin.add(lblSenha);
-		lblSenha.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(43, 150, 89, 23);
-		panelLogin.add(btnEntrar);
-		
-		JButton btnCadastrarse = new JButton("Cadastrar");
-		btnCadastrarse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnCadastrarse.setBounds(30, 184, 116, 23);
-		panelLogin.add(btnCadastrarse);
-		
 		JLabel lblImagemFundo = new JLabel("");
 		lblImagemFundo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImagemFundo.setIcon(new ImageIcon("C:\\Users\\joao\\Downloads\\gym-disks-weight-bodybuilding-1190563-wallhere.com (2).jpg"));
 		
 		lblImagemFundo.setBounds(0, 0, larguraDaTela, alturaDaTela);
 		panel.add(lblImagemFundo);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBounds(74, 115, 865, 514);
+		panel.add(panel_1);
+		
+		table = new JTable();
+		table.setBounds(332, 116, 443, 252);
+		panel_1.add(table);
+		
+		JLabel professor = new JLabel("professor");
+		professor.setBounds(10, 11, 85, 14);
+		panel_1.add(professor);
+		
+		JComboBox nomeProfessor = new JComboBox();
+		nomeProfessor.setBounds(139, 8, 109, 20);
+		panel_1.add(nomeProfessor);
+		
+		JComboBox turma = new JComboBox();
+		turma.setBounds(302, 8, 109, 20);
+		panel_1.add(turma);
+		
+		textField = new JTextField();
+		textField.setText("observa\u00E7\u00E3o");
+		textField.setColumns(10);
+		textField.setBounds(39, 151, 165, 111);
+		panel_1.add(textField);
+		
+		JButton btnMarcar = new JButton("marcar");
+		btnMarcar.setBounds(709, 454, 89, 23);
+		panel_1.add(btnMarcar);
+		
+		JComboBox horario = new JComboBox();
+		horario.setBounds(449, 8, 135, 20);
+		panel_1.add(horario);
+		
+		JButton btnDesmarcar = new JButton("Desmarcar");
+		btnDesmarcar.setBounds(302, 454, 89, 23);
+		panel_1.add(btnDesmarcar);
+		
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.setBounds(523, 454, 89, 23);
+		panel_1.add(btnEditar);
 		contentPane.setLayout(gl_contentPane);
 	}
-	//metodos a serem criados.
-	
-	public static void consultarLogin(){
-
-	
-}
-	
 }
