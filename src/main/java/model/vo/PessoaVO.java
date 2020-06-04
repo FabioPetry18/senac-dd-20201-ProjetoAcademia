@@ -1,7 +1,7 @@
 package model.vo;
 
 
-public class CadastroVO {
+public class PessoaVO {
 
 protected String nome;
 protected int idade;
@@ -12,6 +12,7 @@ protected String bairro;
 protected String cep;
 protected String email;
 protected Atuacao atuacao;
+protected Modalidade modalidade;
 
 
 public static void realizarCadastro(){
@@ -19,10 +20,10 @@ public static void realizarCadastro(){
 }
 
 
-public CadastroVO() {
+public PessoaVO() {
 	super();
 }
-public CadastroVO(String nome, int idade, String telefone, String celuar, String endereco, String bairro, String cep,
+public PessoaVO(String nome, int idade, String telefone, String celuar, String endereco, String bairro, String cep,
 		String email, Atuacao atuacao) {
 	super();
 	this.nome = nome;

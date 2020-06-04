@@ -1,9 +1,10 @@
 package model.vo;
 
-public class InstrutorVO {
+public class InstrutorVO extends PessoaVO{
 
-private ModalidadeInstrutor modalidadeInstrutor;
+
 private String observacoes;
+private double salario;
 
 public static void checarAlunos(){
 	
@@ -12,41 +13,37 @@ public static void checarHorario(){
 	
 }
 
-public static void editarHorario(){
-	
-}
 
-public static void editarCadastro(){
-	
-}
-
-public static void deletarCadastro(){
-	
-}
-public static void gerarPlanilha(){
-	
-}
 
 
 public InstrutorVO() {
 	super();
 }
-public InstrutorVO(ModalidadeInstrutor modalidadeInstrutor, String observacoes) {
+public InstrutorVO(String observacoes,double salario) {
 	super();
-	this.modalidadeInstrutor = modalidadeInstrutor;
+
 	this.observacoes = observacoes;
+	this.salario = salario;
 }
-public ModalidadeInstrutor getModalidadeInstrutor() {
-	return modalidadeInstrutor;
+
+
+
+public InstrutorVO(double salario) {
+	super();
+	this.salario = salario;
 }
-public void setModalidadeInstrutor(ModalidadeInstrutor modalidadeInstrutor) {
-	this.modalidadeInstrutor = modalidadeInstrutor;
-}
+
 public String getObservacoes() {
 	return observacoes;
 }
 public void setObservacoes(String observacoes) {
 	this.observacoes = observacoes;
+}
+public double getSalario() {
+	return salario;
+}
+public void setSalario(double salario) {
+	this.salario = salario;
 }
 
 
