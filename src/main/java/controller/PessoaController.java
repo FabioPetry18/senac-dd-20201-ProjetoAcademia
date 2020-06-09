@@ -1,6 +1,7 @@
 package controller;
 
 import model.bo.PessoaBO;
+import model.vo.PessoaVO;
 
 public class PessoaController {
 	
@@ -12,6 +13,10 @@ public class PessoaController {
 		
 	}
 
-
+	public void inserirPessoa(PessoaVO p) {
+		PessoaBO PBO = new PessoaBO();
+		PBO.salvar(p);
+	}
+	
 	
 }
