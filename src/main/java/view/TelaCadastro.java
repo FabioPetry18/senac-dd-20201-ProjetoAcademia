@@ -7,6 +7,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.AlunoController;
+import controller.InstrutorController;
+import controller.PessoaController;
+import model.vo.AlunoVO;
+import model.vo.InstrutorVO;
+
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -97,13 +104,20 @@ public class TelaCadastro extends JFrame {
 		panel.add(panelLogin);
 		panelLogin.setLayout(null);
 		
-		JButton btnCadastrarse = new JButton("Cadastrar");
-		btnCadastrarse.addActionListener(new ActionListener() {
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				AlunoController alunoController = new AlunoController();
+				//String mensagem = alunoController.cadastrarAluno(construirAluno());
+				
+				InstrutorController instrutorController = new InstrutorController();
+				//String mensagem = instrutorController.cadastrarInstrutor(construirInstrutor());
+				
 			}
 		});
-		btnCadastrarse.setBounds(715, 476, 116, 23);
-		panelLogin.add(btnCadastrarse);
+		btnCadastrar.setBounds(715, 476, 116, 23);
+		panelLogin.add(btnCadastrar);
 		
 		JLabel lblNome = new JLabel("Nome Completo");
 		lblNome.setBounds(40, 53, 86, 14);
@@ -233,9 +247,54 @@ public class TelaCadastro extends JFrame {
 		panel.add(lblImagemFundo);
 		contentPane.setLayout(gl_contentPane);
 	}
+	
+	private AlunoVO construirAluno(String cpf, String nome, int idade, String telefone, String celular, String endereco, String bairro,
+			String cep, String email, String atuacao, String modalidade, String observacoes, String dtMatricula,
+			int numMatricula, boolean situacao, String dataCancelamento) {
+		
+		AlunoVO novoAluno = new AlunoVO();
+		
+		novoAluno.setCpf(cpf);
+		novoAluno.setNome(nome);
+		novoAluno.setIdade(idade);
+		novoAluno.setTelefone(telefone);
+		novoAluno.setCelular(celular);
+		novoAluno.setEndereco(endereco);
+		novoAluno.setBairro(bairro);
+		novoAluno.setCep(cep);
+		novoAluno.setEmail(email);
+		novoAluno.setAtuacao(atuacao);
+		novoAluno.setModalidade(modalidade);
+		novoAluno.setObservacoes(observacoes);
+		novoAluno.setDtMatricula(dtMatricula);
+		novoAluno.setNumMatricula(numMatricula);
+		novoAluno.setSituacao(situacao);
+		novoAluno.setDataCancelamento(dataCancelamento);
+		
+		return novoAluno;	
+	}
+	
+	private InstrutorVO construirInstrutor(String cpf, String nome, int idade, String telefone, String celular, String endereco,
+			String bairro, String cep, String email, String atuacao, String modalidade, String formacao,
+			double salario) {
+		
+		InstrutorVO novoInstrutor = new InstrutorVO();
+		
+		novoInstrutor.setCpf(cpf);
+		novoInstrutor.setNome(nome);
+		novoInstrutor.setIdade(idade);
+		novoInstrutor.setTelefone(telefone);
+		novoInstrutor.setCelular(celular);
+		novoInstrutor.setEndereco(endereco);
+		novoInstrutor.setBairro(bairro);
+		novoInstrutor.setCep(cep);
+		novoInstrutor.setEmail(email);
+		novoInstrutor.setAtuacao(atuacao);
+		novoInstrutor.setModalidade(modalidade);
+		novoInstrutor.setFormacao(formacao);
+		novoInstrutor.setSalario(salario);
+		
+		return novoInstrutor;	
+	}
+	
 }
-
-
-
-
-
