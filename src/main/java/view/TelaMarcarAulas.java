@@ -120,7 +120,7 @@ public class TelaMarcarAulas extends JFrame {
 		panelLogin.add(horario);
 		
 		JButton btnDesmarcar = new JButton("Desmarcar");
-		btnDesmarcar.setBounds(335, 482, 89, 23);
+		btnDesmarcar.setBounds(335, 482, 106, 23);
 		panelLogin.add(btnDesmarcar);
 		
 		JButton btnEditar = new JButton("Editar");
