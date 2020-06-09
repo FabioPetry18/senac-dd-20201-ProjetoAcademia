@@ -43,7 +43,7 @@ public class TelaMarcarAulas extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaCadastro frame = new TelaCadastro();
+					TelaMarcarAulas frame = new TelaMarcarAulas();
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
