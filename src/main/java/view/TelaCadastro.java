@@ -25,6 +25,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Toolkit;
 
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -34,6 +35,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JRadioButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JComboBox;
 
 public class TelaCadastro extends JFrame {
 
@@ -47,9 +51,10 @@ public class TelaCadastro extends JFrame {
 	private JTextField textCelular;
 	private JTextField textEmail;
 	private JTextField textObservacoes;
-	private JTextField textLogin;
-	private JTextField textSenha;
-	private JTextField textConfirmeSenha;
+	private JRadioButton rdbtnMasculino;
+	private JRadioButton rdbtnFeminino;
+	private JRadioButton rdbtnAluno;
+	private JRadioButton rdbtnInstrutor;
 
 	/**
 	 * Launch the application.
@@ -99,6 +104,16 @@ public class TelaCadastro extends JFrame {
 		int larguraDaTela = (int) ((dimensoesTela.getWidth() - 10));
 		int alturaDaTela = (int) (dimensoesTela.getHeight() - 10);
 		
+		ButtonGroup btnGroupTipo = new ButtonGroup();
+		ButtonGroup btnGroupSexo = new ButtonGroup();
+		
+		JLabel lblImagemFundo = new JLabel("");
+		lblImagemFundo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblImagemFundo.setIcon(new ImageIcon("C:\\Users\\joao\\Downloads\\gym-disks-weight-bodybuilding-1190563-wallhere.com (2).jpg"));
+		
+		lblImagemFundo.setBounds(0, 0, larguraDaTela, alturaDaTela);
+		panel.add(lblImagemFundo);
+		
 		JPanel panelLogin = new JPanel();
 		panelLogin.setBounds(76, 76 , 907, 543);
 		panel.add(panelLogin);
@@ -108,12 +123,13 @@ public class TelaCadastro extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				AlunoController alunoController = new AlunoController();
-				//String mensagem = alunoController.cadastrarAluno(construirAluno());
-				
-				InstrutorController instrutorController = new InstrutorController();
-				//String mensagem = instrutorController.cadastrarInstrutor(construirInstrutor());
-				
+				if(rdbtnAluno.isSelected()) {
+					AlunoController alunoController = new AlunoController();
+					//String mensagem = alunoController.cadastrarAluno(construirAluno());
+				} else {
+					InstrutorController instrutorController = new InstrutorController();
+					//String mensagem = instrutorController.cadastrarInstrutor(construirInstrutor());
+				}
 			}
 		});
 		btnCadastrar.setBounds(715, 476, 116, 23);
@@ -123,129 +139,129 @@ public class TelaCadastro extends JFrame {
 		lblNome.setBounds(40, 53, 86, 14);
 		panelLogin.add(lblNome);
 		
-		JLabel lblIdade = new JLabel("Idade");
-		lblIdade.setBounds(40, 144, 75, 14);
-		panelLogin.add(lblIdade);
+		JLabel lblDtNascimento = new JLabel("Data Nascimento");
+		lblDtNascimento.setBounds(40, 113, 90, 14);
+		panelLogin.add(lblDtNascimento);
 		
 		JLabel lblEndereço = new JLabel("Endere\u00E7o");
-		lblEndereço.setBounds(40, 173, 75, 14);
+		lblEndereço.setBounds(40, 142, 75, 14);
 		panelLogin.add(lblEndereço);
 		
 		JLabel lblBairro = new JLabel("Bairro");
-		lblBairro.setBounds(40, 204, 75, 14);
+		lblBairro.setBounds(40, 173, 75, 14);
 		panelLogin.add(lblBairro);
 		
 		JLabel lblCep = new JLabel("Cep");
-		lblCep.setBounds(40, 239, 75, 14);
+		lblCep.setBounds(40, 208, 75, 14);
 		panelLogin.add(lblCep);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(40, 270, 75, 14);
+		lblTelefone.setBounds(40, 239, 75, 14);
 		panelLogin.add(lblTelefone);
 		
 		JLabel lblCelular = new JLabel("Celular");
-		lblCelular.setBounds(40, 301, 75, 14);
+		lblCelular.setBounds(40, 270, 75, 14);
 		panelLogin.add(lblCelular);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(40, 332, 75, 14);
+		lblEmail.setBounds(40, 301, 75, 14);
 		panelLogin.add(lblEmail);
 		
 		JLabel lblObservacoes = new JLabel("Observa\u00E7\u00F5es");
-		lblObservacoes.setBounds(51, 385, 75, 14);
+		lblObservacoes.setBounds(40, 344, 80, 14);
 		panelLogin.add(lblObservacoes);
 		
-		JLabel lblLogin = new JLabel("Login");
-		lblLogin.setBounds(557, 150, 75, 14);
-		panelLogin.add(lblLogin);
-		
-		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(557, 204, 75, 14);
-		panelLogin.add(lblSenha);
-		
-		JLabel lblConfirmeSenha = new JLabel("Confirme sua senha");
-		lblConfirmeSenha.setBounds(508, 239, 124, 14);
-		panelLogin.add(lblConfirmeSenha);
-		
 		textNome = new JTextField();
-		textNome.setBounds(157, 50, 613, 20);
+		textNome.setBounds(157, 50, 296, 20);
 		panelLogin.add(textNome);
 		textNome.setColumns(10);
 		
 		textIdade = new JTextField();
-		textIdade.setBounds(157, 141, 86, 20);
+		textIdade.setBounds(157, 110, 86, 20);
 		panelLogin.add(textIdade);
 		textIdade.setColumns(10);
 		
 		textEndereco = new JTextField();
 		textEndereco.setColumns(10);
-		textEndereco.setBounds(157, 170, 296, 20);
+		textEndereco.setBounds(157, 139, 296, 20);
 		panelLogin.add(textEndereco);
 		
 		textBairro = new JTextField();
 		textBairro.setColumns(10);
-		textBairro.setBounds(157, 201, 296, 20);
+		textBairro.setBounds(157, 170, 296, 20);
 		panelLogin.add(textBairro);
 		
 		textCep = new JTextField();
 		textCep.setColumns(10);
-		textCep.setBounds(157, 236, 296, 20);
+		textCep.setBounds(157, 205, 296, 20);
 		panelLogin.add(textCep);
 		
 		textTelefone = new JTextField();
 		textTelefone.setColumns(10);
-		textTelefone.setBounds(157, 267, 296, 20);
+		textTelefone.setBounds(157, 236, 296, 20);
 		panelLogin.add(textTelefone);
 		
 		textCelular = new JTextField();
 		textCelular.setColumns(10);
-		textCelular.setBounds(157, 298, 296, 20);
+		textCelular.setBounds(157, 267, 296, 20);
 		panelLogin.add(textCelular);
 		
 		textEmail = new JTextField();
 		textEmail.setColumns(10);
-		textEmail.setBounds(157, 329, 296, 20);
+		textEmail.setBounds(157, 298, 296, 20);
 		panelLogin.add(textEmail);
 		
 		textObservacoes = new JTextField();
 		textObservacoes.setColumns(10);
-		textObservacoes.setBounds(153, 375, 372, 157);
+		textObservacoes.setBounds(40, 369, 372, 157);
 		panelLogin.add(textObservacoes);
 		
-		textLogin = new JTextField();
-		textLogin.setColumns(10);
-		textLogin.setBounds(642, 147, 153, 20);
-		panelLogin.add(textLogin);
+		JFormattedTextField formattedTextField = new JFormattedTextField();
+		formattedTextField.setBounds(157, 82, 153, 20);
+		panelLogin.add(formattedTextField);
 		
-		textSenha = new JTextField();
-		textSenha.setColumns(10);
-		textSenha.setBounds(642, 201, 153, 20);
-		panelLogin.add(textSenha);
+		JLabel lblCpf = new JLabel("Cpf");
+		lblCpf.setBounds(40, 85, 30, 14);
+		panelLogin.add(lblCpf);
 		
-		textConfirmeSenha = new JTextField();
-		textConfirmeSenha.setColumns(10);
-		textConfirmeSenha.setBounds(642, 236, 153, 20);
-		panelLogin.add(textConfirmeSenha);
+		rdbtnInstrutor = new JRadioButton("Instrutor");
+		rdbtnInstrutor.setBounds(630, 152, 109, 23);
+		panelLogin.add(rdbtnInstrutor);
+		btnGroupTipo.add(rdbtnInstrutor);
+		
+		rdbtnAluno = new JRadioButton("Aluno");
+		rdbtnAluno.setBounds(538, 152, 80, 23);
+		panelLogin.add(rdbtnAluno);
+		rdbtnAluno.setSelected(true);
+		btnGroupTipo.add(rdbtnAluno);
 		
 		JLabel lblTipo = new JLabel("Tipo");
-		lblTipo.setBounds(40, 91, 75, 14);
+		lblTipo.setBounds(538, 131, 75, 14);
 		panelLogin.add(lblTipo);
 		
-		JCheckBoxMenuItem chckbxmntmAluno = new JCheckBoxMenuItem("Aluno");
-		chckbxmntmAluno.setBounds(157, 91, 129, 22);
-		panelLogin.add(chckbxmntmAluno);
+		JLabel lblSexo = new JLabel("Sexo");
+		lblSexo.setBounds(538, 53, 46, 14);
+		panelLogin.add(lblSexo);
 		
-		JCheckBoxMenuItem chckbxmntmProfessor = new JCheckBoxMenuItem("Professor\r\n");
-		chckbxmntmProfessor.setBounds(302, 91, 129, 22);
-		panelLogin.add(chckbxmntmProfessor);
+		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino.setBounds(538, 75, 90, 23);
+		panelLogin.add(rdbtnMasculino);
+		btnGroupSexo.add(rdbtnMasculino);
 		
-		JLabel lblImagemFundo = new JLabel("");
-		lblImagemFundo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImagemFundo.setIcon(new ImageIcon("C:\\Users\\joao\\Downloads\\gym-disks-weight-bodybuilding-1190563-wallhere.com (2).jpg"));
-		
-		lblImagemFundo.setBounds(0, 0, larguraDaTela, alturaDaTela);
-		panel.add(lblImagemFundo);
+		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
+		rdbtnFeminino.setBounds(630, 75, 109, 23);
+		panelLogin.add(rdbtnFeminino);
 		contentPane.setLayout(gl_contentPane);
+		btnGroupSexo.add(rdbtnFeminino);		
+		
+		JLabel lblModalidade = new JLabel("Modalidade");
+		lblModalidade.setBounds(538, 208, 70, 14);
+		panelLogin.add(lblModalidade);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(538, 236, 150, 20);
+		panelLogin.add(comboBox);
+
 	}
 	
 	private AlunoVO construirAluno(String cpf, String nome, int idade, String telefone, String celular, String endereco, String bairro,
@@ -296,5 +312,4 @@ public class TelaCadastro extends JFrame {
 		
 		return novoInstrutor;	
 	}
-	
 }
