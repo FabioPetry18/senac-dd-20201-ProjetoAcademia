@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import controller.AlunoController;
 import controller.InstrutorController;
@@ -32,6 +33,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JRadioButtonMenuItem;
@@ -51,6 +53,7 @@ public class TelaCadastro extends JFrame {
 	private JTextField textCelular;
 	private JTextField textEmail;
 	private JTextField textObservacoes;
+	private JFormattedTextField txtCpf;
 	private JRadioButton rdbtnMasculino;
 	private JRadioButton rdbtnFeminino;
 	private JRadioButton rdbtnAluno;
@@ -216,9 +219,14 @@ public class TelaCadastro extends JFrame {
 		textObservacoes.setBounds(40, 369, 372, 157);
 		panelLogin.add(textObservacoes);
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setBounds(157, 82, 153, 20);
-		panelLogin.add(formattedTextField);
+		try {
+			MaskFormatter mascaraCpf = new MaskFormatter("###.###.###-##");
+			txtCpf = new JFormattedTextField(mascaraCpf);
+			txtCpf.setBounds(157, 82, 153, 20);
+			panelLogin.add(txtCpf);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		JLabel lblCpf = new JLabel("Cpf");
 		lblCpf.setBounds(40, 85, 30, 14);
