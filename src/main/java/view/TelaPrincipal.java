@@ -51,19 +51,16 @@ public class TelaPrincipal extends JFrame {
 		menuCadastro.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		menuBar.add(menuCadastro);
 		
-		JMenuItem menuItemCadastroAluno = new JMenuItem("Aluno");
-		menuItemCadastroAluno.addActionListener(new ActionListener() {
+		JMenuItem menuItemCadastroAlunoInstrutor = new JMenuItem("Aluno/Instrutor");
+		menuItemCadastroAlunoInstrutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				contentPane = new PainelCadastroAluno();
+				contentPane = new PainelCadastroAlunoInstrutor();
 				setContentPane(contentPane);
 				revalidate();
 				
 			}
 		});
-		menuCadastro.add(menuItemCadastroAluno);
-		
-		JMenuItem menuItemCadastroInstrutor = new JMenuItem("Instrutor");
-		menuCadastro.add(menuItemCadastroInstrutor);
+		menuCadastro.add(menuItemCadastroAlunoInstrutor);
 		
 		JMenu menuAula = new JMenu("Aula");
 		menuAula.setForeground(Color.BLACK);
