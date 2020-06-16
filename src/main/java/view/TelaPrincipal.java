@@ -56,11 +56,20 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane = new PainelCadastroAlunoInstrutor();
 				setContentPane(contentPane);
-				revalidate();
-				
+				revalidate();				
 			}
 		});
 		menuCadastro.add(menuItemCadastroAlunoInstrutor);
+		
+		JMenuItem menuItemCadastroModalidade = new JMenuItem("Modalidade");
+		menuItemCadastroModalidade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane = new PainelCadastroModalidade();
+				setContentPane(contentPane);
+				revalidate();
+			}
+		});
+		menuCadastro.add(menuItemCadastroModalidade);
 		
 		JMenu menuAula = new JMenu("Aula");
 		menuAula.setForeground(Color.BLACK);

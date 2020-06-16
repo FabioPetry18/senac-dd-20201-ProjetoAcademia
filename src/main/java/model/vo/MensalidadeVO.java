@@ -3,19 +3,23 @@ package model.vo;
 public class MensalidadeVO {
 
 	private String dataVencimento;
-	private double valorMensalidade;
 	private String dataUltimoPagamento;
+	private double valorMensalidade;
 	private boolean estaPago;
 
+	public MensalidadeVO(String dataVencimento, double valorMensalidade, String dataUltimoPagamento, boolean estaPago) {
+		super();
+		this.dataVencimento = dataVencimento;
+		this.valorMensalidade = valorMensalidade;
+		this.dataUltimoPagamento = dataUltimoPagamento;
+		this.estaPago = estaPago;
+	}
+	
 	public static void gerarMulta() {
 
 	}
 
 	private static void pagarMes() {
-
-	}
-
-	private static void pagarSemestre() {
 
 	}
 
@@ -55,12 +59,5 @@ public class MensalidadeVO {
 		this.estaPago = estaPago;
 	}
 
-	public MensalidadeVO(String dataVencimento, double valorMensalidade, String dataUltimoPagamento, boolean estaPago) {
-		super();
-		this.dataVencimento = dataVencimento;
-		this.valorMensalidade = valorMensalidade;
-		this.dataUltimoPagamento = dataUltimoPagamento;
-		this.estaPago = estaPago;
-	}
 
 }

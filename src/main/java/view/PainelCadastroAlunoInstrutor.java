@@ -1,30 +1,23 @@
 package view;
 
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.util.ArrayList;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFormattedTextField.AbstractFormatter;
-import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.text.ParseException;
 
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
-
-import model.vo.AlunoVO;
-import model.vo.InstrutorVO;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import controller.AlunoController;
+import controller.InstrutorController;
 
 public class PainelCadastroAlunoInstrutor extends JPanel {
 	
@@ -47,6 +40,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JRadioButton rdbtnFeminino;
 	private JRadioButton rdbtnAluno;
 	private JRadioButton rdbtnInstrutor;
+	private JComboBox comboBoxModalidade;
 
 	/**
 	 * Create the panel.
@@ -175,7 +169,8 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		btnGroupSexo.add(rdbtnMasculino);
 		btnGroupSexo.add(rdbtnFeminino);
 		
-		JComboBox comboBoxModalidade = new JComboBox();
+		ArrayList<String> listaModalidades = consultarModalidades();
+		comboBoxModalidade = new JComboBox(listaModalidades.toArray());
 		comboBoxModalidade.setBounds(346, 186, 182, 20);
 		add(comboBoxModalidade);
 		
@@ -213,6 +208,31 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		btnGroupTipo.add(rdbtnInstrutor);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String mensagem = "";
+				if(rdbtnAluno.isSelected()) {
+					AlunoController controller = new AlunoController();
+					mensagem = controller.cadastrarAluno(txtCpf.getText(), txtNome.getText(),
+							txtDataNascimento.getText(), txtTelefone.getText(),
+							txtCelular.getText(), txtEndereco.getText(), txtBairro.getText(),
+							txtCep.getText(), txtEmail.getText(), comboBoxModalidade.getSelectedItem().toString(),
+							txtObservacoes.getText());
+					
+				} else if(rdbtnInstrutor.isSelected()) {
+					InstrutorController controller = new InstrutorController();
+					mensagem = controller.cadastrarInstrutor(txtCpf.getText(), txtNome.getText(),
+							txtDataNascimento.getText(), txtTelefone.getText(), txtCelular.getText(),
+							txtEndereco.getText(), txtBairro.getText(), txtCep.getText(), txtEmail.getText(),
+							comboBoxModalidade.getSelectedItem().toString(), txtObservacoes.getText(),
+							txtFormacao.getText(), txtSalario.getText());
+					
+				} else {
+					mensagem = "Selecione o tipo de cadastro (Aluno/Instrutor)";
+				}
+				JOptionPane.showMessageDialog(null, mensagem);
+			}
+		});
 		btnCadastrar.setBounds(237, 472, 81, 23);
 		add(btnCadastrar);
 		
@@ -237,8 +257,21 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		txtFormacao.setBounds(428, 327, 100, 20);
 		add(txtFormacao);
 		txtFormacao.setColumns(10);
+		
 	}
-	private AlunoVO construirAluno(String cpf, String nome, int idade, String telefone, String celular, String endereco, String bairro,
+	
+	private ArrayList<String> consultarModalidades() {
+		
+		ArrayList<String> listaModalidades = new ArrayList<String>();
+		
+		listaModalidades.add("Academia");
+		listaModalidades.add("Natação");
+		listaModalidades.add("Boxe");
+		
+		return listaModalidades;
+	}
+	
+	/*private AlunoVO construirAluno(String cpf, String nome, int idade, String telefone, String celular, String endereco, String bairro,
 			String cep, String email, String atuacao, String modalidade, String observacoes, String dtMatricula,
 			int numMatricula, boolean situacao, String dataCancelamento) {
 		
@@ -285,6 +318,6 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		novoInstrutor.setSalario(salario);
 		
 		return novoInstrutor;	
-	}
+	}*/
 	
 }
