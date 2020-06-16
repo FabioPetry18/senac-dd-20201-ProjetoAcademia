@@ -13,7 +13,7 @@ import controller.AlunoController;
 import controller.InstrutorController;
 import controller.PessoaController;
 import model.vo.AlunoVO;
-import model.vo.InstrutorVO;
+import model.vo.ProfessorVO;
 
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -298,11 +298,11 @@ public class TelaCadastro extends JFrame {
 		return novoAluno;	
 	}
 	
-	private InstrutorVO construirInstrutor(String cpf, String nome, int idade, String telefone, String celular, String endereco,
+	private ProfessorVO construirInstrutor(String cpf, String nome, int idade, String telefone, String celular, String endereco,
 			String bairro, String cep, String email, String atuacao, String modalidade, String formacao,
 			double salario) {
 		
-		InstrutorVO novoInstrutor = new InstrutorVO();
+		ProfessorVO novoInstrutor = new ProfessorVO();
 		
 		novoInstrutor.setCpf(cpf);
 		novoInstrutor.setNome(nome);
