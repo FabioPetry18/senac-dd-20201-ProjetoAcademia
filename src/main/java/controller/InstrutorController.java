@@ -1,10 +1,10 @@
 package controller;
 
-import model.vo.InstrutorVO;
+import model.vo.ProfessorVO;
 
 public class InstrutorController {
 
-	public String cadastrarInstrutor(InstrutorVO instrutor) {
+	public String cadastrarInstrutor(ProfessorVO instrutor) {
 		String mensagem = "";
 		
 		
