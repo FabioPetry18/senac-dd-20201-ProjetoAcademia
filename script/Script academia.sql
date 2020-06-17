@@ -13,7 +13,7 @@ CREATE TABLE SALARIO(
 CREATE TABLE MATRICULA(
 	idMatricula int not null auto_increment,
     dtMatrcula date not null,
-    situacao tinyint,
+    situacao tinyint not null,
     dtCancelamentoMatricula date not null,
     primary key(idMatricula)
 );
