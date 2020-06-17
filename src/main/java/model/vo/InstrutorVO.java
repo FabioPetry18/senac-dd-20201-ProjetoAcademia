@@ -10,10 +10,10 @@ public class InstrutorVO extends PessoaVO {
 		super();
 	}
 
-	public InstrutorVO(String cpf, String nome, int idade, String telefone, String celular, String endereco,
-			String bairro, String cep, String email, String atuacao, String modalidade, String formacao,
+	public InstrutorVO(String cpf, String nome, int idade, String telefone, String celular, String email,
+			String bairro, String cep, String atuacao, String modalidade, String formacao,
 			double salario) {
-		super(cpf, nome, idade, telefone, celular, endereco, bairro, cep, email, atuacao, modalidade);
+		super(cpf, nome, idade, telefone, celular, bairro, cep, email, atuacao, modalidade);
 		this.formacao = formacao;
 		this.salario = salario;
 	}

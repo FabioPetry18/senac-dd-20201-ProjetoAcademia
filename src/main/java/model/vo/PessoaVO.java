@@ -1,16 +1,15 @@
 package model.vo;
 
 public abstract class PessoaVO {
-
+	
 	protected String cpf;
 	protected String nome;
 	protected int idade;
 	protected String telefone;
 	protected String celular;
-	protected String endereco;
+	protected String email;
 	protected String bairro;
 	protected String cep;
-	protected String email;
 	protected String atuacao;
 	protected String modalidade;
 
@@ -18,22 +17,21 @@ public abstract class PessoaVO {
 		super();
 	}
 
-	public PessoaVO(String cpf, String nome, int idade, String telefone, String celular, String endereco, String bairro,
-			String cep, String email, String atuacao, String modalidade) {
+	public PessoaVO(String cpf, String nome, int idade, String telefone, String celular,String email, String bairro,
+			String cep, String atuacao, String modalidade) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
 		this.idade = idade;
 		this.telefone = telefone;
 		this.celular = celular;
-		this.endereco = endereco;
 		this.bairro = bairro;
 		this.cep = cep;
 		this.email = email;
 		this.atuacao = atuacao;
 		this.modalidade = modalidade;
 	}
-
+	
 	public String getCpf() {
 		return cpf;
 	}
@@ -73,15 +71,15 @@ public abstract class PessoaVO {
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
-
-	public String getEndereco() {
-		return endereco;
+	
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
+	
 	public String getBairro() {
 		return bairro;
 	}
@@ -96,14 +94,6 @@ public abstract class PessoaVO {
 
 	public void setCep(String cep) {
 		this.cep = cep;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getAtuacao() {

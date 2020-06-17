@@ -13,10 +13,10 @@ public class AlunoVO extends PessoaVO {
 		super();
 	}
 
-	public AlunoVO(String cpf, String nome, int idade, String telefone, String celular, String endereco, String bairro,
-			String cep, String email, String atuacao, String modalidade, String observacoes, String dtMatricula,
+	public AlunoVO(String cpf, String nome, int idade, String telefone, String celular, String email, String bairro,
+			String cep, String atuacao, String modalidade, String observacoes, String dtMatricula,
 			int numMatricula, boolean situacao, String dataCancelamento) {
-		super(cpf, nome, idade, telefone, celular, endereco, bairro, cep, email, atuacao, modalidade);
+		super(cpf, nome, idade, telefone, celular, email, bairro, cep, atuacao, modalidade);
 		this.observacoes = observacoes;
 		this.dtMatricula = dtMatricula;
 		this.numMatricula = numMatricula;

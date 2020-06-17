@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.vo.PessoaVO;
+import model.dao.Banco;
 
 public class PessoaDAO {
 
