@@ -1,4 +1,4 @@
-package model.vo;
+ package model.vo;
 
 public abstract class PessoaVO {
 	
@@ -9,7 +9,9 @@ public abstract class PessoaVO {
 	protected String celular;
 	protected String email;
 	protected String bairro;
+	protected String rua;
 	protected String cep;
+	protected String complemento;	
 	protected String atuacao;
 	protected String modalidade;
 
@@ -111,5 +113,18 @@ public abstract class PessoaVO {
 	public void setModalidade(String modalidade) {
 		this.modalidade = modalidade;
 	}
+	public String getRua() {
+		return rua;
+	}
 
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
 }

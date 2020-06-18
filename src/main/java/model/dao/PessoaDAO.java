@@ -13,8 +13,8 @@ public class PessoaDAO {
 
 	public PessoaVO cadastrarPessoa (PessoaVO novaPessoa) {
 		Connection conexao = Banco.getConnection();
-		String sql = " INSERT INTO PESSOA(NOME, IDADE, TELEFONE, CELULAR, ENDERECO, BAIRRO, CEP, EMAIL, ATUACAO, MODALIDADE , CPF, ) "
-				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?) ";
+		String sql = " INSERT INTO PESSOA(NOME, IDADE, TELEFONE, CELULAR,BAIRRO, CEP, RUA, COMPLEMENTO,  EMAIL, ATUACAO, MODALIDADE , CPF, ) "
+				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ";
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql, 
 				PreparedStatement.RETURN_GENERATED_KEYS);
 		
@@ -23,13 +23,14 @@ public class PessoaDAO {
 			stmt.setInt(2, novaPessoa.getIdade());
 			stmt.setString(3, novaPessoa.getTelefone());
 			stmt.setString(4, novaPessoa.getCelular());
-			stmt.setString(5, novaPessoa.getEndereco());
-			stmt.setString(6, novaPessoa.getBairro());
-			stmt.setString(7, novaPessoa.getCep());
-			stmt.setString(8, novaPessoa.getEmail());
-			stmt.setString(9, novaPessoa.getAtuacao());
-			stmt.setString(10, novaPessoa.getModalidade());
-			stmt.setString(11, novaPessoa.getCpf());
+			stmt.setString(5, novaPessoa.getBairro());
+			stmt.setString(6, novaPessoa.getCep());
+			stmt.setString(7, novaPessoa.getRua());		
+			stmt.setString(8, novaPessoa.getComplemento());	
+			stmt.setString(9, novaPessoa.getEmail());
+			stmt.setString(10, novaPessoa.getAtuacao());
+			stmt.setString(11, novaPessoa.getModalidade());
+			stmt.setString(12, novaPessoa.getCpf());
 		
 						
 			
