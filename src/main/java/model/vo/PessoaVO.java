@@ -11,29 +11,42 @@ public abstract class PessoaVO {
 	protected String bairro;
 	protected String rua;
 	protected String cep;
+	protected String cidade;
+	protected String estado;	
 	protected String complemento;	
 	protected String atuacao;
-	protected String modalidade;
+
 
 	public PessoaVO() {
 		super();
 	}
 
-	public PessoaVO(String cpf, String nome, int idade, String telefone, String celular,String email, String bairro,
-			String cep, String atuacao, String modalidade) {
+	
+
+	
+	
+	public PessoaVO(String cpf, String nome, int idade, String telefone, String celular, String email, String bairro,
+			String rua, String cep, String cidade, String estado, String complemento, String atuacao) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
 		this.idade = idade;
 		this.telefone = telefone;
 		this.celular = celular;
-		this.bairro = bairro;
-		this.cep = cep;
 		this.email = email;
+		this.bairro = bairro;
+		this.rua = rua;
+		this.cep = cep;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.complemento = complemento;
 		this.atuacao = atuacao;
-		this.modalidade = modalidade;
 	}
-	
+
+
+
+
+
 	public String getCpf() {
 		return cpf;
 	}
@@ -106,13 +119,7 @@ public abstract class PessoaVO {
 		this.atuacao = atuacao;
 	}
 
-	public String getModalidade() {
-		return modalidade;
-	}
 
-	public void setModalidade(String modalidade) {
-		this.modalidade = modalidade;
-	}
 	public String getRua() {
 		return rua;
 	}
@@ -126,5 +133,19 @@ public abstract class PessoaVO {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }

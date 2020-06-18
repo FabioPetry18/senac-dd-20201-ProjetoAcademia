@@ -13,7 +13,7 @@ public class PessoaDAO {
 
 	public PessoaVO cadastrarPessoa (PessoaVO novaPessoa) {
 		Connection conexao = Banco.getConnection();
-		String sql = " INSERT INTO PESSOA(NOME, IDADE, TELEFONE, CELULAR,BAIRRO, CEP, RUA, COMPLEMENTO,  EMAIL, ATUACAO, MODALIDADE , CPF, ) "
+		String sql = " INSERT INTO PESSOA(NOME, IDADE, TELEFONE, CELULAR,BAIRRO, CEP, RUA, COMPLEMENTO,  EMAIL, ATUACAO, CIDADE, ESTADO, CPF, ) "
 				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ";
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql, 
 				PreparedStatement.RETURN_GENERATED_KEYS);
@@ -29,7 +29,8 @@ public class PessoaDAO {
 			stmt.setString(8, novaPessoa.getComplemento());	
 			stmt.setString(9, novaPessoa.getEmail());
 			stmt.setString(10, novaPessoa.getAtuacao());
-			stmt.setString(11, novaPessoa.getModalidade());
+			stmt.setString(11, novaPessoa.getCidade());
+			stmt.setString(11, novaPessoa.getEstado());
 			stmt.setString(12, novaPessoa.getCpf());
 		
 						

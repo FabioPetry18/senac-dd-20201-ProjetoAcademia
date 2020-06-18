@@ -34,6 +34,8 @@ CREATE TABLE PESSOA(
     celular varchar(20) not null,
     email varchar(255) not null,
     bairro varchar(255) not null,
+    cidade varchar (100) not null,
+    estado char (2) not null,
     cep varchar(10) not null,
     atuacao varchar(255) not null,
     primary key(idPessoa)

@@ -10,13 +10,15 @@ public class ProfessorVO extends PessoaVO {
 		super();
 	}
 
-	public ProfessorVO(String cpf, String nome, int idade, String telefone, String celular, String endereco,
-			String bairro, String cep, String email, String atuacao, String modalidade, String formacao,
-			double salario) {
-		super(cpf, nome, idade, telefone, celular, bairro, cep, email, atuacao, modalidade);
+	
+
+	public ProfessorVO(String formacao, double salario) {
+		super();
 		this.formacao = formacao;
 		this.salario = salario;
 	}
+
+
 
 	public String getFormacao() {
 		return formacao;
