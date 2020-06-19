@@ -17,7 +17,8 @@ public class AlunoDAO {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		int resultado = 0;
-		String query = "INSERT INTO ALUNO (observacoes,dtMatricula,numMatricula,situacao,dataCancelamento,modalidade) VALUES (" 
+		String query = " INSERT INTO PESSOA(OBSERVACOES, DTMATRICULA, NUMMATRICULA, SITUACAO, DATACANCELAMENTO, MODALIDADE,  ) "
+				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?) "
 				+ a.getObservacoes() + ", '" 
 				+ a.getDtMatricula() + "', '" 
 				+ a.getNumMatricula() + "', '"

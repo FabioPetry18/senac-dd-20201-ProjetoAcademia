@@ -112,7 +112,7 @@ public class TelaCadastro extends JFrame {
 		
 		JLabel lblImagemFundo = new JLabel("");
 		lblImagemFundo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImagemFundo.setIcon(new ImageIcon("C:\\Users\\joao\\Downloads\\gym-disks-weight-bodybuilding-1190563-wallhere.com (2).jpg"));
+		
 		
 		lblImagemFundo.setBounds(0, 0, larguraDaTela, alturaDaTela);
 		panel.add(lblImagemFundo);
