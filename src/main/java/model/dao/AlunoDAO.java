@@ -66,7 +66,7 @@ public class AlunoDAO {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + getIdAluno;
+		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + AlunoVO.getIdAluno();
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()){
@@ -89,7 +89,7 @@ public class AlunoDAO {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		int resultado = 0;
-		String query = "DELETE FROM aluno WHERE idaluno = " + PessoaVO.getIdPessoa();
+		String query = "DELETE FROM aluno WHERE idaluno = " + AlunoVO.getIdAluno();
 		try{
 			resultado = stmt.executeUpdate(query);
 		} catch (SQLException e){
