@@ -41,6 +41,20 @@ public class AlunoDAO {
 		return false;
 	}
 
+	
+
+	public boolean existeRegistroPorIdUsuarioDAO(int numMatricula) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public int excluirUsuarioDAO(AlunoVO a) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
 }
 
 

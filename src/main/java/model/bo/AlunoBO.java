@@ -23,5 +23,19 @@ public class AlunoBO {
 
 
 	}
-	
+	public void deletar(AlunoVO a) {
+		AlunoDAO alunoDAO = new AlunoDAO();
+		if(alunoDAO.existeRegistroPorIdUsuarioDAO(a.getNumMatricula())){
+			int resultado = alunoDAO.excluirUsuarioDAO(a);
+			if (resultado == 1){
+				System.out.println("\nUsuario deletado com sucesso.");
+			}else {
+				System.out.println("\nNão foi possível excluir o Usuário");
+			}
+		}else {
+			System.out.println("\nUsuário não existe na base da dados.");
+		}
+		
+	}
+
 }

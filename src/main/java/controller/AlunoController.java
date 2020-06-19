@@ -20,5 +20,10 @@ public class AlunoController {
 		AlunoBO ABO = new AlunoBO();
 		ABO.salvar(a);
 	}
+	
+	public void deletarAluno(AlunoVO a) {
+		AlunoBO ABO = new AlunoBO();
+		ABO.deletar(a);
+	}
 
 }
