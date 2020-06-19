@@ -18,8 +18,5 @@ public class PessoaController {
 		PBO.salvar(p);
 	}
 	
-	public void cadastrarPessoaController(PessoaVO p) {
-		PessoaVO pBO = new PessoaBO();
-		PessoaBO.cadastrarUsuarioBO(p);
-	}
+
 }

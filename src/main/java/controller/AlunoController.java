@@ -20,5 +20,5 @@ public class AlunoController {
 		AlunoBO ABO = new AlunoBO();
 		ABO.salvar(a);
 	}
-	
+
 }
