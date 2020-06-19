@@ -1,22 +1,22 @@
 package view;
 
 import javax.swing.JButton;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.SwingConstants;
+import controller.ModalidadeController;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class PainelCadastroModalidade extends JPanel {
 	
 	private JTextField txtNome;
-	private JTextField txtTotalAlunos;
 	private JTextField txtMensalidade;
+	private JSpinner spinnerTotalAlunos;
 
 	public PainelCadastroModalidade() {
 		setLayout(null);
@@ -34,11 +34,6 @@ public class PainelCadastroModalidade extends JPanel {
 		lblTotalAlunos.setBounds(31, 85, 100, 14);
 		add(lblTotalAlunos);
 		
-		txtTotalAlunos = new JTextField();
-		txtTotalAlunos.setBounds(150, 82, 238, 20);
-		add(txtTotalAlunos);
-		txtTotalAlunos.setColumns(10);
-		
 		JLabel lblValorMensal = new JLabel("Mensalidade");
 		lblValorMensal.setBounds(31, 136, 73, 14);
 		add(lblValorMensal);
@@ -48,11 +43,23 @@ public class PainelCadastroModalidade extends JPanel {
 		add(txtMensalidade);
 		txtMensalidade.setColumns(10);
 		
+		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ModalidadeController controller = new ModalidadeController();
+				int alunos = Integer.parseInt(spinnerTotalAlunos.getValue().toString());
+				String mensagem = controller.salvar(txtNome.getText(), alunos, txtMensalidade.getText());
+			}
+		});
 		btnCadastrar.setBounds(114, 234, 238, 23);
 		add(btnCadastrar);		
 		
+		spinnerTotalAlunos = new JSpinner();
+		spinnerTotalAlunos.setModel(new SpinnerNumberModel(5, 5, 30, 1));
+		spinnerTotalAlunos.setBounds(150, 82, 29, 20);
+		add(spinnerTotalAlunos);
+		
 		
 	}
-
 }

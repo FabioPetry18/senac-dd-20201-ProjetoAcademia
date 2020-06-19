@@ -1,18 +1,18 @@
 package model.vo;
 
-public class ProfessorVO extends PessoaVO {
+public class InstrutorVO extends PessoaVO {
 
 	private String formacao;
 	private double salario;
 
 
-	public ProfessorVO() {
+	public InstrutorVO() {
 		super();
 	}
 
 	
 
-	public ProfessorVO(String formacao, double salario) {
+	public InstrutorVO(String formacao, double salario) {
 		super();
 		this.formacao = formacao;
 		this.salario = salario;
