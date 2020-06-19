@@ -20,21 +20,20 @@ public class AlunoDAO {
 	
 	public AlunoVO salvar(AlunoVO novoAluno) {
 		Connection conexao = Banco.getConnection();
-		String sql = " INSERT INTO ALUNO(idAluno,observacoes,dtMatricula,numMatricula,situacao,dataCancelamento,modalidade)"			 
-				+" VALUES(?,?,?,?,?,?,?)";
+		String sql = " INSERT INTO ALUNO(observacoes,dtMatricula,numMatricula,situacao,dataCancelamento,modalidade)"			 
+				+" VALUES(?,?,?,?,?,?)";
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql, 
 				PreparedStatement.RETURN_GENERATED_KEYS);
 		try {
-			stmt.setInt(1, novoAluno.getIdAluno());
-			stmt.setString(2, novoAluno.getObservacoes());
-			stmt.setString(3, novoAluno.getDtMatricula());
-			stmt.setInt(4, novoAluno.getNumMatricula());
-			stmt.setString(5,novoAluno.getSituacao());
-			stmt.setString(6, novoAluno.getDataCancelamento());
-			stmt.setString(7, novoAluno.getModalidade());
+			stmt.setString(1, novoAluno.getObservacoes());
+			stmt.setString(2, novoAluno.getDtMatricula());
+			stmt.setInt(3, novoAluno.getNumMatricula());
+			stmt.setString(4,novoAluno.getSituacao());
+			stmt.setString(5, novoAluno.getDataCancelamento());
+			stmt.setString(6, novoAluno.getModalidade());
 			
 			stmt.execute();
-			ResultSet rs = stmt.getGeneratedKeys();
+			
 			
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir novo Aluno.");
@@ -44,7 +43,7 @@ public class AlunoDAO {
 		return novoAluno;
 	}
 
-	}
+}
 
 
 

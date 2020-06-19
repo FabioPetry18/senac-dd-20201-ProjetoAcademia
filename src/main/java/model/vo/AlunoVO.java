@@ -1,7 +1,6 @@
 package model.vo;
 
 public class AlunoVO extends PessoaVO {
-	private int idAluno;
 	private String observacoes;
 	private String dtMatricula;
 	private int numMatricula;
@@ -14,7 +13,7 @@ public class AlunoVO extends PessoaVO {
 	public AlunoVO() {
 		super();
 	}
-	public AlunoVO(int idAluno,String observacoes, String dtMatricula, int numMatricula,String situacao , String dataCancelamento,
+	public AlunoVO(String observacoes, String dtMatricula, int numMatricula,String situacao , String dataCancelamento,
 			String modalidade) {
 		super();
 		this.observacoes = observacoes;
@@ -59,12 +58,7 @@ public class AlunoVO extends PessoaVO {
 	public void setModalidade(String modalidade) {
 		this.modalidade = modalidade;
 	}
-	public int getIdAluno() {
-		return idAluno;
-	}
-	public void setIdAluno(int idAluno) {
-		this.idAluno = idAluno;
-	}
+
 	public String getSituacao() {
 		return situacao;
 	}
