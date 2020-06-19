@@ -14,7 +14,7 @@ public class AlunoVO extends PessoaVO {
 	public AlunoVO() {
 		super();
 	}
-	public AlunoVO(int idAluno,String observacoes, String dtMatricula, int numMatricula, String situacao, String dataCancelamento,
+	public AlunoVO(int idAluno,String observacoes, String dtMatricula, int numMatricula,String situacao , String dataCancelamento,
 			String modalidade) {
 		super();
 		this.observacoes = observacoes;
@@ -42,9 +42,8 @@ public class AlunoVO extends PessoaVO {
 	public void setNumMatricula(int numMatricula) {
 		this.numMatricula = numMatricula;
 	}
-	public String setSituacao() {
-		return situacao;
-	}
+
+	
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
@@ -65,6 +64,9 @@ public class AlunoVO extends PessoaVO {
 	}
 	public void setIdAluno(int idAluno) {
 		this.idAluno = idAluno;
+	}
+	public String getSituacao() {
+		return situacao;
 	}
 
 
