@@ -5,19 +5,23 @@ import model.vo.AlunoVO;
 
 public class AlunoBO {
 
-	AlunoDAO dao = new AlunoDAO();
 	
-//	public String salvar(AlunoVO aluno) {
-//		String mensagem = "";
+	AlunoDAO DAO= new AlunoDAO();
+	public String salvar(AlunoVO alunoVO) {
+	
+		String mensagem = "";
 
-//		if (dao.verificarCpf(aluno.getCpf())) {
-//			mensagem = "CPF informado (" + aluno.getCpf() + ") já foi utilizado";
-//		} else {
-//			aluno = dao.salvar(aluno);
-//			mensagem = "Cadastro realizado com sucesso!";
-//
-//		}
-//		return mensagem;
-//	}
+	if (DAO.verificarCpf(alunoVO.getCpf())) {
+			mensagem = "CPF informado (" + alunoVO.getCpf() + ") já foi utilizado";
+		} else {
+			alunoVO = DAO.salvar(alunoVO);
+			mensagem = "Cadastro realizado com sucesso!";
+
+		}
+	return mensagem;
+		
+
+
+	}
 	
 }

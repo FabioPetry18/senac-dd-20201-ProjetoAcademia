@@ -1,7 +1,9 @@
 package controller;
 
 import model.bo.AlunoBO;
+import model.bo.PessoaBO;
 import model.vo.AlunoVO;
+import model.vo.PessoaVO;
 
 public class AlunoController {
 
@@ -14,6 +16,9 @@ public class AlunoController {
 		return mensagem;
 	}
 	
-
+	public void inserirAluno(AlunoVO a) {
+		AlunoBO ABO = new AlunoBO();
+		ABO.salvar(a);
+	}
 	
 }

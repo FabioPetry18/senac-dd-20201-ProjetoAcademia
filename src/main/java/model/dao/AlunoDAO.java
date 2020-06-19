@@ -36,6 +36,11 @@ public class AlunoDAO {
 		return novoAluno;
 	}
 
+	public boolean verificarCpf(String cpf) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
 
 
