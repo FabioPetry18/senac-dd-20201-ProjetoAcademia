@@ -25,7 +25,7 @@ public class AlunoBO {
 	}
 	public void deletar(AlunoVO a) {
 		AlunoDAO alunoDAO = new AlunoDAO();
-		if(alunoDAO.existeRegistroPorIdUsuarioDAO(a.getNumMatricula())){
+		if(alunoDAO.existeRegistroPorIdAlunoDAO(a.getNumMatricula())){
 			int resultado = alunoDAO.excluirUsuarioDAO(a);
 			if (resultado == 1){
 				System.out.println("\nUsuario deletado com sucesso.");

@@ -8,12 +8,13 @@ import java.util.ArrayList;
 
 import model.dao.Banco;	
 import model.vo.AlunoVO;
+import model.vo.PessoaVO;
 public class AlunoDAO {
 
 	
 	public AlunoVO salvar(AlunoVO novoAluno) {
 		Connection conexao = Banco.getConnection();
-		String sql = " INSERT INTO ALUNO(observacoes,dtMatricula,numMatricula,situacao,dataCancelamento,modalidade)"			 
+		String sql = " INSERT INTO ALUNO(idAluno,observacoes,dtMatricula,numMatricula,situacao,dataCancelamento,modalidade)"			 
 				+" VALUES(?,?,?,?,?,?)";
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql, 
 				PreparedStatement.RETURN_GENERATED_KEYS);
@@ -37,22 +38,69 @@ public class AlunoDAO {
 	}
 
 	public boolean verificarCpf(String cpf) {
-		// TODO Auto-generated method stub
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		ResultSet resultado = null;
+		String query = "SELECT cpf FROM aluno WHERE cpf = '" + cpf + "'";
+		
+		try {
+			resultado = stmt.executeQuery(query);
+			if (resultado.next()){
+				return true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro ao executar a Query que verifica existência de Usuário por CPF.");
+			System.out.println("Erro: " + e.getMessage());
+			return false;
+		} finally {
+			Banco.closeResultSet(resultado);
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
 		return false;
 	}
 
 	
 
-	public boolean existeRegistroPorIdUsuarioDAO(int numMatricula) {
-		// TODO Auto-generated method stub
+	public boolean existeRegistroPorIdAlunoDAO(int numMatricula) {
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		ResultSet resultado = null;
+		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + getIdAluno;
+		try {
+			resultado = stmt.executeQuery(query);
+			if (resultado.next()){
+				return true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro ao executar a Query que verifica existência de Registro por Id.");
+			System.out.println("Erro: " + e.getMessage());
+			return false;
+		} finally {
+			Banco.closeResultSet(resultado);
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
 		return false;
 	}
 
+	
 	public int excluirUsuarioDAO(AlunoVO a) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		int resultado = 0;
+		String query = "DELETE FROM aluno WHERE idaluno = " + PessoaVO.getIdPessoa();
+		try{
+			resultado = stmt.executeUpdate(query);
+		} catch (SQLException e){
+			System.out.println("Erro ao executar a Query de Exclusão do Usuário.");
+			System.out.println("Erro: " + e.getMessage());
+		} finally {
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		return resultado;
 	}
-
 
 
 }
