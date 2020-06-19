@@ -19,12 +19,13 @@ public class AlunoDAO {
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql, 
 				PreparedStatement.RETURN_GENERATED_KEYS);
 		try {
-			stmt.setString(1, novoAluno.getObservacoes());
-			stmt.setString(2, novoAluno.getDtMatricula());
-			stmt.setInt(3, novoAluno.getNumMatricula());
-			stmt.setString(4,novoAluno.getSituacao());
-			stmt.setString(5, novoAluno.getDataCancelamento());
-			stmt.setString(6, novoAluno.getModalidade());
+			stmt.setInt(1, novoAluno.getIdAluno());
+			stmt.setString(2, novoAluno.getObservacoes());
+			stmt.setString(3, novoAluno.getDtMatricula());
+			stmt.setInt(4, novoAluno.getNumMatricula());
+			stmt.setString(5,novoAluno.getSituacao());
+			stmt.setString(6, novoAluno.getDataCancelamento());
+			stmt.setString(7, novoAluno.getModalidade());
 			
 			stmt.execute();
 			ResultSet rs = stmt.getGeneratedKeys();
@@ -62,11 +63,11 @@ public class AlunoDAO {
 
 	
 
-	public boolean existeRegistroPorIdAlunoDAO(int numMatricula) {
+	public boolean existeRegistroPorIdAlunoDAO(int idAluno) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + AlunoVO.getIdAluno();
+		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + idAluno;
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()){
@@ -89,7 +90,7 @@ public class AlunoDAO {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		int resultado = 0;
-		String query = "DELETE FROM aluno WHERE idaluno = " + AlunoVO.getIdAluno();
+		String query = "DELETE FROM aluno WHERE idaluno = " + a.getIdAluno();
 		try{
 			resultado = stmt.executeUpdate(query);
 		} catch (SQLException e){
