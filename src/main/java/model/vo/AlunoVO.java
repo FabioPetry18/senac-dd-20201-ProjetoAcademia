@@ -42,7 +42,7 @@ public class AlunoVO extends PessoaVO {
 	public void setNumMatricula(int numMatricula) {
 		this.numMatricula = numMatricula;
 	}
-	public String isSituacao() {
+	public String setSituacao() {
 		return situacao;
 	}
 	public void setSituacao(String situacao) {
