@@ -24,6 +24,8 @@ public class AlunoController {
 	public void deletarAluno(AlunoVO a) {
 		AlunoBO ABO = new AlunoBO();
 		ABO.deletar(a);
+		
 	}
-
 }
+	
+

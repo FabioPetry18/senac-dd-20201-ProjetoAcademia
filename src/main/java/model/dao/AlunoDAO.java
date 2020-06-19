@@ -12,6 +12,32 @@ import model.vo.PessoaVO;
 public class AlunoDAO {
 
 	
+	
+	public int cadastrarAluno(AlunoVO a) {
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		int resultado = 0;
+		String query = "INSERT INTO ALUNO (observacoes,dtMatricula,numMatricula,situacao,dataCancelamento,modalidade) VALUES (" 
+				+ a.getObservacoes() + ", '" 
+				+ a.getDtMatricula() + "', '" 
+				+ a.getNumMatricula() + "', '"
+				+ a.getSituacao() + "', '"
+				+ a.getDataCancelamento() + "', '"
+				+ a.getModalidade() + "')";
+		try {
+			resultado = stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			System.out.println("Erro ao executar a Query de Cadastro do ALUNO.");
+			System.out.println("Erro: " + e.getMessage());
+		} finally {
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		return resultado;
+	}
+	
+	
+	
 	public AlunoVO salvar(AlunoVO novoAluno) {
 		Connection conexao = Banco.getConnection();
 		String sql = " INSERT INTO ALUNO(idAluno,observacoes,dtMatricula,numMatricula,situacao,dataCancelamento,modalidade)"			 

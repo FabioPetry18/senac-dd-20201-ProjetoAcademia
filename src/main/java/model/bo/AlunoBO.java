@@ -19,10 +19,9 @@ public class AlunoBO {
 
 		}
 	return mensagem;
-		
-
-
 	}
+	
+	
 	public void deletar(AlunoVO a) {
 		AlunoDAO alunoDAO = new AlunoDAO();
 		if(alunoDAO.existeRegistroPorIdAlunoDAO(a.getNumMatricula())){
