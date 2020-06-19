@@ -9,13 +9,6 @@ import java.util.ArrayList;
 import model.dao.Banco;	
 import model.vo.AlunoVO;
 public class AlunoDAO {
-/*	private String observacoes;
-	private String dtMatricula;
-	private int numMatricula;
-	private boolean situacao; // true pra ATIVO e false pra INATIVO
-	private String dataCancelamento; // data que cancelou matricula na academia.
-	private String modalidade;*/
-
 
 	
 	public AlunoVO salvar(AlunoVO novoAluno) {
@@ -33,7 +26,7 @@ public class AlunoDAO {
 			stmt.setString(6, novoAluno.getModalidade());
 			
 			stmt.execute();
-			
+			ResultSet rs = stmt.getGeneratedKeys();
 			
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir novo Aluno.");
