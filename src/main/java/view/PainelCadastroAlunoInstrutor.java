@@ -26,28 +26,31 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JLabel lblFormacao;
 	private JLabel lblSalario;
 	private JTextField txtNome;
-	private JTextField txtDataNascimento;
 	private JTextField txtEndereco;
 	private JTextField txtBairro;
 	private JTextField txtCep;
-	private JTextField txtTelefone;
+	private JFormattedTextField txtTelefone;
 	private JTextField txtCelular;
 	private JTextField txtEmail;
 	private JTextField txtObservacoes;
 	private JTextField txtSalario;
 	private JTextField txtFormacao;
 	private JFormattedTextField txtCpf;
+	private JFormattedTextField txtDataNascimento;
 	private JRadioButton rdbtnMasculino;
 	private JRadioButton rdbtnFeminino;
 	private JRadioButton rdbtnAluno;
 	private JRadioButton rdbtnInstrutor;
 	private JComboBox comboBoxModalidade;
+	private JFormattedTextField formattedTextField;
 
 	/**
 	 * Create the panel.
 	 */
 	public PainelCadastroAlunoInstrutor() {
+		setToolTipText("Cadastro Aluno");
 		setLayout(null);
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 41, 1, 1);
@@ -114,7 +117,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtNome);
 		
 		txtCelular = new JTextField();
-		txtCelular.setBounds(126, 189, 148, 20);
+		txtCelular.setBounds(126, 187, 148, 20);
 		txtCelular.setColumns(10);
 		add(txtCelular);
 		
@@ -123,20 +126,11 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		txtCep.setColumns(10);
 		add(txtCep);
 		
-		txtDataNascimento = new JTextField();
-		txtDataNascimento.setBounds(126, 94, 148, 20);
-		txtDataNascimento.setColumns(10);
-		add(txtDataNascimento);
-		
 		txtBairro = new JTextField();
 		txtBairro.setBounds(126, 285, 148, 20);
 		txtBairro.setColumns(10);
 		add(txtBairro);
 		
-		txtTelefone = new JTextField();
-		txtTelefone.setBounds(126, 161, 148, 20);
-		txtTelefone.setColumns(10);
-		add(txtTelefone);
 		
 		txtEmail = new JTextField();
 		txtEmail.setBounds(126, 316, 148, 20);
@@ -157,21 +151,20 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		
-		try {
-			MaskFormatter mascaraNasci = new MaskFormatter("##/##/####"); //mascara DATA NASCIMENTO (N FUNCIONANDO)
-			txtDataNascimento = new JFormattedTextField(mascaraNasci);
-			txtDataNascimento.setBounds(126, 94, 148, 20);
-			add(txtDataNascimento);
+		try { 
+			MaskFormatter mascaraDataNascimento = new MaskFormatter("##/##/####"); //mascara de data(funcionando)
+			txtDataNascimento= new JFormattedTextField(mascaraDataNascimento);
+		txtDataNascimento.setBounds(126, 95, 148, 20);
+		add(txtDataNascimento);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
+			
 		try {
 			MaskFormatter mascaraCelular = new MaskFormatter("(##)#####-####"); //mascara CELULAR (N FUNCIONANDO)
 			txtCelular = new JFormattedTextField(mascaraCelular);
-			txtCelular.setBounds(126, 94, 148, 20);
+			txtCelular.setBounds(126, 187, 148, 20);
 			add(txtCelular);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -293,8 +286,41 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		txtpnAtuacao.setBounds(346, 11, 61, 20);
 		add(txtpnAtuacao);
 		
+		JButton txtLimpar = new JButton("Limpar");
+		txtLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 limparCampos();
+					
+				
+			}
+			
+			
+		});
+		txtLimpar.setBounds(402, 491, 119, 23);
+		add(txtLimpar);
+		
+	
+		
 	}
 	
+	protected void limparCampos() {
+		this.txtBairro.setText("");
+		this.txtCelular.setText("");
+		this.txtCep.setText("");
+		this.txtNome.setText("");
+		this.txtCpf.setText("");
+		this.txtDataNascimento.setText("");
+		this.txtEmail.setText("");
+		this.txtEndereco.setText("");
+		this.txtObservacoes.setText("");
+		this.txtTelefone.setText("");
+		this.txtSalario.setText("");
+		this.txtFormacao.setText("");
+		this.comboBoxModalidade.setSelectedIndex(-1);
+		
+		
+	}
+
 	private ArrayList<String> consultarModalidades() {
 		
 		ArrayList<String> listaModalidades = new ArrayList<String>();
