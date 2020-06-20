@@ -150,13 +150,42 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtObservacoes);
 		
 		try {
-			MaskFormatter mascaraCpf = new MaskFormatter("###.###.###-##");
+			MaskFormatter mascaraCpf = new MaskFormatter("###.###.###-##");  //mascara CPF (FUNCIONANDO)
 			txtCpf = new JFormattedTextField(mascaraCpf);
 			txtCpf.setBounds(126, 127, 148, 20);
 			add(txtCpf);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
+		
+		try {
+			MaskFormatter mascaraNasci = new MaskFormatter("##/##/####"); //mascara DATA NASCIMENTO (N FUNCIONANDO)
+			txtDataNascimento = new JFormattedTextField(mascaraNasci);
+			txtDataNascimento.setBounds(126, 94, 148, 20);
+			add(txtDataNascimento);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			MaskFormatter mascaraCelular = new MaskFormatter("(##)#####-####"); //mascara CELULAR (N FUNCIONANDO)
+			txtCelular = new JFormattedTextField(mascaraCelular);
+			txtCelular.setBounds(126, 94, 148, 20);
+			add(txtCelular);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			MaskFormatter mascaraTelefone = new MaskFormatter("(##)####-####"); //mascara TELEFONE (N FUNCIONANDO)
+			txtTelefone = new JFormattedTextField(mascaraTelefone);
+			txtTelefone.setBounds(126, 161, 148, 20);
+			add(txtTelefone);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		
 		rdbtnMasculino = new JRadioButton("Masculino");
 		rdbtnMasculino.setBounds(375, 123, 86, 23);
