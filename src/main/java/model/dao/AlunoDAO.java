@@ -115,6 +115,29 @@ public class AlunoDAO {
 		return false;
 	}
 
+	public boolean verificarCpf(String cpf) {
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		ResultSet resultado = null;		
+		String query = "SELECT CPF FROM aluno WHERE CPF = " + cpf;
+		try {
+			resultado = stmt.executeQuery(query);
+			if (resultado.next()){
+				return true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro ao executar a Query que verifica existência de Registro por CPF.");
+			System.out.println("Erro: " + e.getMessage());
+			return false;
+		} finally {
+			Banco.closeResultSet(resultado);
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		
+		return false;
+	}
+
 	
 
 
