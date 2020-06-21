@@ -1,6 +1,6 @@
 package view;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Dimension;
 import java.awt.EventQueue;
 
@@ -274,7 +274,7 @@ public class TelaCadastro extends JFrame {
 	
 	private AlunoVO construirAluno(String cpf, String nome, int idade, String telefone, String celular, String endereco, String bairro,
 			String cep, String email, String atuacao, String modalidade, String observacoes, String dtMatricula,
-			int numMatricula, boolean situacao, String dataCancelamento) {
+			int numMatricula, String situacao, String dataCancelamento) {
 		
 		AlunoVO novoAluno = new AlunoVO();
 		
@@ -283,7 +283,7 @@ public class TelaCadastro extends JFrame {
 		novoAluno.setIdade(idade);
 		novoAluno.setTelefone(telefone);
 		novoAluno.setCelular(celular);
-		novoAluno.setEndereco(endereco);
+		novoAluno.setEndereco(endereco); //endereco n foi declarado em PESSOAVO
 		novoAluno.setBairro(bairro);
 		novoAluno.setCep(cep);
 		novoAluno.setEmail(email);
@@ -292,13 +292,13 @@ public class TelaCadastro extends JFrame {
 		novoAluno.setObservacoes(observacoes);
 		novoAluno.setDtMatricula(dtMatricula);
 		novoAluno.setNumMatricula(numMatricula);
-		novoAluno.setSituacao(situacao);
+		novoAluno.setSituacao(situacao); //situacao estava declarada como String, 
 		novoAluno.setDataCancelamento(dataCancelamento);
 		
 		return novoAluno;	
 	}
 	
-	private ProfessorVO construirInstrutor(String cpf, String nome, int idade, String telefone, String celular, String endereco,
+	private ProfessorVO construirInstrutor(String cpf, String nome, int idade, String telefone, String celular, String endereco,  
 			String bairro, String cep, String email, String atuacao, String modalidade, String formacao,
 			double salario) {
 		
@@ -314,7 +314,7 @@ public class TelaCadastro extends JFrame {
 		novoInstrutor.setCep(cep);
 		novoInstrutor.setEmail(email);
 		novoInstrutor.setAtuacao(atuacao);
-		novoInstrutor.setModalidade(modalidade);
+		novoInstrutor.setModalidade(modalidade); //modalidade n foi declarada em professorVO
 		novoInstrutor.setFormacao(formacao);
 		novoInstrutor.setSalario(salario);
 		
