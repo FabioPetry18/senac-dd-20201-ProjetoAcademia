@@ -5,7 +5,9 @@ use PROJETO;
 
 CREATE TABLE MENSALIDADE(
 	idMensalidade int not null auto_increment,
-    valMensalidade float(3) not null,
+    dataVencimento DATE not null,
+    dataUltimoPagamento DATE not null,
+    estaPago int not null,
     primary key(idMensalidade)
 );
 
@@ -72,10 +74,6 @@ CREATE TABLE TURNO(
     foreign key(idInstrutor) references INSTRUTOR(idInstrutor)
 );
 
-INSERT INTO TURNO(nome) VALUES("Matutino");
-INSERT INTO TURNO(nome) VALUES("Vespertino");
-INSERT INTO TURNO(nome) VALUES("Noturno");
 
-INSERT INTO MODALIDADE(nome) VALUES("Musculação");
-INSERT INTO MODALIDADE(nome) VALUES("Natação");
-INSERT INTO MODALIDADE(nome) VALUES("Dança");
+
+
