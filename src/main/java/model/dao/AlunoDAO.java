@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import model.dao.Banco;	
@@ -41,17 +42,17 @@ public class AlunoDAO {
 	}
 	
 	//Excluir Aluno:
-	public boolean excluir(int id) {
+	public boolean excluir(AlunoVO a) {
 		
 		AlunoVO aluno = new AlunoVO();
 		Connection conn = Banco.getConnection();
-		String sql = "DELETE FROM PESSOA, ALUNO WHERE ID = "+id;
+		String sql = "DELETE FROM PESSOA, ALUNO WHERE ID = "+a;
 		Statement stmt = Banco.getStatement(conn);
 		int quantidadeLinhasAfetadas = 0;
 		
 		try {
 			
-			quantidadeLinhasAfetadas = stmt.executeUpdate(sql);
+			quantidadeLinhasAfetadas =+ stmt.executeUpdate(sql);
 			
 		} catch(SQLException e) {
 			
@@ -93,11 +94,11 @@ public class AlunoDAO {
 		return alterado;
 	}
 	
-	public boolean existeRegistroPorIdAlunoDAO(int idAluno) {
+	public boolean existeRegistroPorIdAlunoDAO(LocalDate localDate) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + idAluno;
+		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + localDate;
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()){

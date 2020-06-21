@@ -7,8 +7,8 @@ public class AlunoVO extends PessoaVO {
 	private String observacoes;
 	private LocalDate dtMatricula;
 	private int matricula;
-	private boolean situacao; // Y - ATIVO F- INATIVO
-	private LocalDate dtCancelamento; // data que cancelou matricula na academia.
+	private boolean situacao; 
+	private LocalDate dtCancelamento; 
 	private ModalidadeVO modalidade;
 	
 	public AlunoVO() {

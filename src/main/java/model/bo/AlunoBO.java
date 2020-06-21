@@ -14,7 +14,7 @@ public class AlunoBO {
 	if (DAO.verificarCpf(alunoVO.getCpf())) {
 			mensagem = "CPF informado (" + alunoVO.getCpf() + ") já foi utilizado";
 		} else {
-			alunoVO = DAO.salvar(alunoVO);
+			alunoVO = DAO.cadastrarAluno(alunoVO);
 			mensagem = "Cadastro realizado com sucesso!";
 
 		}
@@ -24,9 +24,9 @@ public class AlunoBO {
 	
 	public void deletar(AlunoVO a) {
 		AlunoDAO alunoDAO = new AlunoDAO();
-		if(alunoDAO.existeRegistroPorIdAlunoDAO(a.getNumMatricula())){
-			int resultado = alunoDAO.excluirUsuarioDAO(a);
-			if (resultado == 1){
+		if(alunoDAO.existeRegistroPorIdAlunoDAO(a.getDtMatricula())){
+			boolean resultado = alunoDAO.excluir(a);
+			if (resultado == true){
 				System.out.println("\nUsuario deletado com sucesso.");
 			}else {
 				System.out.println("\nNão foi possível excluir o Usuário");

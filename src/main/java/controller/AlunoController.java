@@ -1,9 +1,10 @@
 package controller;
 
-import model.bo.AlunoBO;
+import model.bo.AlunoBO	;
 import model.bo.PessoaBO;
 import model.vo.AlunoVO;
 import model.vo.PessoaVO;
+
 
 public class AlunoController {
 
@@ -28,6 +29,9 @@ public class AlunoController {
 		if(email.length()>0 && email.length()<6) {
 			mensagem =("email deve possuir pelo menos 6 caracteres!");
 		}
+
+
+		
 		
 		return mensagem;
 	}

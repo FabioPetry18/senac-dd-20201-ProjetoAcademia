@@ -12,7 +12,7 @@ public class PessoaBO {
 		if (dao.verificarCpf(pessoa.getCpf())) {
 			mensagem = "CPF informado (" + pessoa.getCpf() + ") já foi utilizado";
 		} else {
-			pessoa = dao.salvar(pessoa);
+			pessoa = dao.cadastrarPessoa(pessoa);
 			mensagem = "Cadastro realizado com sucesso!";
 
 		}
