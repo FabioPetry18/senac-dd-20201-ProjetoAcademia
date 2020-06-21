@@ -22,7 +22,7 @@ public class AlunoBO {
 	}
 	
 	
-	public void deletar(AlunoVO a) {
+	public boolean deletar(AlunoVO a) {
 		AlunoDAO alunoDAO = new AlunoDAO();
 		if(alunoDAO.existeRegistroPorIdAlunoDAO(a.getDtMatricula())){
 			boolean resultado = alunoDAO.excluir(a);
@@ -34,7 +34,7 @@ public class AlunoBO {
 		}else {
 			System.out.println("\nUsuário não existe na base da dados.");
 		}
-		
+		return false;
 	}
 
 }
