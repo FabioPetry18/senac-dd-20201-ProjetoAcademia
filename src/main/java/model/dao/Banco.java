@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class Banco {
 
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	private static final String BANCODADOS = "projeto";
+	private static final String BANCODADOS = "exemplos";
 	private static final String CONEXAO = "jdbc:mysql://localhost:3306/" + BANCODADOS
 			+ "?useTimezone=true&serverTimezone=UTC&useSSL=false";
 	private static final String USER = "root";
@@ -27,7 +27,7 @@ public class Banco {
 			conn = DriverManager.getConnection(CONEXAO, USER, PASSWORD);
 			return conn;
 		} catch (ClassNotFoundException e) {
-			System.out.println("Classe do Driver n�o foi encontrada. Causa: " + e.getMessage());
+			System.out.println("Classe do Driver nï¿½o foi encontrada. Causa: " + e.getMessage());
 			return null;
 		} catch (SQLException e) {
 			System.out.println("Erro ao obter a Connection. Causa: " + e.getMessage());
@@ -45,7 +45,7 @@ public class Banco {
 				conn.close();
 			}
 		} catch (SQLException e) {
-			System.out.println("Problema no fechamento da conex�o. Causa: " + e.getMessage());
+			System.out.println("Problema no fechamento da conexï¿½o. Causa: " + e.getMessage());
 		}
 	}
 	

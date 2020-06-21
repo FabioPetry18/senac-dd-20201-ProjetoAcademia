@@ -1,10 +1,12 @@
- package model.vo;
+package model.vo;
 
 public abstract class PessoaVO {
 	
+	protected int id;
 	protected String cpf;
 	protected String nome;
 	protected int idade;
+	protected char sexo;
 	protected String telefone;
 	protected String celular;
 	protected String email;
@@ -21,16 +23,14 @@ public abstract class PessoaVO {
 		super();
 	}
 
-	
-
-	
-	
-	public PessoaVO(String cpf, String nome, int idade, String telefone, String celular, String email, String bairro,
-			String rua, String cep, String cidade, String estado, String complemento, String atuacao) {
+	public PessoaVO(int id, String cpf, String nome, int idade, char sexo, String telefone, String celular, String email,
+			String bairro, String rua, String cep, String cidade, String estado, String complemento, String atuacao) {
 		super();
+		this.id = id;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.idade = idade;
+		this.sexo = sexo;
 		this.telefone = telefone;
 		this.celular = celular;
 		this.email = email;
@@ -42,10 +42,15 @@ public abstract class PessoaVO {
 		this.complemento = complemento;
 		this.atuacao = atuacao;
 	}
+	
+	
+	public int getId() {
+		return id;
+	}
 
-
-
-
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getCpf() {
 		return cpf;
@@ -71,6 +76,14 @@ public abstract class PessoaVO {
 		this.idade = idade;
 	}
 
+	public char getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+
 	public String getTelefone() {
 		return telefone;
 	}
@@ -86,7 +99,7 @@ public abstract class PessoaVO {
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -94,13 +107,21 @@ public abstract class PessoaVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getBairro() {
 		return bairro;
 	}
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
 	}
 
 	public String getCep() {
@@ -111,29 +132,6 @@ public abstract class PessoaVO {
 		this.cep = cep;
 	}
 
-	public String getAtuacao() {
-		return atuacao;
-	}
-
-	public void setAtuacao(String atuacao) {
-		this.atuacao = atuacao;
-	}
-
-
-	public String getRua() {
-		return rua;
-	}
-
-	public void setRua(String rua) {
-		this.rua = rua;
-	}
-	public String getComplemento() {
-		return complemento;
-	}
-
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
 	public String getCidade() {
 		return cidade;
 	}
@@ -141,6 +139,7 @@ public abstract class PessoaVO {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
+
 	public String getEstado() {
 		return estado;
 	}
@@ -148,4 +147,21 @@ public abstract class PessoaVO {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getAtuacao() {
+		return atuacao;
+	}
+
+	public void setAtuacao(String atuacao) {
+		this.atuacao = atuacao;
+	}
+	
 }

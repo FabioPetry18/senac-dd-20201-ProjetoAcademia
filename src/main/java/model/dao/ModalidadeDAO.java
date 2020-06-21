@@ -10,28 +10,25 @@ import model.vo.ModalidadeVO;
 
 public class ModalidadeDAO {
 
-
-	public ModalidadeVO cadastrarModalidade (ModalidadeVO novaModalidade) {
-		Connection conexao = Banco.getConnection();
-		String sql = " INSERT INTO MODALIDADE(NOME) "
-				+ " VALUES (?) ";
-		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql, 
-				PreparedStatement.RETURN_GENERATED_KEYS);
+	public ModalidadeVO cadastrarModalidade(ModalidadeVO novaModalidade) {
+		
+		Connection conn = Banco.getConnection();
+		String sql = "INSERT INTO MODALIDADE(nome, valorMensal) VALUES(?, ?)";
+		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		
 		try {
-			stmt.setString(1, novaModalidade.getNome());
-			stmt.execute();
 			
-			ResultSet rs = stmt.getGeneratedKeys();
+		stmt.setString(1, novaModalidade.getNome());
+		stmt.setDouble(2, novaModalidade.getValorMensal());
+		
+		} catch(SQLException e){
 			
-			
-		} catch (SQLException e) {
-			System.out.println("Erro ao inserir nova Modalidade.");
-			System.out.println("Erro: " + e.getMessage());
+			System.out.println("Erro ao cadastrarModalidade");
 		}
 		
 		return novaModalidade;
-  }
+		
+	}
 
 	public boolean verificarNome() {
 		// TODO Auto-generated method stub

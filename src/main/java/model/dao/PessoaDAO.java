@@ -19,6 +19,7 @@ public class PessoaDAO {
 				PreparedStatement.RETURN_GENERATED_KEYS);
 		
 		try {
+			
 			stmt.setString(1, novaPessoa.getNome());
 			stmt.setInt(2, novaPessoa.getIdade());
 			stmt.setString(3, novaPessoa.getTelefone());
@@ -33,12 +34,14 @@ public class PessoaDAO {
 			stmt.setString(11, novaPessoa.getEstado());
 			stmt.setString(12, novaPessoa.getCpf());
 		
-						
-			
 			stmt.execute();
 			
 			ResultSet rs = stmt.getGeneratedKeys();
 			
+			if(rs.next()) {
+				int idGerado = rs.getInt(1);
+				novaPessoa.setId(idGerado);
+			}	
 			
 		} catch (SQLException e) {
 			System.out.println("Erro ao inserir novo cliente.");
@@ -50,10 +53,6 @@ public class PessoaDAO {
 		
 	}
 
-	public PessoaVO salvar(PessoaVO pessoa) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	public Boolean verificarCpf(String cpf) {
 		Connection conexao = Banco.getConnection();
 		String sql = " select id from cliente c " + 

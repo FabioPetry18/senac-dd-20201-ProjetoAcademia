@@ -1,75 +1,83 @@
 package model.vo;
 
+import java.time.LocalDate;
+
 public class AlunoVO extends PessoaVO {
-	private int idAluno;
+	
 	private String observacoes;
-	private String dtMatricula;
-	private int numMatricula;
-	private String situacao; // Y - ATIVO F- INATIVO
-	private String dataCancelamento; // data que cancelou matricula na academia.
-	private String modalidade;
-	
-	
+	private LocalDate dtMatricula;
+	private int matricula;
+	private boolean situacao; // Y - ATIVO F- INATIVO
+	private LocalDate dtCancelamento; // data que cancelou matricula na academia.
+	private ModalidadeVO modalidade;
 	
 	public AlunoVO() {
 		super();
 	}
-	public AlunoVO(int idAluno,String observacoes, String dtMatricula, int numMatricula,String situacao , String dataCancelamento,
-			String modalidade) {
-		super();
+	public AlunoVO(int id, String cpf, String nome, int idade, char sexo, String telefone, String celular, String email,
+			String bairro, String rua, String cep, String cidade, String estado, String complemento, String atuacao, String observacoes, LocalDate dtMatricula, int matricula, boolean situacao,
+			LocalDate dtCancelamento, ModalidadeVO modalidade) {
+		super(id, cpf, nome, idade, sexo, telefone, celular, email, bairro, rua, cep, cidade, estado, complemento, atuacao);
 		this.observacoes = observacoes;
 		this.dtMatricula = dtMatricula;
-		this.numMatricula = numMatricula;
+		this.matricula = matricula;
 		this.situacao = situacao;
-		this.dataCancelamento = dataCancelamento;
+		this.dtCancelamento = dtCancelamento;
 		this.modalidade = modalidade;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getObservacoes() {
 		return observacoes;
 	}
+
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
-	public String getDtMatricula() {
+
+	public LocalDate getDtMatricula() {
 		return dtMatricula;
 	}
-	public void setDtMatricula(String dtMatricula) {
+	public void setDtMatricula(LocalDate dtMatricula) {
 		this.dtMatricula = dtMatricula;
 	}
-	public int getNumMatricula() {
-		return numMatricula;
-	}
-	public void setNumMatricula(int numMatricula) {
-		this.numMatricula = numMatricula;
-	}
-
 	
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
-	}
-	public String getDataCancelamento() {
-		return dataCancelamento;
-	}
-	public void setDataCancelamento(String dataCancelamento) {
-		this.dataCancelamento = dataCancelamento;
-	}
-	public String getModalidade() {
-		return modalidade;
-	}
-	public void setModalidade(String modalidade) {
-		this.modalidade = modalidade;
+	public int getMatricula() {
+		return matricula;
 	}
 
-	public String getSituacao() {
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
+	}
+
+	public boolean isSituacao() {
 		return situacao;
 	}
-	public int getIdAluno() {
-		return idAluno;
-	}
-	public void setIdAluno(int idAluno) {
-		this.idAluno = idAluno;
+	public void setSituacao(boolean situacao) {
+		this.situacao = situacao;
 	}
 	
+	public LocalDate getDtCancelamento() {
+		return dtCancelamento;
+	}
+	public void setDtCancelamento(LocalDate dtCancelamento) {
+		this.dtCancelamento = dtCancelamento;
+	}
 
+	public ModalidadeVO getModalidade() {
+		return modalidade;
+	}
 
+	public void setModalidade(ModalidadeVO modalidade) {
+		this.modalidade = modalidade;
+	}
+	
+	
 }
