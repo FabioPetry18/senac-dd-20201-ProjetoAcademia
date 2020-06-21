@@ -12,7 +12,23 @@ public class AlunoController {
 	public String cadastrarAluno(String cpf, String nome, String dataNascimento, String telefone,
 			String celular, String endereco, String bairro, String cep, String email, String modalidade, String observacoes) {
 		String mensagem = "";
-
+		
+		if(bairro!= null && !bairro.isEmpty() && bairro.length()<3) {
+			mensagem =("Bairro deve possuir pelo menos 3 caracteres!");
+		}
+		
+		if(endereco!= null && !endereco.isEmpty() && endereco.length()<3) {
+			mensagem =("endereco deve possuir pelo menos 3 caracteres!");
+		}
+		
+		if(dataNascimento!= null && !dataNascimento.isEmpty() && dataNascimento.length()!=8) {
+			mensagem =("Data invalida! Preencha com o formato padrão (dd/mm/yyyy) ");
+		}
+			
+		if(email.length()>0 && email.length()<6) {
+			mensagem =("email deve possuir pelo menos 6 caracteres!");
+		}
+		
 		return mensagem;
 	}
 	
@@ -26,6 +42,7 @@ public class AlunoController {
 		ABO.deletar(a);
 		
 	}
+
 }
 	
 
