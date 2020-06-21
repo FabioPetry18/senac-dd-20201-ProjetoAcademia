@@ -79,7 +79,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		lblCep.setBounds(28, 229, 111, 14);
 		add(lblCep);
 		
-		JLabel lblDtNascimento = new JLabel("Data de Nascimento");
+		JLabel lblDtNascimento = new JLabel("Data Nascimento");
 		lblDtNascimento.setBounds(28, 97, 111, 14);
 		add(lblDtNascimento);
 		
