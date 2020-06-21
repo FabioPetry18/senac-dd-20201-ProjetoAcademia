@@ -20,6 +20,16 @@ public class ModalidadeDAO {
 			
 		stmt.setString(1, novaModalidade.getNome());
 		stmt.setDouble(2, novaModalidade.getValorMensal());
+		stmt.execute();
+		
+		ResultSet rs = stmt.getGeneratedKeys();
+		
+		if(rs.next()) {
+			
+			int idGerado = rs.getInt(1);
+			novaModalidade.setId(idGerado);
+			
+		}
 		
 		} catch(SQLException e){
 			
