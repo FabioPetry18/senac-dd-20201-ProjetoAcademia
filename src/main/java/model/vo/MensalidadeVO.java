@@ -15,13 +15,6 @@ public class MensalidadeVO {
 		this.estaPago = estaPago;
 	}
 	
-	public static void gerarMulta() {
-
-	}
-
-	private static void pagarMes() {
-
-	}
 
 	public MensalidadeVO() {
 		super();
