@@ -7,18 +7,19 @@ public class ModalidadeController {
 	
 	private ModalidadeBO bo = new ModalidadeBO();
 
-	public String cadastrarModalidade(String nome, int totalAlunos, String mensalidade) {
+	public String cadastrarModalidade(String nome, int totalAlunos, String valorMensal) {
+		
 		String mensagem = "";
 		double mensal = 0;
 		
 		try {
-			mensal = Double.parseDouble(mensalidade);			
+			mensal = Double.parseDouble(valorMensal);			
 		} catch (NumberFormatException e) {
 			mensagem = "A mensalidade deve ser um número";
 		}
 		
 		if(mensagem == "") {
-			ModalidadeVO novaModalidade = new ModalidadeVO(nome, totalAlunos, mensal);
+			ModalidadeVO novaModalidade = new ModalidadeVO(nome, totalAlunos, valorMensal); //objt n reconhece valormensal por ser declarado em STRING 
 			mensagem = bo.cadastrarModalidade(novaModalidade);	
 		}
 		
