@@ -12,7 +12,7 @@ public class AlunoController {
 	public String cadastrarAluno(String cpf, String nome, String dataNascimento, String telefone,
 			String celular, String endereco, String bairro, String cep, String email, String modalidade, String observacoes) {
 		String mensagem = "";
-		
+		//validacoes dos campos
 		if(bairro!= null && !bairro.isEmpty() && bairro.length()<3) {
 			mensagem =("Bairro deve possuir pelo menos 3 caracteres!");
 		}
