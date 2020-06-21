@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -43,13 +44,13 @@ public class PainelCadastroModalidade extends JPanel {
 		add(txtMensalidade);
 		txtMensalidade.setColumns(10);
 		
-		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ModalidadeController controller = new ModalidadeController();
-				int alunos = Integer.parseInt(spinnerTotalAlunos.getValue().toString());
-				String mensagem = controller.salvar(txtNome.getText(), alunos, txtMensalidade.getText());
+				int totalAlunos = Integer.parseInt(spinnerTotalAlunos.getValue().toString());
+				String mensagem = controller.cadastrarModalidade(txtNome.getText(), totalAlunos, txtMensalidade.getText());
+				JOptionPane.showMessageDialog(null, mensagem);
 			}
 		});
 		btnCadastrar.setBounds(114, 234, 238, 23);
@@ -57,7 +58,7 @@ public class PainelCadastroModalidade extends JPanel {
 		
 		spinnerTotalAlunos = new JSpinner();
 		spinnerTotalAlunos.setModel(new SpinnerNumberModel(5, 5, 30, 1));
-		spinnerTotalAlunos.setBounds(150, 82, 29, 20);
+		spinnerTotalAlunos.setBounds(150, 82, 39, 20);
 		add(spinnerTotalAlunos);
 		
 		

@@ -15,6 +15,13 @@ public class ModalidadeVO {
 		this.valorMensal = valorMensal;
 	}
 
+	public ModalidadeVO(String nome, int numeroAlunos, double valorMensal) {
+		super();
+		this.nome = nome;
+		this.numeroAlunos = numeroAlunos;
+		this.valorMensal = valorMensal;
+	}
+
 	public int getId() {
 		return id;
 	}
