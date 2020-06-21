@@ -14,11 +14,11 @@ public class AlunoController {
 			String celular, String endereco, String bairro, String cep, String email, String modalidade, String observacoes) {
 		String mensagem = "";
 		//validacoes dos campos
-		if(bairro!= null && !bairro.isEmpty() && bairro.length()<5) {
-			mensagem =("Bairro deve possuir pelo menos 5 caracteres!");
+		if(bairro!= null && !bairro.isEmpty() && bairro.length()<5 || bairro.length()>225) {
+			mensagem =("Bairro deve possuir pelo menos 3 caracteres e no máximo 255 caracteres!");
 		}
 		
-		if(endereco!= null && !endereco.isEmpty() && endereco.length()<5) {
+		if(endereco!= null && !endereco.isEmpty() && endereco.length()<5 || endereco.length()>255) {
 			mensagem =("Erro ao cadastrar endereco! Preencha com RUA,Numero da sua!");
 		}
 		
@@ -26,8 +26,8 @@ public class AlunoController {
 			mensagem =("Data invalida! Preencha com o formato padrão (dd/mm/yyyy) ");
 		}
 			
-		if(email.length()>0 && email.length()<6) {
-			mensagem =("email deve possuir pelo menos 6 caracteres!");
+		if(email.length()>0 && email.length()<6 || email.length()>255) {
+			mensagem =("Erro ao cadastrar e-mail");
 		}
 
 
