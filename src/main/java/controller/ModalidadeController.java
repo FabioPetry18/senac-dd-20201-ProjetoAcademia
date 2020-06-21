@@ -19,7 +19,7 @@ public class ModalidadeController {
 		}
 		
 		if(mensagem == "") {
-			ModalidadeVO novaModalidade = new ModalidadeVO(nome, totalAlunos, valorMensal); //objt n reconhece valormensal por ser declarado em STRING 
+			ModalidadeVO novaModalidade = new ModalidadeVO(nome, totalAlunos, mensal);
 			mensagem = bo.cadastrarModalidade(novaModalidade);	
 		}
 		
