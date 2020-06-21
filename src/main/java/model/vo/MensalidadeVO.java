@@ -4,13 +4,11 @@ public class MensalidadeVO {
 
 	private String dataVencimento;
 	private String dataUltimoPagamento;
-	private double valorMensalidade;
 	private boolean estaPago;
 
-	public MensalidadeVO(String dataVencimento, double valorMensalidade, String dataUltimoPagamento, boolean estaPago) {
+	public MensalidadeVO(String dataVencimento, String dataUltimoPagamento, boolean estaPago) {
 		super();
 		this.dataVencimento = dataVencimento;
-		this.valorMensalidade = valorMensalidade;
 		this.dataUltimoPagamento = dataUltimoPagamento;
 		this.estaPago = estaPago;
 	}
@@ -28,13 +26,7 @@ public class MensalidadeVO {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public double getValorMensalidade() {
-		return valorMensalidade;
-	}
-
-	public void setValorMensalidade(double valorMensalidade) {
-		this.valorMensalidade = valorMensalidade;
-	}
+	
 
 	public String getDataUltimoPagamento() {
 		return dataUltimoPagamento;
