@@ -28,14 +28,14 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JTextField txtNome;
 	private JTextField txtEndereco;
 	private JTextField txtBairro;
-	private JTextField txtCep;
 	private JFormattedTextField txtTelefone;
-	private JTextField txtCelular;
+	private JFormattedTextField txtCelular;
 	private JTextField txtEmail;
 	private JTextField txtObservacoes;
 	private JTextField txtSalario;
 	private JTextField txtFormacao;
 	private JFormattedTextField txtCpf;
+	private JFormattedTextField txtCep;
 	private JFormattedTextField txtDataNascimento;
 	private JRadioButton rdbtnMasculino;
 	private JRadioButton rdbtnFeminino;
@@ -43,6 +43,8 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JRadioButton rdbtnInstrutor;
 	private JComboBox comboBoxModalidade;
 	private JFormattedTextField formattedTextField;
+	private JFormattedTextField formattedTextField_1;
+
 
 	/**
 	 * Create the panel.
@@ -70,7 +72,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(lblSexo);
 		
 		JLabel lblCelular = new JLabel("Celular");
-		lblCelular.setBounds(28, 190, 111, 14);
+		lblCelular.setBounds(28, 198, 111, 14);
 		add(lblCelular);
 		
 		JLabel lblCep = new JLabel("Cep");
@@ -116,16 +118,6 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		txtNome.setColumns(10);
 		add(txtNome);
 		
-		txtCelular = new JTextField();
-		txtCelular.setBounds(126, 187, 148, 20);
-		txtCelular.setColumns(10);
-		add(txtCelular);
-		
-		txtCep = new JTextField();
-		txtCep.setBounds(126, 223, 148, 20);
-		txtCep.setColumns(10);
-		add(txtCep);
-		
 		txtBairro = new JTextField();
 		txtBairro.setBounds(126, 285, 148, 20);
 		txtBairro.setColumns(10);
@@ -144,6 +136,14 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtObservacoes);
 		
 		try {
+			MaskFormatter mascaraCep = new MaskFormatter("####-####");//mascara CEP (funcionando)
+		txtCep = new JFormattedTextField(mascaraCep);
+		txtCep.setBounds(126, 223, 148, 20);
+		add(txtCep);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		try {
 			MaskFormatter mascaraCpf = new MaskFormatter("###.###.###-##");  //mascara CPF (FUNCIONANDO)
 			txtCpf = new JFormattedTextField(mascaraCpf);
 			txtCpf.setBounds(126, 127, 148, 20);
@@ -160,18 +160,18 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 			e.printStackTrace();
 		}
 		
-			
+		
 		try {
-			MaskFormatter mascaraCelular = new MaskFormatter("(##)#####-####"); //mascara CELULAR (N FUNCIONANDO)
-			txtCelular = new JFormattedTextField(mascaraCelular);
-			txtCelular.setBounds(126, 187, 148, 20);
-			add(txtCelular);
+			MaskFormatter mascaraCelular = new MaskFormatter("(##)#####-####"); //mascara celular (funcionando)
+			txtCelular  = new JFormattedTextField(mascaraCelular);
+		txtCelular.setBounds(126, 195, 148, 20);
+		add(txtCelular);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			MaskFormatter mascaraTelefone = new MaskFormatter("(##)####-####"); //mascara TELEFONE (N FUNCIONANDO)
+			MaskFormatter mascaraTelefone = new MaskFormatter("(##)####-####"); //mascara TELEFONE (funcionando)
 			txtTelefone = new JFormattedTextField(mascaraTelefone);
 			txtTelefone.setBounds(126, 161, 148, 20);
 			add(txtTelefone);
@@ -298,6 +298,9 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		});
 		txtLimpar.setBounds(402, 491, 119, 23);
 		add(txtLimpar);
+		
+	
+	
 		
 	
 		
