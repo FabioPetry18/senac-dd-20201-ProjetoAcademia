@@ -21,6 +21,7 @@ public class InstrutorVO extends PessoaVO {
 		this.dtAdmissao = dtAdmissao;
 		this.dtPagamento = dtPagamento;
 		this.valSalario = valSalario;
+		
 	}
 	public String getFormacao() {
 		return formacao;
@@ -46,9 +47,6 @@ public class InstrutorVO extends PessoaVO {
 	public void setFormacao(String formacao) {
 		this.formacao = formacao;
 	}
-
-
-	
 	
 	
 }
