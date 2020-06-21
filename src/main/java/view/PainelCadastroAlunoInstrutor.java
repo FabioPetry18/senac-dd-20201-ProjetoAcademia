@@ -63,7 +63,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		lblNome.setBounds(28, 66, 111, 14);
 		add(lblNome);
 		
-		JLabel lblEndereço = new JLabel("Endere\u00E7o");
+		JLabel lblEndereço = new JLabel("Endereco");
 		lblEndereço.setBounds(28, 254, 111, 14);
 		add(lblEndereço);
 		
@@ -79,11 +79,11 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		lblCep.setBounds(28, 229, 111, 14);
 		add(lblCep);
 		
-		JLabel lblDtNascimento = new JLabel("Data Nascimento");
+		JLabel lblDtNascimento = new JLabel("Data de Nascimento");
 		lblDtNascimento.setBounds(28, 97, 111, 14);
 		add(lblDtNascimento);
 		
-		JLabel lblCpf = new JLabel("Cpf");
+		JLabel lblCpf = new JLabel("CPF");
 		lblCpf.setBounds(28, 127, 111, 14);
 		add(lblCpf);
 		
@@ -103,7 +103,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		lblEmail.setBounds(28, 319, 111, 14);
 		add(lblEmail);
 		
-		lblObservacoes = new JLabel("Observa\u00E7\u00F5es");
+		lblObservacoes = new JLabel("Observacoes");
 		lblObservacoes.setVisible(false);
 		lblObservacoes.setBounds(28, 357, 111, 14);
 		add(lblObservacoes);
@@ -270,7 +270,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtSalario);
 		txtSalario.setColumns(10);
 		
-		lblFormacao = new JLabel("Forma\u00E7\u00E3o");
+		lblFormacao = new JLabel("Formacao");
 		lblFormacao.setVisible(false);
 		lblFormacao.setBounds(346, 319, 61, 14);
 		add(lblFormacao);
