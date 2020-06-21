@@ -18,6 +18,8 @@ import javax.swing.text.MaskFormatter;
 
 import controller.AlunoController;
 import controller.InstrutorController;
+import controller.ModalidadeController;
+
 import javax.swing.JTextPane;
 
 public class PainelCadastroAlunoInstrutor extends JPanel {
@@ -184,8 +186,8 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		btnGroupSexo.add(rdbtnMasculino);
 		btnGroupSexo.add(rdbtnFeminino);
 		
-		ArrayList<String> listaModalidades = consultarModalidades();
-		comboBoxModalidade = new JComboBox(listaModalidades.toArray());
+		ModalidadeController modalidadeController = new ModalidadeController();
+		comboBoxModalidade = new JComboBox(modalidadeController.consultarNomeModalidade().toArray());
 		comboBoxModalidade.setBounds(430, 205, 182, 20);
 		add(comboBoxModalidade);
 		
@@ -298,11 +300,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setBounds(15, 365, 111, 14);
 		add(lblEmail);
-		
-	
-	
-		
-	
+			
 		
 	}
 	
@@ -319,8 +317,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		this.txtTelefone.setText("");
 		this.txtSalario.setText("");
 		this.txtFormacao.setText("");
-		this.comboBoxModalidade.setSelectedIndex(-1);
-		
+		this.comboBoxModalidade.setSelectedIndex(-1);	
 		
 	}
 

@@ -6,14 +6,22 @@ public class ModalidadeVO {
 	private String nome;
 	private double valorMensal;
 	
-	public ModalidadeVO(String nome, int id, double valorMensal) {
+	public ModalidadeVO( int id, String nome, double valorMensal) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.valorMensal = valorMensal;
 	}
 
+	public ModalidadeVO(String nome, double valorMensal) {
+		super();
+		this.nome = nome;
+		this.valorMensal = valorMensal;
+	}
 
+	public ModalidadeVO() {
+		super();
+	}
 
 	public int getId() {
 		return id;
