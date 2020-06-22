@@ -42,11 +42,11 @@ public class AlunoDAO {
 	}
 	
 	//Excluir Aluno:
-	public boolean excluir(AlunoVO a) {
+	public boolean excluir(int id) {
 		
-		AlunoVO aluno = new AlunoVO();
 		Connection conn = Banco.getConnection();
-		String sql = "DELETE FROM PESSOA, ALUNO WHERE ID = "+a;
+		String sql = "DELETE FROM ALUNO WHERE ID = "+id
+				    +"DELETE FROM PESSOA WHERE ID = "+id;
 		Statement stmt = Banco.getStatement(conn);
 		int quantidadeLinhasAfetadas = 0;
 		
@@ -94,6 +94,55 @@ public class AlunoDAO {
 		return alterado;
 	}
 	
+	//Contruir alunos do ResultSet:
+	public AlunoVO construirAlunoDoResultSet(ResultSet rs) {
+		
+		AlunoVO a = new AlunoVO();
+		
+		try {
+			
+			a.setNome(rs.getString("nome"));
+			a.setCpf(rs.getString("cpf"));
+			a.setId(rs.getInt("id"));
+			
+		} catch(SQLException e) {
+			
+			System.out.println("Erro ao construir aluno a partir do ResultSet"
+					         +"\nErro: "+e.getMessage());
+			
+		}
+		return a;
+	}
+	
+	//Consultar todos Alunos:
+	public ArrayList<AlunoVO> consultarTodosAlunos(){
+		
+		Connection conn = Banco.getConnection();
+		String sql = "SELECT nome, cpf, idAluno"
+				  +"\nFROM ALUNO"
+				  +"\nORDER BY nome ASC";
+		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql);
+		ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
+		
+		try {
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				AlunoVO a = construirAlunoDoResultSet(rs);
+				alunos.add(a);
+				
+			}
+			
+		} catch(SQLException e) {
+			
+			System.out.println("Erro ao consultar alunos."
+					          +"\nErro: "+e.getMessage());
+		}
+		
+		return alunos;
+	}
 	public boolean existeRegistroPorIdAlunoDAO(LocalDate localDate) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
