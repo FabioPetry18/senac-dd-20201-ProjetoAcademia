@@ -4,17 +4,17 @@ import java.time.LocalTime;
 
 public class TurnoVO {
 
-	private int idTurno;
+	private int id;
 	private String nome;
 	private LocalTime horario;
 	private int quantidadeVagas;
 	private AlunoVO[] alunos;
 	private InstrutorVO[] instrutores;
 	
-	public TurnoVO(int idTurno, String nome, LocalTime horario, int quantidadeVagas, AlunoVO[] alunos,
+	public TurnoVO(int id, String nome, LocalTime horario, int quantidadeVagas, AlunoVO[] alunos,
 			InstrutorVO[] instrutores) {
 		super();
-		this.idTurno = idTurno;
+		this.id = id;
 		this.nome = nome;
 		this.horario = horario;
 		this.quantidadeVagas = quantidadeVagas;
@@ -25,11 +25,11 @@ public class TurnoVO {
 		super();
 	}
 	
-	public int getIdTurno() {
-		return idTurno;
+	public int getIdT() {
+		return id;
 	}
-	public void setIdTurno(int idTurno) {
-		this.idTurno = idTurno;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getNome() {
 		return nome;
