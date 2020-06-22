@@ -6,9 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
+import java.util.ArrayList;
+
 import model.dao.Banco;
 import model.vo.PessoaVO;
 import model.vo.InstrutorVO;
+
 public class InstrutorDAO {
 	
 	public InstrutorVO cadastrarInstrutor(InstrutorVO novoInstrutor) {
@@ -59,6 +62,82 @@ public class InstrutorDAO {
 		return excluiu;
 	}
 	
+	public InstrutorVO construirInstrutorDoResultSet(ResultSet rs) {
+		
+		InstrutorVO i = new InstrutorVO();
+		
+		try {
+			
+			i.setNome(rs.getString("nome"));
+			i.setCpf(rs.getString("cpf"));
+			i.setId(rs.getInt("id"));
+			
+			
+		} catch(SQLException e) {
+			
+			System.out.println("Erro ao construir instrutor a partir do ResultSet"
+					          +"\nErro: "+e.getMessage());
+			
+		}
+		
+		return i;
+		
+	}
+	
+	public ArrayList<InstrutorVO> consultarTodosInstrutores(){
+		
+		Connection conn = Banco.getConnection();
+		String sql = "SELECT nome, cpf, idInstrutor"
+					+"\nFROM INSTRUTOR"
+				    +"\nORDER BY nome ASC";		
+		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql);
+		ArrayList<InstrutorVO> instrutores = new ArrayList<InstrutorVO>();
 
+		try {
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				InstrutorVO i = construirInstrutorDoResultSet(rs);
+				instrutores.add(i);
+				
+			}
+			
+		} catch(SQLException e) {
+			
+			System.out.println("Erro ao consultar todos instrutores"
+					          +"\nErro: "+e.getMessage());
+			
+		}
+		
+		return instrutores;
+		
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
