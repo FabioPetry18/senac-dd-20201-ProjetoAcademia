@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
+
 import model.bo.AlunoBO	;
 import model.bo.PessoaBO;
+import model.dao.AlunoDAO;
 import model.vo.AlunoVO;
 import model.vo.PessoaVO;
 
@@ -9,6 +12,7 @@ import model.vo.PessoaVO;
 public class AlunoController {
 
 	AlunoBO bo = new AlunoBO();
+	AlunoDAO dao = new AlunoDAO();
 
 	public String cadastrarAluno(String cpf, String nome, String dataNascimento, String telefone,
 			String celular, String endereco, String bairro, String cep, String email, String modalidade, String observacoes) {
@@ -45,6 +49,10 @@ public class AlunoController {
 		AlunoBO ABO = new AlunoBO();
 		ABO.deletar(a);
 		
+	}
+
+	public ArrayList<AlunoVO> listarAlunos() {
+		return dao.consultarTodosAlunos();
 	}
 
 }

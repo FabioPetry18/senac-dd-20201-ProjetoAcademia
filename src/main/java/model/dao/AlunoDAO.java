@@ -118,36 +118,32 @@ public class AlunoDAO {
 	public ArrayList<AlunoVO> consultarTodosAlunos(){
 		
 		Connection conn = Banco.getConnection();
-		String sql = "SELECT nome, cpf, idAluno"
-				  +"\nFROM ALUNO"
+		String sql = "SELECT pessoa.nome, pessoa.cpf, aluno.idAluno "
+				  +"FROM aluno, pessoa "
 				  +"\nORDER BY nome ASC";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql);
 		ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
 		
-		try {
+		try {			
+			ResultSet rs = stmt.executeQuery();	
 			
-			ResultSet rs = stmt.executeQuery();
-			
-			while(rs.next()) {
-				
+			while(rs.next()) {			
 				AlunoVO a = construirAlunoDoResultSet(rs);
-				alunos.add(a);
-				
-			}
-			
+				alunos.add(a);				
+			}			
 		} catch(SQLException e) {
 			
 			System.out.println("Erro ao consultar alunos."
 					          +"\nErro: "+e.getMessage());
-		}
-		
+		}		
 		return alunos;
 	}
-	public boolean existeRegistroPorIdAlunoDAO(LocalDate localDate) {
+	
+	public boolean existeRegistroPorIdAlunoDAO(int id) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + localDate;
+		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + id;
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()){

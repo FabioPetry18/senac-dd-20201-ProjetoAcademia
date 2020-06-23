@@ -4,17 +4,17 @@ import model.dao.AlunoDAO;
 import model.vo.AlunoVO;
 
 public class AlunoBO {
-
 	
-	AlunoDAO DAO= new AlunoDAO();
+	AlunoDAO dao = new AlunoDAO();
+	
 	public String salvar(AlunoVO alunoVO) {
 	
 		String mensagem = "";
 
-	if (DAO.verificarCpf(alunoVO.getCpf())) {
+	if (dao.verificarCpf(alunoVO.getCpf())) {
 			mensagem = "CPF informado (" + alunoVO.getCpf() + ") já foi utilizado";
 		} else {
-			alunoVO = DAO.cadastrarAluno(alunoVO);
+			alunoVO = dao.cadastrarAluno(alunoVO);
 			mensagem = "Cadastro realizado com sucesso!";
 
 		}
@@ -23,9 +23,8 @@ public class AlunoBO {
 	
 	
 	public boolean deletar(AlunoVO a) {
-		AlunoDAO alunoDAO = new AlunoDAO();
-		if(alunoDAO.existeRegistroPorIdAlunoDAO(a.getDtMatricula())){
-			boolean resultado = alunoDAO.excluir(a);
+		if(dao.existeRegistroPorIdAlunoDAO(a.getId())){
+			boolean resultado = dao.excluir(a.getId());
 			if (resultado == true){
 				System.out.println("\nUsuario deletado com sucesso.");
 			}else {
