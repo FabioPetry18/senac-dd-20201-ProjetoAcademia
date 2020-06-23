@@ -71,6 +71,7 @@ public class InstrutorDAO {
 			i.setNome(rs.getString("nome"));
 			i.setCpf(rs.getString("cpf"));
 			i.setId(rs.getInt("id"));
+			i.setValSalario(rs.getFloat("valSalario"));
 			
 			
 		} catch(SQLException e) {
@@ -87,8 +88,8 @@ public class InstrutorDAO {
 	public ArrayList<InstrutorVO> consultarTodosInstrutores(){
 		
 		Connection conn = Banco.getConnection();
-		String sql = "SELECT nome, cpf, idInstrutor"
-					+"\nFROM INSTRUTOR"
+		String sql = "SELECT pessoa.nome, pessoa.cpf, instrutor.valSalario, instrutor.idInstrutor"
+					+"\nFROM instrutor, pessoa"
 				    +"\nORDER BY nome ASC";		
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql);
 		ArrayList<InstrutorVO> instrutores = new ArrayList<InstrutorVO>();

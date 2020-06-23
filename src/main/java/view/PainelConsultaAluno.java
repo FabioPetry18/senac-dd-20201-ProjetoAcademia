@@ -43,7 +43,7 @@ public class PainelConsultaAluno extends JPanel {
 
 	}
 	
-	private void limparTabelaClientes() {
+	private void limparTabelaAlunos() {
 		tblAlunos.setModel(new DefaultTableModel(new Object[][] { nomeColunas, }, nomeColunas));
 		tblAlunos = new JTable(tblAlunos.getModel()) {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -53,7 +53,7 @@ public class PainelConsultaAluno extends JPanel {
 	}
 	
 	private void atualizarTabelaAlunos() {
-		this.limparTabelaClientes();
+		this.limparTabelaAlunos();
 
 		DefaultTableModel model = (DefaultTableModel) tblAlunos.getModel();
 

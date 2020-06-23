@@ -98,6 +98,13 @@ public class TelaPrincipal extends JFrame {
 		menuConsulta.add(menuItemConsultaAluno);
 		
 		JMenuItem menuItemConsultaInstrutor = new JMenuItem("Instrutor");
+		menuItemConsultaInstrutor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane = new PainelConsultaInstrutor();
+				setContentPane(contentPane);
+				revalidate();
+			}
+		});
 		menuConsulta.add(menuItemConsultaInstrutor);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
