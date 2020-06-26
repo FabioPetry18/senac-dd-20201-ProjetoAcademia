@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import model.dao.Banco;	
 import model.vo.AlunoVO;
 import model.vo.PessoaVO;
+import model.vo.ModalidadeVO;
+
 public class AlunoDAO {
 
 	
@@ -42,26 +44,35 @@ public class AlunoDAO {
 	}
 	
 	//Excluir Aluno:
-	public boolean excluir(int id) {
+	public int excluir(AlunoVO aluno) {
+		
+		AlunoVO alunoVO = new AlunoVO();
+		ModalidadeVO modalidadeVO = new ModalidadeVO();
 		
 		Connection conn = Banco.getConnection();
-		String sql = "DELETE FROM ALUNO WHERE ID = "+id
-				    +"DELETE FROM PESSOA WHERE ID = "+id;
+		String delete = "DELETE FROM ALUNO WHERE idAluno = "+alunoVO.getId()
+				  +"\nDELETE FROM PESSOA WHERE idPessoa = "+alunoVO.getId()
+				  +"\nDELETE FROM MODALIDADE WHERE idModalidade "+modalidadeVO.getId();
 		Statement stmt = Banco.getStatement(conn);
-		int quantidadeLinhasAfetadas = 0;
-		
-		try {
+		int resultado = 0;
 			
-			quantidadeLinhasAfetadas =+ stmt.executeUpdate(sql);
+			
+		try {
+			 
+			resultado = stmt.executeUpdate(delete);
 			
 		} catch(SQLException e) {
 			
-			System.out.println("Erro ao excluir aluno"
-					          +"\nErro: "+e.getMessage());
+			System.out.println("Erro ao excluir Aluno. \nErro: "+e.getMessage());	
+			
+		} finally {
+			
+			Banco.closeConnection(conn);
+			Banco.closeStatement(stmt);
+			
 		}
-		boolean excluiu = quantidadeLinhasAfetadas > 0;
 		
-		return excluiu;
+		return resultado;
 	}
 	
 	public boolean alterar(AlunoVO aluno) {
@@ -118,49 +129,32 @@ public class AlunoDAO {
 	public ArrayList<AlunoVO> consultarTodosAlunos(){
 		
 		Connection conn = Banco.getConnection();
-		String sql = "SELECT pessoa.nome, pessoa.cpf, aluno.idAluno "
-				  +"FROM aluno, pessoa "
+		String sql = "SELECT nome, cpf, idAluno"
+				  +"\nFROM ALUNO"
 				  +"\nORDER BY nome ASC";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql);
 		ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
 		
-		try {			
-			ResultSet rs = stmt.executeQuery();	
+		try {
 			
-			while(rs.next()) {			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				
 				AlunoVO a = construirAlunoDoResultSet(rs);
-				alunos.add(a);				
-			}			
+				alunos.add(a);
+				
+			}
+			
 		} catch(SQLException e) {
 			
 			System.out.println("Erro ao consultar alunos."
 					          +"\nErro: "+e.getMessage());
-		}		
+		}
+		
 		return alunos;
 	}
 	
-	public boolean existeRegistroPorIdAlunoDAO(int id) {
-		Connection conn = Banco.getConnection();
-		Statement stmt = Banco.getStatement(conn);
-		ResultSet resultado = null;
-		String query = "SELECT idaluno FROM aluno WHERE idaluno = " + id;
-		try {
-			resultado = stmt.executeQuery(query);
-			if (resultado.next()){
-				return true;
-			}
-		} catch (SQLException e) {
-			System.out.println("Erro ao executar a Query que verifica existência de Registro por Id.");
-			System.out.println("Erro: " + e.getMessage());
-			return false;
-		} finally {
-			Banco.closeResultSet(resultado);
-			Banco.closeStatement(stmt);
-			Banco.closeConnection(conn);
-		}
-		return false;
-	}
-
 	public boolean verificarCpf(String cpf) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
@@ -183,7 +177,39 @@ public class AlunoDAO {
 		
 		return false;
 	}
-
+	
+	public boolean existeAlunoPorId(int id) {
+		
+		Connection conn = Banco.getConnection();
+		String sql = "SELECT idAluno FROM ALUNO WHERE ID "+id;
+		Statement stmt = Banco.getStatement(conn);
+		ResultSet result = null;
+		
+		try {
+			
+			result = stmt.executeQuery(sql);
+			
+			if(result.next()) {
+				
+				return true;
+				
+			}
+			
+			
+		} catch(SQLException e) {
+			
+			System.out.println("Erro ao verificar existência do aluno. \nErro: "+e.getMessage());
+			
+		} finally {
+			
+			Banco.closeConnection(conn);
+			Banco.closeStatement(stmt);
+			Banco.closeResultSet(result);
+			
+		}
+		return false;
+		
+	}
 	
 
 

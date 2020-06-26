@@ -11,7 +11,7 @@ import model.dao.Banco;
 
 public class PessoaDAO {
 
-	public PessoaVO cadastrarPessoa (PessoaVO novaPessoa) {
+	public PessoaVO salvar(PessoaVO novaPessoa) {
 		Connection conexao = Banco.getConnection();
 		String sql = " INSERT INTO PESSOA(NOME, IDADE, TELEFONE, CELULAR,BAIRRO, CEP, RUA, COMPLEMENTO,  EMAIL, ATUACAO, CIDADE, ESTADO, CPF, ) "
 				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ";
@@ -70,4 +70,6 @@ public class PessoaDAO {
 		return cpfUsado;
 		
 	}
+
+	
 }

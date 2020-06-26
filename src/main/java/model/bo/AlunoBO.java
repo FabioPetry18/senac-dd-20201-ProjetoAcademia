@@ -4,17 +4,18 @@ import model.dao.AlunoDAO;
 import model.vo.AlunoVO;
 
 public class AlunoBO {
+
 	
-	AlunoDAO dao = new AlunoDAO();
+	AlunoDAO DAO= new AlunoDAO();
 	
 	public String salvar(AlunoVO alunoVO) {
 	
 		String mensagem = "";
 
-	if (dao.verificarCpf(alunoVO.getCpf())) {
+	if (DAO.verificarCpf(alunoVO.getCpf())) {
 			mensagem = "CPF informado (" + alunoVO.getCpf() + ") já foi utilizado";
 		} else {
-			alunoVO = dao.cadastrarAluno(alunoVO);
+			alunoVO = DAO.cadastrarAluno(alunoVO);
 			mensagem = "Cadastro realizado com sucesso!";
 
 		}
@@ -22,18 +23,25 @@ public class AlunoBO {
 	}
 	
 	
-	public boolean deletar(AlunoVO a) {
-		if(dao.existeRegistroPorIdAlunoDAO(a.getId())){
-			boolean resultado = dao.excluir(a.getId());
-			if (resultado == true){
-				System.out.println("\nUsuario deletado com sucesso.");
-			}else {
+	public boolean excluir(AlunoVO aluno) {
+		AlunoDAO alunoDAO = new AlunoDAO();
+		
+		if(alunoDAO.existeAlunoPorId(aluno.getId()) == true) {
+			
+				System.out.println("\nUsuario excluído com sucesso.");
+				
+		}else if(alunoDAO.existeAlunoPorId(aluno.getId()) == false ){
+			
 				System.out.println("\nNão foi possível excluir o Usuário");
-			}
+	
 		}else {
+			
 			System.out.println("\nUsuário não existe na base da dados.");
+			
 		}
+		
 		return false;
+		
 	}
 
 }

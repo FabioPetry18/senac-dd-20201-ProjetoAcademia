@@ -13,7 +13,7 @@ public class ModalidadeDAO {
 	public ModalidadeVO cadastrarModalidade(ModalidadeVO novaModalidade) {
 		
 		Connection conn = Banco.getConnection();
-		String sql = "INSERT INTO MODALIDADE(nome, valorMensal) VALUES(?, ?)";
+		String sql = "INSERT INTO MODALIDADE(nomeModalidade, valorModalidade) VALUES(?, ?)";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		
 		try {

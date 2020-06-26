@@ -1,10 +1,7 @@
 package controller;
 
-import java.util.ArrayList;
-
 import model.bo.AlunoBO	;
 import model.bo.PessoaBO;
-import model.dao.AlunoDAO;
 import model.vo.AlunoVO;
 import model.vo.PessoaVO;
 
@@ -12,9 +9,8 @@ import model.vo.PessoaVO;
 public class AlunoController {
 
 	AlunoBO bo = new AlunoBO();
-	AlunoDAO dao = new AlunoDAO();
 
-	public String cadastrarAluno(String cpf, String nome, String dataNascimento, String telefone,
+	public String salvar(String cpf, String nome, String dataNascimento, String telefone,
 			String celular, String endereco, String bairro, String cep, String email, String modalidade, String observacoes) {
 		String mensagem = "";
 		//validacoes dos campos
@@ -40,19 +36,10 @@ public class AlunoController {
 		return mensagem;
 	}
 	
-	public void inserirAluno(AlunoVO a) {
-		AlunoBO ABO = new AlunoBO();
-		ABO.salvar(a);
-	}
-	
-	public void deletarAluno(AlunoVO a) {
-		AlunoBO ABO = new AlunoBO();
-		ABO.deletar(a);
+	public void excluir(AlunoVO aluno) {
+		AlunoBO bo = new AlunoBO();
+		bo.excluir(aluno);
 		
-	}
-
-	public ArrayList<AlunoVO> listarAlunos() {
-		return dao.consultarTodosAlunos();
 	}
 
 }
