@@ -130,7 +130,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtObservacoes);
 		
 		try {
-			MaskFormatter mascaraCep = new MaskFormatter("####-####");//mascara CEP (funcionando)
+			MaskFormatter mascaraCep = new MaskFormatter("######-##");//mascara CEP (funcionando)
 		txtCep = new JFormattedTextField(mascaraCep);
 		txtCep.setBounds(155, 223, 148, 20);
 		add(txtCep);
@@ -156,7 +156,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		
 		
 		try {
-			MaskFormatter mascaraCelular = new MaskFormatter("(##)#####-####"); //mascara celular (funcionando)
+			MaskFormatter mascaraCelular = new MaskFormatter("(##)######-####"); //mascara celular (funcionando)
 			txtCelular  = new JFormattedTextField(mascaraCelular);
 		txtCelular.setBounds(155, 183, 148, 20);
 		add(txtCelular);
@@ -165,7 +165,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		}
 		
 		try {
-			MaskFormatter mascaraTelefone = new MaskFormatter("(##)####-####"); //mascara TELEFONE (funcionando)
+			MaskFormatter mascaraTelefone = new MaskFormatter("(##)#####-####"); //mascara TELEFONE (funcionando)
 			txtTelefone = new JFormattedTextField(mascaraTelefone);
 			txtTelefone.setBounds(155, 143, 148, 20);
 			add(txtTelefone);
