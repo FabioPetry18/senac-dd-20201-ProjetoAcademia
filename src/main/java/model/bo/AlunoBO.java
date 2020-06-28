@@ -1,5 +1,7 @@
 package model.bo;
 
+import java.util.ArrayList;
+
 import model.dao.AlunoDAO;
 import model.vo.AlunoVO;
 
@@ -43,5 +45,18 @@ public class AlunoBO {
 		return false;
 		
 	}
+     public ArrayList<AlunoVO> consultarTodosAlunos(AlunoVO aluno){
+    	 AlunoDAO alunoDAO = new AlunoDAO();
+    	 ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
+    	 
+    	 if(alunoDAO.consultarTodosAlunos() == null) {
+    		 System.out.println("\nSem alunos na na base da dados.");
+    	 };
+    		 
+    		 
+		return alunos;
+    	 
+     }
+		
 
 }

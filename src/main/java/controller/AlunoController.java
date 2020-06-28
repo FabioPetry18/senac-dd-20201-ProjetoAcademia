@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
+
 import model.bo.AlunoBO	;
 import model.bo.PessoaBO;
+import model.dao.AlunoDAO;
 import model.vo.AlunoVO;
 import model.vo.PessoaVO;
 
@@ -41,6 +44,21 @@ public class AlunoController {
 		bo.excluir(aluno);
 		
 	}
+
+	  public ArrayList<AlunoVO> consultarTodosAlunos(AlunoVO aluno) {
+		// TODO Auto-generated method stub
+		 AlunoBO bo = new AlunoBO();
+	     ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
+		bo.consultarTodosAlunos(aluno);
+		
+		return alunos;
+	}
+
+	public ArrayList<AlunoVO> consultarTodosAlunos(ArrayList<AlunoVO> alunos) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
 	

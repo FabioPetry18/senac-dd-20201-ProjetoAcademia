@@ -230,7 +230,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 				String mensagem = "";
 				if(rdbtnAluno.isSelected()) {
 					AlunoController controller = new AlunoController();
-					mensagem = controller.cadastrarAluno(txtCpf.getText(), txtNome.getText(),
+					mensagem = controller.salvar(txtCpf.getText(), txtNome.getText(),
 							txtDataNascimento.getText(), txtTelefone.getText(),
 							txtCelular.getText(), txtEndereco.getText(), txtBairro.getText(),
 							txtCep.getText(), txtEmail.getText(), comboBoxModalidade.getSelectedItem().toString(),

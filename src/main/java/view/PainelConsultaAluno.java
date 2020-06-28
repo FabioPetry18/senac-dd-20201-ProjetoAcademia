@@ -29,7 +29,7 @@ public class PainelConsultaAluno extends JPanel {
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AlunoController controller = new AlunoController();
-				alunos = controller.listarAlunos();
+				alunos = controller.consultarTodosAlunos(alunos);
 				
 				atualizarTabelaAlunos();
 			}
