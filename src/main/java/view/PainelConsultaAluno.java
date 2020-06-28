@@ -29,7 +29,7 @@ public class PainelConsultaAluno extends JPanel {
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AlunoController controller = new AlunoController();
-				alunos = controller.consultarTodosAlunos(alunos);
+				alunos = controller.consultarTodosAlunos();
 				
 				atualizarTabelaAlunos();
 			}
@@ -61,10 +61,10 @@ public class PainelConsultaAluno extends JPanel {
 
 			//DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 
-			Object[] novaLinhaDaTabela = new Object[4];
+			Object[] novaLinhaDaTabela = new Object[2];
 			novaLinhaDaTabela[0] = a.getNome();
 			//novaLinhaDaTabela[1] = a.getDataNascimento().format(formatador);
-			novaLinhaDaTabela[2] = a.getCpf();
+			novaLinhaDaTabela[1] = a.getCpf();
 			//novaLinhaDaTabela[3] = a.getModalidade();
 
 			model.addRow(novaLinhaDaTabela);

@@ -1,5 +1,7 @@
 package controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import model.bo.AlunoBO	;
@@ -10,11 +12,12 @@ import model.vo.PessoaVO;
 
 
 public class AlunoController {
-
+	
+	DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	AlunoBO bo = new AlunoBO();
 
-	public String salvar(String cpf, String nome, String dataNascimento, String telefone,
-			String celular, String endereco, String bairro, String cep, String email, String modalidade, String observacoes) {
+	public String salvar(String cpf, String nome, String dataNascimento, String sexo, String telefone,
+			String celular, String endereco, String bairro, String cidade, String uf, String cep, String email, String modalidade, String observacoes) {
 		String mensagem = "";
 		//validacoes dos campos
 		if(bairro!= null && !bairro.isEmpty() && bairro.length()<5 || bairro.length()>225) {
@@ -33,33 +36,45 @@ public class AlunoController {
 			mensagem =("Erro ao cadastrar e-mail");
 		}
 
-
+		if(mensagem == "") {
+			bo.salvar(criarNovoAluno(nome, cpf, dataNascimento, sexo, telefone, celular, endereco, bairro, cidade, uf, cep, email, modalidade, observacoes));			
+		}
 		
 		
 		return mensagem;
 	}
 	
+
 	public void excluir(AlunoVO aluno) {
 		AlunoBO bo = new AlunoBO();
 		bo.excluir(aluno);
 		
 	}
 
-	  public ArrayList<AlunoVO> consultarTodosAlunos(AlunoVO aluno) {
-		// TODO Auto-generated method stub
-		 AlunoBO bo = new AlunoBO();
-	     ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
-		bo.consultarTodosAlunos(aluno);
+	  public ArrayList<AlunoVO> consultarTodosAlunos() {
+		return bo.consultarTodosAlunos();
+	}
+
+	private AlunoVO criarNovoAluno(String nome, String cpf, String dataNascimento, String sexo, String telefone, String celular,
+			String endereco, String bairro, String cidade, String uf, String cep, String email, String modalidade, String observacoes) {
 		
-		return alunos;
+		ModalidadeController controller = new ModalidadeController();
+		LocalDate dtNasc = LocalDate.parse(dataNascimento, dataFormatter);
+		AlunoVO vo = new AlunoVO(removerMascara(cpf), nome, dtNasc, sexo, removerMascara(telefone), removerMascara(celular), email, bairro,
+				endereco, removerMascara(cep), cidade, uf, controller.consultarPorNome(modalidade),
+				observacoes, LocalDate.now(), true);
+		
+		return vo;
 	}
 
-	public ArrayList<AlunoVO> consultarTodosAlunos(ArrayList<AlunoVO> alunos) {
-		// TODO Auto-generated method stub
-		return null;
+	private String removerMascara(String campo) {
+		campo = campo.replace("(", "");
+		campo = campo.replace(")", "");
+		campo = campo.replace(".", "");
+		campo = campo.replace("-", "");
+		return campo;
 	}
-
-
+	
 }
 	
 

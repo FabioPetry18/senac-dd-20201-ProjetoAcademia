@@ -13,16 +13,27 @@ public class InstrutorVO extends PessoaVO {
 	public InstrutorVO() {
 		super();
 	}
-	public InstrutorVO(int id, String cpf, String nome, int idade, char sexo, String telefone, String celular,
-			String email, String bairro, String rua, String cep, String cidade, String estado, String complemento,
-			String atuacao, String formacao, LocalDate dtAdmissao, LocalDate dtPagamento, float valSalario) {
-		super(id, cpf, nome, idade, sexo, telefone, celular, email, bairro, rua, cep, cidade, estado, complemento, atuacao);
+
+	public InstrutorVO(int id, String cpf, String nome, LocalDate dtNascimento, String sexo, String telefone,
+			String celular, String email, String bairro, String endereco, String cep, String cidade, String uf,
+			ModalidadeVO modalidade, String formacao, LocalDate dtAdmissao, float valSalario, LocalDate dtPagamento) {
+		super(id, cpf, nome, dtNascimento, sexo, telefone, celular, email, bairro, endereco, cep, cidade, uf, modalidade);
 		this.formacao = formacao;
 		this.dtAdmissao = dtAdmissao;
-		this.dtPagamento = dtPagamento;
 		this.valSalario = valSalario;
-		
+		this.dtPagamento = dtPagamento;
 	}
+
+	public InstrutorVO(String cpf, String nome, LocalDate dtNascimento, String sexo, String telefone, String celular,
+			String email, String bairro, String endereco, String cep, String cidade, String uf, ModalidadeVO modalidade,
+			String formacao, LocalDate dtAdmissao, float valSalario, LocalDate dtPagamento) {
+		super(cpf, nome, dtNascimento, sexo, telefone, celular, email, bairro, endereco, cep, cidade, uf, modalidade);
+		this.formacao = formacao;
+		this.dtAdmissao = dtAdmissao;
+		this.valSalario = valSalario;
+		this.dtPagamento = dtPagamento;
+	}
+
 	public String getFormacao() {
 		return formacao;
 	}

@@ -6,7 +6,7 @@ import model.vo.PessoaVO;
 public class PessoaBO {
 	private PessoaDAO dao = new PessoaDAO();
 
-	public String salvar(PessoaVO pessoa) {
+/*	public String salvar(PessoaVO pessoa) {
 		String mensagem = "";
 
 		if (dao.verificarCpf(pessoa.getCpf())) {
@@ -18,6 +18,6 @@ public class PessoaBO {
 		}
 		return mensagem;
 	}
-
+*/
 
 }

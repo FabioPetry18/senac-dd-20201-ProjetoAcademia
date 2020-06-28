@@ -1,49 +1,67 @@
 package model.vo;
 
+import java.time.LocalDate;
+
 public abstract class PessoaVO {
 	
 	protected int id;
 	protected String cpf;
 	protected String nome;
-	protected int idade;
-	protected char sexo;
+	protected LocalDate dtNascimento;
+	protected String sexo;
 	protected String telefone;
 	protected String celular;
 	protected String email;
 	protected String bairro;
-	protected String rua;
+	protected String endereco;
 	protected String cep;
 	protected String cidade;
-	protected String estado;	
-	protected String complemento;	
-	protected String atuacao;
+	protected String uf;
+	private ModalidadeVO modalidade;
 
 
 	public PessoaVO() {
 		super();
 	}
 
-	public PessoaVO(int id, String cpf, String nome, int idade, char sexo, String telefone, String celular, String email,
-			String bairro, String rua, String cep, String cidade, String estado, String complemento, String atuacao) {
+	public PessoaVO(int id, String cpf, String nome, LocalDate dtNascimento, String sexo, String telefone,
+			String celular, String email, String bairro, String endereco, String cep, String cidade, String uf,
+			ModalidadeVO modalidade) {
 		super();
 		this.id = id;
 		this.cpf = cpf;
 		this.nome = nome;
-		this.idade = idade;
+		this.dtNascimento = dtNascimento;
 		this.sexo = sexo;
 		this.telefone = telefone;
 		this.celular = celular;
 		this.email = email;
 		this.bairro = bairro;
-		this.rua = rua;
+		this.endereco = endereco;
 		this.cep = cep;
 		this.cidade = cidade;
-		this.estado = estado;
-		this.complemento = complemento;
-		this.atuacao = atuacao;
+		this.uf = uf;
+		this.modalidade = modalidade;
 	}
-	
-	
+
+	public PessoaVO(String cpf, String nome, LocalDate dtNascimento, String sexo, String telefone, String celular,
+			String email, String bairro, String endereco, String cep, String cidade, String uf, ModalidadeVO modalidade) {
+		super();
+		this.cpf = cpf;
+		this.nome = nome;
+		this.dtNascimento = dtNascimento;
+		this.sexo = sexo;
+		this.telefone = telefone;
+		this.celular = celular;
+		this.email = email;
+		this.bairro = bairro;
+		this.endereco = endereco;
+		this.cep = cep;
+		this.cidade = cidade;
+		this.uf = uf;
+		this.modalidade = modalidade;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -68,19 +86,19 @@ public abstract class PessoaVO {
 		this.nome = nome;
 	}
 
-	public int getIdade() {
-		return idade;
+	public LocalDate getDtNascimento() {
+		return dtNascimento;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setDtNascimento(LocalDate dtNascimento) {
+		this.dtNascimento = dtNascimento;
 	}
 
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
@@ -116,12 +134,12 @@ public abstract class PessoaVO {
 		this.bairro = bairro;
 	}
 
-	public String getRua() {
-		return rua;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setRua(String rua) {
-		this.rua = rua;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getCep() {
@@ -140,28 +158,20 @@ public abstract class PessoaVO {
 		this.cidade = cidade;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getUf() {
+		return uf;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
-	public String getComplemento() {
-		return complemento;
+	public ModalidadeVO getModalidade() {
+		return modalidade;
 	}
 
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
-
-	public String getAtuacao() {
-		return atuacao;
-	}
-
-	public void setAtuacao(String atuacao) {
-		this.atuacao = atuacao;
+	public void setModalidade(ModalidadeVO modalidade) {
+		this.modalidade = modalidade;
 	}
 	
 }

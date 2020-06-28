@@ -3,60 +3,60 @@ package model.bo;
 import java.util.ArrayList;
 
 import model.dao.AlunoDAO;
+import model.dao.PessoaDAO;
 import model.vo.AlunoVO;
 
 public class AlunoBO {
 
-	
-	AlunoDAO DAO= new AlunoDAO();
-	
+	AlunoDAO dao = new AlunoDAO();
+	PessoaDAO pDAO = new PessoaDAO();
+
 	public String salvar(AlunoVO alunoVO) {
-	
+
 		String mensagem = "";
 
-	if (DAO.verificarCpf(alunoVO.getCpf())) {
+		if (pDAO.verificarCpf(alunoVO.getCpf())) {
 			mensagem = "CPF informado (" + alunoVO.getCpf() + ") já foi utilizado";
 		} else {
-			alunoVO = DAO.cadastrarAluno(alunoVO);
+			alunoVO = dao.cadastrarAluno(alunoVO);
 			mensagem = "Cadastro realizado com sucesso!";
 
 		}
-	return mensagem;
+		return mensagem;
 	}
-	
-	
+
 	public boolean excluir(AlunoVO aluno) {
 		AlunoDAO alunoDAO = new AlunoDAO();
-		
-		if(alunoDAO.existeAlunoPorId(aluno.getId()) == true) {
-			
-				System.out.println("\nUsuario excluído com sucesso.");
-				
-		}else if(alunoDAO.existeAlunoPorId(aluno.getId()) == false ){
-			
-				System.out.println("\nNão foi possível excluir o Usuário");
-	
-		}else {
-			
+
+		if (alunoDAO.existeAlunoPorId(aluno.getId()) == true) {
+
+			System.out.println("\nUsuario excluído com sucesso.");
+
+		} else if (alunoDAO.existeAlunoPorId(aluno.getId()) == false) {
+
+			System.out.println("\nNão foi possível excluir o Usuário");
+
+		} else {
+
 			System.out.println("\nUsuário não existe na base da dados.");
-			
+
+		}
+
+		return false;
+
+	}
+
+	public ArrayList<AlunoVO> consultarTodosAlunos() {
+		AlunoDAO alunoDAO = new AlunoDAO();
+		ArrayList<AlunoVO> alunos = dao.consultarTodosAlunos();
+
+		if (alunos.isEmpty()) {
+			System.out.println("\nSem alunos na na base da dados.");
 		}
 		
-		return false;
-		
-	}
-     public ArrayList<AlunoVO> consultarTodosAlunos(AlunoVO aluno){
-    	 AlunoDAO alunoDAO = new AlunoDAO();
-    	 ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
-    	 
-    	 if(alunoDAO.consultarTodosAlunos() == null) {
-    		 System.out.println("\nSem alunos na na base da dados.");
-    	 };
-    		 
-    		 
+
 		return alunos;
-    	 
-     }
-		
+
+	}
 
 }

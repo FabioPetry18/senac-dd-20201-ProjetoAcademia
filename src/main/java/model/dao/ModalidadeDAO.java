@@ -78,4 +78,25 @@ public class ModalidadeDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public ModalidadeVO consultarPorNome(String nome) {
+		Connection conexao = Banco.getConnection();
+		String sql = " SELECT * FROM modalidade WHERE nomeModalidade = \"" + nome + "\"";
+		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);
+
+		ModalidadeVO modalidade = null;
+		try {
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				modalidade = construirModalidadeDoResultSet(rs);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Erro ao consultar modalidade com nome: " + nome);
+			System.out.println("Erro: " + e.getMessage());
+		}
+
+		return modalidade;
+	}
+	
 }

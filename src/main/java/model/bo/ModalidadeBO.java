@@ -18,6 +18,10 @@ public class ModalidadeBO {
 		return mensagem;
 	}
 
+	public ModalidadeVO consultarPorNome(String nome) {
+		return dao.consultarPorNome(nome);
+	}
+
 
 	
 }

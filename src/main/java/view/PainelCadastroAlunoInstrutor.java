@@ -44,8 +44,8 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JRadioButton rdbtnAluno;
 	private JRadioButton rdbtnInstrutor;
 	private JComboBox comboBoxModalidade;
-	private JFormattedTextField formattedTextField;
-	private JFormattedTextField formattedTextField_1;
+	private JTextField txtCidade;
+	private JTextField txtUF;
 
 
 	/**
@@ -62,7 +62,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(panel);
 		
 		JLabel lblNome = new JLabel("Nome Completo");
-		lblNome.setBounds(15, 45, 111, 14);
+		lblNome.setBounds(15, 23, 111, 14);
 		add(lblNome);
 		
 		JLabel lblSexo = new JLabel("Sexo");
@@ -70,19 +70,19 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(lblSexo);
 		
 		JLabel lblCelular = new JLabel("Celular");
-		lblCelular.setBounds(15, 205, 111, 14);
+		lblCelular.setBounds(15, 183, 111, 14);
 		add(lblCelular);
 		
 		JLabel lblCep = new JLabel("Cep");
-		lblCep.setBounds(15, 245, 111, 14);
+		lblCep.setBounds(15, 223, 111, 14);
 		add(lblCep);
 		
 		JLabel lblDtNascimento = new JLabel("Data de Nascimento");
-		lblDtNascimento.setBounds(15, 85, 125, 14);
+		lblDtNascimento.setBounds(15, 63, 125, 14);
 		add(lblDtNascimento);
 		
 		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setBounds(15, 125, 111, 14);
+		lblCpf.setBounds(15, 103, 111, 14);
 		add(lblCpf);
 		
 		JLabel lblModalidade = new JLabel("Modalidade");
@@ -90,49 +90,49 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(lblModalidade);
 		
 		JLabel lblBairro = new JLabel("Bairro");
-		lblBairro.setBounds(15, 325, 111, 14);
+		lblBairro.setBounds(15, 298, 111, 14);
 		add(lblBairro);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(15, 165, 111, 14);
+		lblTelefone.setBounds(15, 143, 111, 14);
 		add(lblTelefone);
 		
 		lblObservacoes = new JLabel("Observacoes");
 		lblObservacoes.setVisible(false);
-		lblObservacoes.setBounds(15, 405, 111, 14);
+		lblObservacoes.setBounds(15, 425, 111, 14);
 		add(lblObservacoes);
 		
 		txtEndereco = new JTextField();
-		txtEndereco.setBounds(155, 285, 148, 20);
+		txtEndereco.setBounds(155, 260, 148, 20);
 		txtEndereco.setColumns(10);
 		add(txtEndereco);		
 				
 		txtNome = new JTextField();
-		txtNome.setBounds(155, 45, 148, 20);
+		txtNome.setBounds(155, 23, 148, 20);
 		txtNome.setColumns(10);
 		add(txtNome);
 		
 		txtBairro = new JTextField();
-		txtBairro.setBounds(155, 325, 148, 20);
+		txtBairro.setBounds(155, 295, 148, 20);
 		txtBairro.setColumns(10);
 		add(txtBairro);
 		
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(155, 365, 148, 20);
+		txtEmail.setBounds(155, 394, 148, 20);
 		txtEmail.setColumns(10);
 		add(txtEmail);
 		
 		txtObservacoes = new JTextField();
 		txtObservacoes.setVisible(false);
-		txtObservacoes.setBounds(155, 402, 148, 81);
+		txtObservacoes.setBounds(155, 425, 148, 81);
 		txtObservacoes.setColumns(10);
 		add(txtObservacoes);
 		
 		try {
 			MaskFormatter mascaraCep = new MaskFormatter("####-####");//mascara CEP (funcionando)
 		txtCep = new JFormattedTextField(mascaraCep);
-		txtCep.setBounds(155, 245, 148, 20);
+		txtCep.setBounds(155, 223, 148, 20);
 		add(txtCep);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		try {
 			MaskFormatter mascaraCpf = new MaskFormatter("###.###.###-##");  //mascara CPF (FUNCIONANDO)
 			txtCpf = new JFormattedTextField(mascaraCpf);
-			txtCpf.setBounds(155, 125, 148, 20);
+			txtCpf.setBounds(155, 103, 148, 20);
 			add(txtCpf);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -148,7 +148,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		try { 
 			MaskFormatter mascaraDataNascimento = new MaskFormatter("##/##/####"); //mascara de data(funcionando)
 			txtDataNascimento= new JFormattedTextField(mascaraDataNascimento);
-		txtDataNascimento.setBounds(155, 85, 148, 20);
+		txtDataNascimento.setBounds(155, 63, 148, 20);
 		add(txtDataNascimento);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -158,7 +158,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		try {
 			MaskFormatter mascaraCelular = new MaskFormatter("(##)#####-####"); //mascara celular (funcionando)
 			txtCelular  = new JFormattedTextField(mascaraCelular);
-		txtCelular.setBounds(155, 205, 148, 20);
+		txtCelular.setBounds(155, 183, 148, 20);
 		add(txtCelular);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -167,7 +167,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		try {
 			MaskFormatter mascaraTelefone = new MaskFormatter("(##)####-####"); //mascara TELEFONE (funcionando)
 			txtTelefone = new JFormattedTextField(mascaraTelefone);
-			txtTelefone.setBounds(155, 165, 148, 20);
+			txtTelefone.setBounds(155, 143, 148, 20);
 			add(txtTelefone);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -228,27 +228,32 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String mensagem = "";
+				
+				String sexo = verificaSexo();
 				if(rdbtnAluno.isSelected()) {
 					AlunoController controller = new AlunoController();
 					mensagem = controller.salvar(txtCpf.getText(), txtNome.getText(),
-							txtDataNascimento.getText(), txtTelefone.getText(),
-							txtCelular.getText(), txtEndereco.getText(), txtBairro.getText(),
-							txtCep.getText(), txtEmail.getText(), comboBoxModalidade.getSelectedItem().toString(),
+							txtDataNascimento.getText(), sexo, txtTelefone.getText(),
+							txtCelular.getText(), txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(),
+							txtUF.getText(), txtCep.getText(), txtEmail.getText(),
+							comboBoxModalidade.getSelectedItem().toString(),
 							txtObservacoes.getText());
 					
 				} else if(rdbtnInstrutor.isSelected()) {
 					InstrutorController controller = new InstrutorController();
-					mensagem = controller.cadastrarInstrutor(txtCpf.getText(), txtNome.getText(),
-							txtDataNascimento.getText(), txtTelefone.getText(), txtCelular.getText(),
-							txtEndereco.getText(), txtBairro.getText(), txtCep.getText(), txtEmail.getText(),
-							comboBoxModalidade.getSelectedItem().toString(), txtObservacoes.getText(),
-							txtFormacao.getText(), txtSalario.getText());
+//					mensagem = controller.cadastrarInstrutor(txtCpf.getText(), txtNome.getText(),
+//							txtDataNascimento.getText(), sexo, txtTelefone.getText(), txtCelular.getText(),
+//							txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(),
+//							txtUF.getText(), txtCep.getText(), txtEmail.getText(),
+//							comboBoxModalidade.getSelectedItem().toString(), txtObservacoes.getText(),
+//							txtFormacao.getText(), txtSalario.getText());
 					
 				} else {
 					mensagem = "Selecione o tipo de cadastro (Aluno/Instrutor)";
 				}
 				JOptionPane.showMessageDialog(null, mensagem);
 			}
+
 		});
 		btnCadastrar.setBounds(265, 505, 120, 25);
 		add(btnCadastrar);
@@ -275,36 +280,60 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtFormacao);
 		txtFormacao.setColumns(10);
 		
-		JTextPane txtpnAtuacao = new JTextPane();
-		txtpnAtuacao.setText("Atuacao");
-		txtpnAtuacao.setBounds(350, 45, 61, 20);
-		add(txtpnAtuacao);
-		
 		JButton txtLimpar = new JButton("Limpar");
 		txtLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 limparCampos();
-					
-				
-			}
-			
+				 limparCampos();					
+			}			
 			
 		});
 		txtLimpar.setBounds(395, 505, 120, 25);
 		add(txtLimpar);
 		
 		JLabel lblEndereço = new JLabel("Endereco");
-		lblEndereço.setBounds(15, 286, 111, 14);
+		lblEndereço.setBounds(15, 264, 111, 14);
 		add(lblEndereço);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(15, 365, 111, 14);
+		lblEmail.setBounds(15, 397, 111, 14);
 		add(lblEmail);
-			
 		
+		JLabel lblAtuacao = new JLabel("Atua\u00E7\u00E3o");
+		lblAtuacao.setBounds(350, 48, 46, 14);
+		add(lblAtuacao);
+		
+		JLabel lblCidade = new JLabel("Cidade");
+		lblCidade.setBounds(15, 333, 46, 14);
+		add(lblCidade);
+		
+		JLabel lblUF = new JLabel("UF");
+		lblUF.setBounds(15, 365, 46, 14);
+		add(lblUF);
+		
+		txtCidade = new JTextField();
+		txtCidade.setBounds(154, 330, 149, 20);
+		add(txtCidade);
+		txtCidade.setColumns(10);
+		
+		txtUF = new JTextField();
+		txtUF.setBounds(155, 362, 148, 20);
+		add(txtUF);
+		txtUF.setColumns(10);
+					
 	}
 	
-	protected void limparCampos() {
+	private String verificaSexo() {
+		String sexo = "";
+		
+		if(rdbtnMasculino.isSelected()) {
+			sexo = "M";
+		} else {
+			sexo = "F";
+		}
+		return sexo;
+	}
+	
+	private void limparCampos() {
 		this.txtBairro.setText("");
 		this.txtCelular.setText("");
 		this.txtCep.setText("");
@@ -313,22 +342,12 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		this.txtDataNascimento.setText("");
 		this.txtEmail.setText("");
 		this.txtEndereco.setText("");
+		this.txtCidade.setText("");
+		this.txtUF.setText("");
 		this.txtObservacoes.setText("");
 		this.txtTelefone.setText("");
 		this.txtSalario.setText("");
 		this.txtFormacao.setText("");
-		this.comboBoxModalidade.setSelectedIndex(-1);	
-		
-	}
-
-	private ArrayList<String> consultarModalidades() {
-		
-		ArrayList<String> listaModalidades = new ArrayList<String>();
-		
-		listaModalidades.add("Musculacão");
-		listaModalidades.add("Natação");
-		listaModalidades.add("Boxe");
-		
-		return listaModalidades;
+		this.comboBoxModalidade.setSelectedIndex(-1);			
 	}
 }

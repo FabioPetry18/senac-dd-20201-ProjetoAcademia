@@ -44,5 +44,9 @@ public class ModalidadeController {
 		
 		return listaNomes;		
 	}
+	
+	public ModalidadeVO consultarPorNome(String nome) {		
+		return bo.consultarPorNome(nome);
+	}
 
 }

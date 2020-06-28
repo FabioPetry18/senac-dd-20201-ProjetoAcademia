@@ -13,10 +13,10 @@ public class PessoaController {
 		
 	}
 
-	public void inserirPessoa(PessoaVO p) {
-		PessoaBO PBO = new PessoaBO();
-		PBO.salvar(p);
-	}
+//	public void inserirPessoa(PessoaVO p) {
+//		PessoaBO PBO = new PessoaBO();
+//		PBO.salvar(p);
+//	}
 	
 
 }
