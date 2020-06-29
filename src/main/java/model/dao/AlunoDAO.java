@@ -136,6 +136,10 @@ public class AlunoDAO {
 		} catch (SQLException e) {
 
 			System.out.println("Erro ao consultar alunos." + "\nErro: " + e.getMessage());
+		
+		} finally {
+			Banco.closeConnection(conn);
+			Banco.closePreparedStatement(stmt);
 		}
 
 		return alunos;
@@ -167,7 +171,7 @@ public class AlunoDAO {
 	public boolean existeAlunoPorId(int id) {
 
 		Connection conn = Banco.getConnection();
-		String sql = "SELECT idAluno FROM ALUNO WHERE ID " + id;
+		String sql = "SELECT idAluno FROM ALUNO WHERE ID = " + id;
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet result = null;
 

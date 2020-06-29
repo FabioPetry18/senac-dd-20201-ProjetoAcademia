@@ -69,6 +69,41 @@ public class InstrutorDAO {
 		
 	}
 	
+	public boolean existeInstrutorPrId(int id) {
+		
+		Connection conn = Banco.getConnection();
+		String query = "SELECT idInstrutor FROM INSTRUTOR WHERE ID = "+id;
+		Statement stmt = Banco.getStatement(conn);
+		ResultSet rs = null;
+		
+		try {
+			
+			rs = stmt.executeQuery(query);
+			if(rs.next()) {
+				
+				return true;
+				
+			}
+			
+		} catch(SQLException e) {
+			
+			System.out.println("Erro ao verificar se existe instrutor por id. \nErro: "+e.getMessage());
+			
+		} finally {
+			
+			Banco.closeConnection(conn);
+			Banco.closeStatement(stmt);
+			Banco.closeResultSet(rs);
+			
+		}
+		
+		return false;
+		
+	}
+	
+	
+	
+	
 	public InstrutorVO construirInstrutorDoResultSet(ResultSet rs) {
 		
 		InstrutorVO i = new InstrutorVO();
@@ -117,6 +152,9 @@ public class InstrutorDAO {
 			System.out.println("Erro ao consultar todos instrutores"
 					          +"\nErro: "+e.getMessage());
 			
+		} finally {
+			Banco.closeConnection(conn);
+			Banco.closePreparedStatement(stmt);
 		}
 		
 		return instrutores;
