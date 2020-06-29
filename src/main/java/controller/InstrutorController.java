@@ -53,5 +53,10 @@ public class InstrutorController extends PessoaController{
 		
 		return vo;
 	}
+	
+	public void excluir(InstrutorVO instrutor) {
+		InstrutorBO bo = new InstrutorBO();
+		bo.excluir(instrutor);
+	}
 
 }

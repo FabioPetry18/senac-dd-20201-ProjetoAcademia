@@ -11,7 +11,7 @@ public class ModalidadeController {
 	private ModalidadeBO bo = new ModalidadeBO();
 	private ModalidadeDAO dao = new ModalidadeDAO();
 
-	public String cadastrarModalidade(String nome, int totalAlunos, String valorMensal) {
+	public String cadastrarModalidade(String nome, String valorMensal) {
 		
 		String mensagem = "";
 		double mensal = 0;
@@ -20,7 +20,7 @@ public class ModalidadeController {
 			mensagem = "Todos os campos devem ser preenchidos";
 		} else {
 			try {
-				mensal = Double.parseDouble(valorMensal);			
+				mensal = Double.parseDouble(valorMensal);	
 			} catch (NumberFormatException e) {
 				mensagem = "A mensalidade deve ser um número";
 			}			

@@ -21,7 +21,7 @@ public class ModalidadeBO {
 	public ModalidadeVO consultarPorNome(String nome) {
 		return dao.consultarPorNome(nome);
 	}
-
+	
 
 	
 }

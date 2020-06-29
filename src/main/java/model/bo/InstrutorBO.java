@@ -35,5 +35,19 @@ public class InstrutorBO {
 		}
 		return instrutores;
 	}
-
+	
+	public boolean excluir(InstrutorVO instrutor) {
+		
+		InstrutorDAO dao = new InstrutorDAO();
+		boolean result = true;
+		if(dao.existeInstrutorPrId(instrutor.getId()) == true) {
+			System.out.println("\nInstrutor excluído com sucesso.");
+			result = true;
+		}else if(dao.existeInstrutorPrId(instrutor.getId()) == false){
+			System.out.println("\nNão foi possível excluir o Instrutor.");
+			result = false;
+		}
+		return result;
+	}
+	
 }

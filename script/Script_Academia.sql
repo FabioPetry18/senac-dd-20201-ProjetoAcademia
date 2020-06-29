@@ -3,21 +3,13 @@ create database projeto;
 
 use PROJETO;
 
-CREATE TABLE MENSALIDADE(
-	idMensalidade int not null auto_increment,
-    dataVencimento DATE not null,
-    dataUltimoPagamento DATE not null,
-    estaPago int not null,
-    primary key(idMensalidade)
-);
-
 CREATE TABLE PESSOA(
 	idPessoa int not null auto_increment,
     cpf varchar(11) not null,
     nome varchar(255) not null,
     idade int(30) not null,
     sexo char(1) not null,
-    telefone varchar(20) not null,
+    telefone varchar(20),
     celular varchar(20) not null,
     email varchar(255) not null,
     bairro varchar(255) not null,
@@ -32,9 +24,7 @@ CREATE TABLE MODALIDADE (
 	idModalidade int not null auto_increment,
     nomeModalidade varchar(55) not null,
     valorModalidade double not null,
-    idMensalidade int not null,
-    primary key(idModalidade),
-    foreign key(idMensalidade) references Mensalidade(idMensalidade)
+    primary key(idModalidade)
 );
     
 CREATE TABLE ALUNO(
@@ -57,7 +47,7 @@ CREATE TABLE INSTRUTOR(
     formacao varchar(255) not null,
     dtAdmissao date not null,
     dtPagamentoSalario date not null,
-    valSalario float not null,
+    valSalario double not null,
     primary key (idInstrutor),
     foreign key(idPessoa) references PESSOA(idPessoa)
 );
@@ -74,6 +64,4 @@ CREATE TABLE TURNO(
     foreign key(idInstrutor) references INSTRUTOR(idInstrutor)
 );
 
-
-
-
+select * from modalidade;
