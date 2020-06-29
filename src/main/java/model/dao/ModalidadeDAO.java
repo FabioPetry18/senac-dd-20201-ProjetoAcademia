@@ -33,7 +33,7 @@ public class ModalidadeDAO {
 		
 		} catch(SQLException e){
 			
-			System.out.println("Erro ao cadastrarModalidade");
+			System.out.println("Erro ao cadastrarModalidade.\nErro: "+e.getMessage());
 		}
 		
 		return novaModalidade;
@@ -59,7 +59,7 @@ public class ModalidadeDAO {
 		}
 		return modalidades;
 	}
-
+	
 	private ModalidadeVO construirModalidadeDoResultSet(ResultSet rs) {
 		ModalidadeVO modalidade = new ModalidadeVO();
 		
