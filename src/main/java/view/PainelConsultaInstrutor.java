@@ -1,23 +1,22 @@
 package view;
 
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controller.InstrutorController;
-
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-
-import model.vo.AlunoVO;
 import model.vo.InstrutorVO;
 
 public class PainelConsultaInstrutor extends JPanel {
 	private JTable tblInstrutores;
 	private ArrayList<InstrutorVO> instrutores;
-	private String[] nomeColunas = {"Nome", "Cpf", "Salário"};
+	private String[] nomeColunas = {"Nome", "Data Nascimento", "Cpf", "Salário"};
 
 	/**
 	 * Create the panel.
@@ -59,11 +58,11 @@ public class PainelConsultaInstrutor extends JPanel {
 
 		for (InstrutorVO i : instrutores) {
 
-			//DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+			DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 
 			Object[] novaLinhaDaTabela = new Object[4];
 			novaLinhaDaTabela[0] = i.getNome();
-			//novaLinhaDaTabela[1] = a.getDataNascimento().format(formatador);
+			novaLinhaDaTabela[1] = i.getDtNascimento().format(formatador);
 			novaLinhaDaTabela[2] = i.getCpf();
 			novaLinhaDaTabela[3] = i.getValSalario();
 

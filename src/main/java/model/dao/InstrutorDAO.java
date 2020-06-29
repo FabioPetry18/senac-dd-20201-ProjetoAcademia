@@ -2,6 +2,7 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -102,17 +103,16 @@ public class InstrutorDAO {
 	}
 	
 	
-	
-	
 	public InstrutorVO construirInstrutorDoResultSet(ResultSet rs) {
 		
 		InstrutorVO i = new InstrutorVO();
 		
 		try {
-			
+
+			i.setId(rs.getInt("idInstrutor"));
 			i.setNome(rs.getString("nome"));
+			i.setDtNascimento(rs.getDate("dtNascimento").toLocalDate());
 			i.setCpf(rs.getString("cpf"));
-			i.setId(rs.getInt("id"));
 			i.setValSalario(rs.getDouble("valSalario"));
 			
 			
@@ -130,7 +130,7 @@ public class InstrutorDAO {
 	public ArrayList<InstrutorVO> consultarTodosInstrutores(){
 		
 		Connection conn = Banco.getConnection();
-		String sql = "SELECT pessoa.nome, pessoa.cpf, instrutor.valSalario, instrutor.idInstrutor"
+		String sql = "SELECT pessoa.nome, pessoa.dtNascimento, pessoa.cpf, instrutor.valSalario, instrutor.idInstrutor"
 					+"\nFROM instrutor, pessoa"
 				    +"\nORDER BY nome ASC";		
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql);
