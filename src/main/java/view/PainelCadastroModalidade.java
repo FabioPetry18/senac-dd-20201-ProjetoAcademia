@@ -17,7 +17,6 @@ public class PainelCadastroModalidade extends JPanel {
 	
 	private JTextField txtNome;
 	private JTextField txtMensalidade;
-	private JSpinner spinnerTotalAlunos;
 
 	public PainelCadastroModalidade() {
 		setLayout(null);
@@ -30,10 +29,6 @@ public class PainelCadastroModalidade extends JPanel {
 		txtNome.setBounds(150, 31, 238, 20);
 		add(txtNome);
 		txtNome.setColumns(10);
-		
-		JLabel lblTotalAlunos = new JLabel("Total de alunos");
-		lblTotalAlunos.setBounds(31, 85, 100, 14);
-		add(lblTotalAlunos);
 		
 		JLabel lblValorMensal = new JLabel("Mensalidade");
 		lblValorMensal.setBounds(31, 136, 73, 14);
@@ -48,18 +43,13 @@ public class PainelCadastroModalidade extends JPanel {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ModalidadeController controller = new ModalidadeController();
-				int totalAlunos = Integer.parseInt(spinnerTotalAlunos.getValue().toString());
-				String mensagem = controller.cadastrarModalidade(txtNome.getText(), totalAlunos, txtMensalidade.getText());
+	
+				String mensagem = controller.cadastrarModalidade(txtNome.getText(), txtMensalidade.getText());
 				JOptionPane.showMessageDialog(null, mensagem);
 			}
 		});
 		btnCadastrar.setBounds(114, 234, 238, 23);
 		add(btnCadastrar);		
-		
-		spinnerTotalAlunos = new JSpinner();
-		spinnerTotalAlunos.setModel(new SpinnerNumberModel(5, 5, 30, 1));
-		spinnerTotalAlunos.setBounds(150, 82, 39, 20);
-		add(spinnerTotalAlunos);
 		
 		
 	}
