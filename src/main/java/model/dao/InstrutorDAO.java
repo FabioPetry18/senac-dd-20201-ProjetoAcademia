@@ -32,7 +32,7 @@ public class InstrutorDAO {
 			
 		} catch(SQLException e) {
 			
-			System.out.println("Erro ao cadastrar instrutor. Erro: "+e.getMessage());
+			System.out.println("Erro ao cadastrar instrutor. \nErro: " + e.getMessage());
 			
 		}
 		

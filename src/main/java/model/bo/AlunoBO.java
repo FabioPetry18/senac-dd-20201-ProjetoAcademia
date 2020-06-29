@@ -12,7 +12,7 @@ public class AlunoBO {
 	PessoaDAO pDAO = new PessoaDAO();
 
 	public String salvar(AlunoVO novoAluno) {
-
+		System.out.println(novoAluno.isSituacao());
 		String mensagem = "";
 
 		if (pDAO.verificarCpf(novoAluno.getCpf())) {
@@ -22,7 +22,7 @@ public class AlunoBO {
 		}
 		
 		if(novoAluno.getId() > 0) {
-			mensagem = "Cadastro realizado com sucesso!";
+			mensagem = "Aluno cadastrado com sucesso!";
 		}
 		return mensagem;
 	}

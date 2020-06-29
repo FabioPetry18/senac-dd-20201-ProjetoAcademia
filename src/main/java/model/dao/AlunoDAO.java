@@ -32,7 +32,7 @@ public class AlunoDAO {
 
 		} catch (SQLException e) {
 
-			System.out.println("Erro ao cadastrar aluno." + "\nErro: " + e.getMessage());
+			System.out.println("Erro ao cadastrar aluno. \nErro: " + e.getMessage());
 		}
 
 		return novoAluno;
