@@ -11,16 +11,18 @@ public class AlunoBO {
 	AlunoDAO dao = new AlunoDAO();
 	PessoaDAO pDAO = new PessoaDAO();
 
-	public String salvar(AlunoVO alunoVO) {
+	public String salvar(AlunoVO novoAluno) {
 
 		String mensagem = "";
 
-		if (pDAO.verificarCpf(alunoVO.getCpf())) {
-			mensagem = "CPF informado (" + alunoVO.getCpf() + ") já foi utilizado";
+		if (pDAO.verificarCpf(novoAluno.getCpf())) {
+			mensagem = "CPF informado (" + novoAluno.getCpf() + ") já foi utilizado";
 		} else {
-			alunoVO = dao.cadastrarAluno(alunoVO);
+			novoAluno = dao.cadastrarAluno(novoAluno);
+		}
+		
+		if(novoAluno.getId() > 0) {
 			mensagem = "Cadastro realizado com sucesso!";
-
 		}
 		return mensagem;
 	}
@@ -47,13 +49,11 @@ public class AlunoBO {
 	}
 
 	public ArrayList<AlunoVO> consultarTodosAlunos() {
-		AlunoDAO alunoDAO = new AlunoDAO();
 		ArrayList<AlunoVO> alunos = dao.consultarTodosAlunos();
 
 		if (alunos.isEmpty()) {
 			System.out.println("\nSem alunos na na base da dados.");
-		}
-		
+		}	
 
 		return alunos;
 

@@ -14,25 +14,25 @@ import model.vo.InstrutorVO;
 
 public class InstrutorDAO {
 	
+	PessoaDAO dao = new PessoaDAO();
+	
 	public InstrutorVO cadastrarInstrutor(InstrutorVO novoInstrutor) {
 		
 		Connection conn = Banco.getConnection();
-		String sql = "INSERT INTO INSTRUTOR(idPessoa, formacao, dtAdmissao, dtPagamento, valSalario) VALUES(?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO INSTRUTOR(idInstrutor, formacao, dtAdmissao, valSalario) VALUES(?, ?, ?, ?)";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		
 		try {
 			
-			stmt.setInt(1, novoInstrutor.getId());
+			stmt.setInt(1, dao.salvar(novoInstrutor));
 			stmt.setString(2, novoInstrutor.getFormacao());
 			stmt.setDate(3, java.sql.Date.valueOf(novoInstrutor.getDtAdmissao()));
-			stmt.setDate(4, java.sql.Date.valueOf(novoInstrutor.getDtPagamento()));
-			stmt.setFloat(5, novoInstrutor.getValSalario());
+			stmt.setDouble(4, novoInstrutor.getValSalario());
 			stmt.execute();
 			
 		} catch(SQLException e) {
 			
-			System.out.println("Erro ao cadastrar instrutor"
-						   	  +"\nErro: "+e.getMessage());
+			System.out.println("Erro ao cadastrar instrutor. Erro: "+e.getMessage());
 			
 		}
 		
@@ -71,7 +71,7 @@ public class InstrutorDAO {
 			i.setNome(rs.getString("nome"));
 			i.setCpf(rs.getString("cpf"));
 			i.setId(rs.getInt("id"));
-			i.setValSalario(rs.getFloat("valSalario"));
+			i.setValSalario(rs.getDouble("valSalario"));
 			
 			
 		} catch(SQLException e) {

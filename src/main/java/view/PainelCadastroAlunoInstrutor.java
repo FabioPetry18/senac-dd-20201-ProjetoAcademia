@@ -241,12 +241,11 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 					
 				} else if(rdbtnInstrutor.isSelected()) {
 					InstrutorController controller = new InstrutorController();
-//					mensagem = controller.cadastrarInstrutor(txtCpf.getText(), txtNome.getText(),
-//							txtDataNascimento.getText(), sexo, txtTelefone.getText(), txtCelular.getText(),
-//							txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(),
-//							txtUF.getText(), txtCep.getText(), txtEmail.getText(),
-//							comboBoxModalidade.getSelectedItem().toString(), txtObservacoes.getText(),
-//							txtFormacao.getText(), txtSalario.getText());
+					mensagem = controller.cadastrarInstrutor(txtCpf.getText(), txtNome.getText(),
+							txtDataNascimento.getText(), sexo, txtTelefone.getText(), txtCelular.getText(),
+							txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(),
+							txtUF.getText(), txtCep.getText(), txtEmail.getText(),
+							comboBoxModalidade.getSelectedItem().toString(), txtFormacao.getText(), txtSalario.getText());
 					
 				} else {
 					mensagem = "Selecione o tipo de cadastro (Aluno/Instrutor)";

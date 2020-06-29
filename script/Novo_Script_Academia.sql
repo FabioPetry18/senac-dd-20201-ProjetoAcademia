@@ -35,8 +35,7 @@ CREATE TABLE INSTRUTOR(
     idInstrutor int not null,
     formacao varchar(255) not null,
     dtAdmissao date not null,
-    dtPagamentoSalario date not null,
-    valSalario float not null,
+    valSalario double not null,
     primary key (idInstrutor),
     foreign key(idInstrutor) references PESSOA(idPessoa)
 );
