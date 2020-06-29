@@ -39,27 +39,34 @@ public class InstrutorDAO {
 		return novoInstrutor;
 	}
 	
-	public boolean excluir(int id) {
+	//Excluir Instrutor:
+	public int excluir(InstrutorVO instrutor) {
 		
+		InstrutorVO instrutorVO = new InstrutorVO();
 		Connection conn = Banco.getConnection();
-		String sql = "DELETE FROM ALUNO WHERE ID = "+id
-				  +"\nDELETE FROM PESSOA WHERE ID = "+id;
+		String delete = "DELETE FROM INSTRUTOR WHERE idInstrutor = "+instrutorVO.getId()
+				    +"\nDELETE FROM PESSOA WHERE idPessoa = "+instrutorVO.getId();
 		Statement stmt = Banco.getStatement(conn);
-		int quantidadeLinhasAfetadas = 0;
+		int result = 0;
 		
 		try {
 			
-			quantidadeLinhasAfetadas = stmt.executeUpdate(sql);
+			result = stmt.executeUpdate(delete);
+			
 			
 		} catch(SQLException e) {
 			
-			System.out.println("Erro ao excluir Instrutor."
-						      +"\nErro: "+e.getMessage());
+			System.out.println("Erro ao excluir Instrutor. \nErro: "+e.getMessage());
+			
+		} finally {
+			
+			Banco.closeConnection(conn);
+			Banco.closeStatement(stmt);
 			
 		}
-		boolean excluiu = quantidadeLinhasAfetadas > 0;
 		
-		return excluiu;
+		return result;
+		
 	}
 	
 	public InstrutorVO construirInstrutorDoResultSet(ResultSet rs) {
