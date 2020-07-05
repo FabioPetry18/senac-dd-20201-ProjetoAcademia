@@ -156,7 +156,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		
 		
 		try {
-			MaskFormatter mascaraCelular = new MaskFormatter("(##)######-####"); //mascara celular (funcionando)
+			MaskFormatter mascaraCelular = new MaskFormatter("(##) ######-####"); //mascara celular (funcionando)
 			txtCelular  = new JFormattedTextField(mascaraCelular);
 		txtCelular.setBounds(155, 183, 148, 20);
 		add(txtCelular);
