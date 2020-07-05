@@ -20,7 +20,7 @@ public class AlunoDAO {
 	public AlunoVO cadastrarAluno(AlunoVO novoAluno) {
 
 		Connection conn = Banco.getConnection();
-		String sql = "INSERT INTO (idAluno, observacoes, dtMatricula, situacao) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO ALUNO(idAluno, observacoes, dtMatricula, situacao) VALUES(?, ?, ?, ?)";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		
 		try {

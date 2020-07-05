@@ -33,9 +33,7 @@ public class AlunoController extends PessoaController{
 	
 
 	public void excluir(AlunoVO aluno) {
-		AlunoBO bo = new AlunoBO();
-		bo.excluir(aluno);
-		
+		bo.excluir(aluno);		
 	}
 
 	  public ArrayList<AlunoVO> consultarTodosAlunos() {
