@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -11,13 +12,15 @@ import javax.swing.table.DefaultTableModel;
 import controller.AlunoController;
 import model.vo.AlunoVO;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;;
 
 public class PainelConsultaAluno extends JPanel {
 	private JTable tblAlunos;
 	private ArrayList<AlunoVO> alunos;
-	private String[] nomeColunas = {"Nome", "Cpf"};
-
+	private String[] nomeColunas = {"Id", "Nome", "Cpf","Data Nascimento"};
+	private JButton btnExcluir;
 	
 	/**
 	 * Create the panel.
@@ -34,13 +37,32 @@ public class PainelConsultaAluno extends JPanel {
 				atualizarTabelaAlunos();
 			}
 		});
-		btnConsultar.setBounds(180, 50, 89, 23);
+		btnConsultar.setBounds(180, 40, 89, 23);
 		add(btnConsultar);
 		
 		tblAlunos = new JTable();
-		tblAlunos.setBounds(10, 101, 430, 338);
+		tblAlunos.setBounds(10, 72, 430, 338);
 		add(tblAlunos);
-
+		
+		btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AlunoController controller = new AlunoController();
+				String idSelecionado = JOptionPane.showInputDialog("Insira um ID: ");
+				String mensagem = controller.excluir(idSelecionado);
+				JOptionPane.showMessageDialog(null, mensagem);
+//				int linhaSelecionada = tblAlunos.getSelectedRow();				
+//				AlunoVO alunoSelecionado = alunos.get(linhaSelecionada - 1); 
+//				
+//				AlunoController controller = new AlunoController();
+//				String mensagem = controller.excluir(alunoSelecionado);
+//				
+//				JOptionPane.showMessageDialog(null, mensagem);
+			}
+		});
+		btnExcluir.setBounds(20, 421, 89, 23);
+		add(btnExcluir);
+		
 	}
 	
 	private void limparTabelaAlunos() {
@@ -59,17 +81,16 @@ public class PainelConsultaAluno extends JPanel {
 
 		for (AlunoVO a : alunos) {
 
-			//DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+			DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 
-			Object[] novaLinhaDaTabela = new Object[2];
-			novaLinhaDaTabela[0] = a.getNome();
-			//novaLinhaDaTabela[1] = a.getDataNascimento().format(formatador);
-			novaLinhaDaTabela[1] = a.getCpf();
-			//novaLinhaDaTabela[3] = a.getModalidade();
+			Object[] novaLinhaDaTabela = new Object[4];
+			novaLinhaDaTabela[0] = a.getId();
+			novaLinhaDaTabela[1] = a.getNome();
+			novaLinhaDaTabela[2] = a.getCpf();
+			novaLinhaDaTabela[3] = a.getDtNascimento().format(formatador);
 
 			model.addRow(novaLinhaDaTabela);
 		}
 
 	}
-	
 }

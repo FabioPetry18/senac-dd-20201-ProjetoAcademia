@@ -27,36 +27,27 @@ public class AlunoBO {
 		return mensagem;
 	}
 
-	public boolean excluir(AlunoVO aluno) {
+	public String excluir(int id) {
 		
-		AlunoDAO alunoDAO = new AlunoDAO();
-		boolean result = true;
+		String mensagem = "";
 		
-		if (alunoDAO.existeAlunoPorId(aluno.getId()) == true) {
-
-			System.out.println("\nAluno excluído com sucesso.");
-			result = true;
+		if (mensagem == "" && dao.existeAlunoPorId(id)) {
 			
-		} else if (alunoDAO.existeAlunoPorId(aluno.getId()) == false) {
-
-			System.out.println("\nNão foi possível excluir o Aluno");
-			result = false;
+			dao.excluir(id);
+			mensagem = "Aluno excluído com sucesso.";				
 			
 		} else {
-
-			System.out.println("\nAluno não existe na base da dados.");
-
+			mensagem = "Aluno não existe na base da dados.";
 		}
 		
-		return result;
-		
+		return mensagem;		
 	}
 
 	public ArrayList<AlunoVO> consultarTodosAlunos() {
 		ArrayList<AlunoVO> alunos = dao.consultarTodosAlunos();
 
 		if (alunos.isEmpty()) {
-			System.out.println("\nSem alunos na base da dados.");
+			System.out.println("Sem alunos na base da dados.");
 		}	
 
 		return alunos;

@@ -5,26 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
-import model.dao.Banco;
 import model.vo.AlunoVO;
-import model.vo.PessoaVO;
-import model.vo.ModalidadeVO;
 
 public class AlunoDAO {
 
-	PessoaDAO dao = new PessoaDAO();
+	PessoaDAO pessoaDAO = new PessoaDAO();
 
 	public AlunoVO cadastrarAluno(AlunoVO novoAluno) {
 
 		Connection conn = Banco.getConnection();
 		String sql = "INSERT INTO ALUNO(idAluno, observacoes, dtMatricula, situacao) VALUES(?, ?, ?, ?)";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql, PreparedStatement.RETURN_GENERATED_KEYS);
-		
+
 		try {
-			stmt.setInt(1, dao.salvar(novoAluno));
+			stmt.setInt(1, pessoaDAO.salvar(novoAluno));
 			stmt.setString(2, novoAluno.getObservacoes());
 			stmt.setDate(3, java.sql.Date.valueOf(novoAluno.getDtMatricula()));
 			stmt.setBoolean(4, novoAluno.isSituacao());
@@ -39,17 +35,14 @@ public class AlunoDAO {
 	}
 
 	// Excluir Aluno:
-	public int excluir(AlunoVO aluno) {
+	public int excluir(int id) {
 
-		AlunoVO alunoVO = new AlunoVO();
-		ModalidadeVO modalidadeVO = new ModalidadeVO();
+		int resultado = 0;
+		pessoaDAO.excluir(id);
 
 		Connection conn = Banco.getConnection();
-		String delete = "DELETE FROM ALUNO WHERE idAluno = " + alunoVO.getId()
-				+ "\nDELETE FROM PESSOA WHERE idPessoa = " + alunoVO.getId()
-				+ "\nDELETE FROM MODALIDADE WHERE idModalidade " + modalidadeVO.getId();
+		String delete = "DELETE FROM ALUNO WHERE idAluno = " + id;
 		Statement stmt = Banco.getStatement(conn);
-		int resultado = 0;
 
 		try {
 
@@ -60,10 +53,8 @@ public class AlunoDAO {
 			System.out.println("Erro ao excluir Aluno. \nErro: " + e.getMessage());
 
 		} finally {
-
 			Banco.closeConnection(conn);
 			Banco.closeStatement(stmt);
-
 		}
 
 		return resultado;
@@ -104,9 +95,10 @@ public class AlunoDAO {
 
 		try {
 
+			a.setId(rs.getInt("idAluno"));
 			a.setNome(rs.getString("nome"));
 			a.setCpf(rs.getString("cpf"));
-			a.setId(rs.getInt("idAluno"));
+			a.setDtNascimento(rs.getDate("dtNascimento").toLocalDate());
 
 		} catch (SQLException e) {
 
@@ -120,7 +112,7 @@ public class AlunoDAO {
 	public ArrayList<AlunoVO> consultarTodosAlunos() {
 
 		Connection conn = Banco.getConnection();
-		String sql = "SELECT p.nome, p.cpf, a.idAluno FROM ALUNO a, PESSOA p ORDER BY p.nome ASC";
+		String sql = "SELECT * FROM ALUNO, PESSOA p ORDER BY p.nome ASC";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql);
 		ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
 
@@ -136,7 +128,7 @@ public class AlunoDAO {
 		} catch (SQLException e) {
 
 			System.out.println("Erro ao consultar alunos." + "\nErro: " + e.getMessage());
-		
+
 		} finally {
 			Banco.closeConnection(conn);
 			Banco.closePreparedStatement(stmt);
@@ -145,33 +137,10 @@ public class AlunoDAO {
 		return alunos;
 	}
 
-	public boolean verificarCpf(String cpf) {
-		Connection conn = Banco.getConnection();
-		Statement stmt = Banco.getStatement(conn);
-		ResultSet resultado = null;
-		String query = "SELECT CPF FROM aluno WHERE CPF = " + cpf;
-		try {
-			resultado = stmt.executeQuery(query);
-			if (resultado.next()) {
-				return true;
-			}
-		} catch (SQLException e) {
-			System.out.println("Erro ao executar a Query que verifica existência de Registro por CPF.");
-			System.out.println("Erro: " + e.getMessage());
-			return false;
-		} finally {
-			Banco.closeResultSet(resultado);
-			Banco.closeStatement(stmt);
-			Banco.closeConnection(conn);
-		}
-
-		return false;
-	}
-
 	public boolean existeAlunoPorId(int id) {
 
 		Connection conn = Banco.getConnection();
-		String sql = "SELECT idAluno FROM ALUNO WHERE ID = " + id;
+		String sql = "SELECT idAluno FROM ALUNO WHERE idAluno = " + id;
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet result = null;
 

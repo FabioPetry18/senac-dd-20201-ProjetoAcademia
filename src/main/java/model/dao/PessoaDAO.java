@@ -5,9 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import model.vo.AlunoVO;
 import model.vo.PessoaVO;
 import model.dao.Banco;
 
@@ -51,9 +53,32 @@ public class PessoaDAO {
 			System.out.println("Erro: " + e.getMessage());
 		}
 		
-		return novaPessoa.getId();
-				
-		
+		return novaPessoa.getId();		
+	}
+	
+	public int excluir(int id) {
+
+		Connection conn = Banco.getConnection();
+		String delete = "DELETE FROM PESSOA WHERE idPessoa = " + id;
+		Statement stmt = Banco.getStatement(conn);
+		int resultado = 0;
+
+		try {
+
+			resultado = stmt.executeUpdate(delete);
+
+		} catch (SQLException e) {
+
+			System.out.println("Erro ao excluir pessoa. \nErro: " + e.getMessage());
+
+		} finally {
+
+			Banco.closeConnection(conn);
+			Banco.closeStatement(stmt);
+
+		}
+
+		return resultado;
 	}
 
 	public Boolean verificarCpf(String cpf) {

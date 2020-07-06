@@ -32,8 +32,24 @@ public class AlunoController extends PessoaController{
 	}
 	
 
-	public void excluir(AlunoVO aluno) {
-		bo.excluir(aluno);		
+	public String excluir(String idSelecionado) {
+		
+		String mensagem = "";
+		int id = 0;
+		
+		try {
+			
+			id = Integer.parseInt(idSelecionado);
+			
+		} catch (NumberFormatException e) {
+			mensagem = "Insira um número inteiro";
+		}
+		
+		if (mensagem == "") {
+			mensagem = bo.excluir(id);
+		}
+		
+		return mensagem;		
 	}
 
 	  public ArrayList<AlunoVO> consultarTodosAlunos() {
