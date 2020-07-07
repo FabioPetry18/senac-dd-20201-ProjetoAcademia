@@ -121,7 +121,7 @@ public class AlunoDAO {
 	public ArrayList<AlunoVO> consultarTodosAlunos() {
 
 		Connection conn = Banco.getConnection();
-		String query = "SELECT * FROM ALUNO a, PESSOA p WHERE a.idAluno = p.idPessoa ORDER BY p.nome ASC";
+		String query = "SELECT * FROM ALUNO a, PESSOA p WHERE a.idAluno = p.idPessoa";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, query);
 		ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
 

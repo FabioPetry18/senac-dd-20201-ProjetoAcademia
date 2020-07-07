@@ -50,6 +50,7 @@ public class PainelConsultaAluno extends JPanel {
 				String idSelecionado = JOptionPane.showInputDialog("Insira um ID: ");
 				String mensagem = controller.excluir(idSelecionado);
 				JOptionPane.showMessageDialog(null, mensagem);
+				
 //				int linhaSelecionada = tblAlunos.getSelectedRow();				
 //				AlunoVO alunoSelecionado = alunos.get(linhaSelecionada - 1); 
 //				
