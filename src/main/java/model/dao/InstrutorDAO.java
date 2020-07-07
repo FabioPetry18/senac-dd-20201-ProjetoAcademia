@@ -15,17 +15,17 @@ import model.vo.InstrutorVO;
 
 public class InstrutorDAO {
 	
-	PessoaDAO dao = new PessoaDAO();
+	PessoaDAO pessoaDAO = new PessoaDAO();
 	
 	public InstrutorVO cadastrarInstrutor(InstrutorVO novoInstrutor) {
 		
 		Connection conn = Banco.getConnection();
-		String sql = "INSERT INTO INSTRUTOR(idInstrutor, formacao, dtAdmissao, valSalario) VALUES(?, ?, ?, ?)";
-		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql, PreparedStatement.RETURN_GENERATED_KEYS);
+		String query = "INSERT INTO INSTRUTOR(idInstrutor, formacao, dtAdmissao, valSalario) VALUES(?, ?, ?, ?)";
+		PreparedStatement stmt = Banco.getPreparedStatement(conn, query, PreparedStatement.RETURN_GENERATED_KEYS);
 		
 		try {
 			
-			stmt.setInt(1, dao.salvar(novoInstrutor));
+			stmt.setInt(1, pessoaDAO.salvar(novoInstrutor));
 			stmt.setString(2, novoInstrutor.getFormacao());
 			stmt.setDate(3, java.sql.Date.valueOf(novoInstrutor.getDtAdmissao()));
 			stmt.setDouble(4, novoInstrutor.getValSalario());
@@ -41,39 +41,36 @@ public class InstrutorDAO {
 	}
 	
 	//Excluir Instrutor:
-	public int excluir(InstrutorVO instrutor) {
+	public int excluir(int id) {
 		
-		InstrutorVO instrutorVO = new InstrutorVO();
+		int resultado = 0;
+		pessoaDAO.excluir(id);
+		
 		Connection conn = Banco.getConnection();
-		String delete = "DELETE FROM INSTRUTOR WHERE idInstrutor = "+instrutorVO.getId()
-				    +"\nDELETE FROM PESSOA WHERE idPessoa = "+instrutorVO.getId();
+		String query = "DELETE FROM INSTRUTOR WHERE idInstrutor = " + id;
 		Statement stmt = Banco.getStatement(conn);
-		int result = 0;
 		
 		try {
 			
-			result = stmt.executeUpdate(delete);
-			
-			
+			resultado = stmt.executeUpdate(query);
+						
 		} catch(SQLException e) {
 			
 			System.out.println("Erro ao excluir Instrutor. \nErro: "+e.getMessage());
 			
-		} finally {
-			
+		} finally {		
 			Banco.closeConnection(conn);
-			Banco.closeStatement(stmt);
-			
+			Banco.closeStatement(stmt);			
 		}
 		
-		return result;
+		return resultado;
 		
 	}
 	
-	public boolean existeInstrutorPrId(int id) {
+	public boolean existeInstrutorPorId(int id) {
 		
 		Connection conn = Banco.getConnection();
-		String query = "SELECT idInstrutor FROM INSTRUTOR WHERE ID = "+id;
+		String query = "SELECT idInstrutor FROM INSTRUTOR WHERE ID = " + id;
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet rs = null;
 		
@@ -130,10 +127,10 @@ public class InstrutorDAO {
 	public ArrayList<InstrutorVO> consultarTodosInstrutores(){
 		
 		Connection conn = Banco.getConnection();
-		String sql = "SELECT pessoa.nome, pessoa.dtNascimento, pessoa.cpf, instrutor.valSalario, instrutor.idInstrutor"
+		String query = "SELECT pessoa.nome, pessoa.dtNascimento, pessoa.cpf, instrutor.valSalario, instrutor.idInstrutor"
 					+"\nFROM instrutor, pessoa"
 				    +"\nORDER BY nome ASC";		
-		PreparedStatement stmt = Banco.getPreparedStatement(conn, sql);
+		PreparedStatement stmt = Banco.getPreparedStatement(conn, query);
 		ArrayList<InstrutorVO> instrutores = new ArrayList<InstrutorVO>();
 
 		try {

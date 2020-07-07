@@ -36,18 +36,18 @@ public class InstrutorBO {
 		return instrutores;
 	}
 	
-	public boolean excluir(InstrutorVO instrutor) {
+	public String excluir(int id) {
 		
-		InstrutorDAO dao = new InstrutorDAO();
-		boolean result = true;
-		if(dao.existeInstrutorPrId(instrutor.getId()) == true) {
-			System.out.println("\nInstrutor excluído com sucesso.");
-			result = true;
-		}else if(dao.existeInstrutorPrId(instrutor.getId()) == false){
-			System.out.println("\nNão foi possível excluir o Instrutor.");
-			result = false;
+		String mensagem = "";
+		
+		if (mensagem == "" && dao.existeInstrutorPorId(id)) {			
+			dao.excluir(id);
+			mensagem = "Aluno excluído com sucesso.";							
+		} else {
+			mensagem = "Aluno não existe na base de dados.";
 		}
-		return result;
+		
+		return mensagem;	
 	}
 	
 }

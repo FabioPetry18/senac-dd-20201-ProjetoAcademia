@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -33,12 +34,25 @@ public class PainelConsultaInstrutor extends JPanel {
 				atualizarTabelaInstrutores();
 			}
 		});
-		btnConsultar.setBounds(180, 60, 89, 23);
+		btnConsultar.setBounds(180, 44, 89, 23);
 		add(btnConsultar);
 		
 		tblInstrutores = new JTable();
-		tblInstrutores.setBounds(10, 111, 430, 328);
+		tblInstrutores.setBounds(10, 78, 430, 328);
 		add(tblInstrutores);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				InstrutorController controller = new InstrutorController();
+				String idSelecionado = JOptionPane.showInputDialog("Insira um ID: ");
+				String mensagem = controller.excluir(idSelecionado);
+				
+				JOptionPane.showMessageDialog(null, mensagem);
+			}
+		});
+		btnExcluir.setBounds(20, 416, 89, 23);
+		add(btnExcluir);
 		
 	}
 	
@@ -69,5 +83,4 @@ public class PainelConsultaInstrutor extends JPanel {
 			model.addRow(novaLinhaDaTabela);
 		}
 	}
-	
 }

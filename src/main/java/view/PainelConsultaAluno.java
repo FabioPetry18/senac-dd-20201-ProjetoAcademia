@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -10,17 +12,14 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controller.AlunoController;
-import model.vo.AlunoVO;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionEvent;;
+import model.vo.AlunoVO;;
 
 public class PainelConsultaAluno extends JPanel {
 	private JTable tblAlunos;
 	private ArrayList<AlunoVO> alunos;
 	private String[] nomeColunas = {"Id", "Nome", "Cpf","Data Nascimento"};
 	private JButton btnExcluir;
+	private JPanel contentPane;
 	
 	/**
 	 * Create the panel.
@@ -60,7 +59,7 @@ public class PainelConsultaAluno extends JPanel {
 //				JOptionPane.showMessageDialog(null, mensagem);
 			}
 		});
-		btnExcluir.setBounds(20, 421, 89, 23);
+		btnExcluir.setBounds(340, 421, 89, 23);
 		add(btnExcluir);
 		
 	}

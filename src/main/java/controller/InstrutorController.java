@@ -54,9 +54,23 @@ public class InstrutorController extends PessoaController{
 		return vo;
 	}
 	
-	public void excluir(InstrutorVO instrutor) {
-		InstrutorBO bo = new InstrutorBO();
-		bo.excluir(instrutor);
+	public String excluir(String idSelecionado) {
+			
+		String mensagem = "";
+		int id = 0;
+		
+		try {
+			
+			id = Integer.parseInt(idSelecionado);
+			
+		} catch (NumberFormatException e) {
+			mensagem = "Insira um número inteiro";
+		}
+		
+		if (mensagem == "") {
+			mensagem = bo.excluir(id);
+		}
+		
+		return mensagem;
 	}
-
 }

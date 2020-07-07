@@ -68,6 +68,29 @@ public class AlunoController extends PessoaController{
 		
 		return vo;
 	}
+
+
+	public AlunoVO verificarAlunoPorCpf(String cpfInformado) {
+		String cpf = removerMascara(cpfInformado);
+		return bo.verificarAlunoPorCpf(cpf);
+	}
+
+
+	public String alterar(int id, String cpf, String nome, String dataNascimento, String sexo, String telefone,
+			String celular, String endereco, String bairro, String cidade, String uf, String cep, String email, String modalidade, String observacoes) {
+
+		String mensagem = validarCampos(cpf, nome, dataNascimento, sexo, telefone, celular, 
+				endereco, bairro, cidade, uf, cep, email);
+		
+		if(mensagem == "") {
+			AlunoVO aluno = criarNovoAluno(nome, cpf, dataNascimento, sexo, telefone, celular,
+					endereco, bairro, cidade, uf, cep, email, modalidade, observacoes);
+			aluno.setId(id);
+			mensagem = bo.alterar(aluno);			
+		}
+		
+		return mensagem;
+	}
 	
 }
 	

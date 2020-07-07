@@ -74,14 +74,6 @@ public class TelaPrincipal extends JFrame {
 		});
 		menuCadastro.add(menuItemCadastroModalidade);
 		
-		JMenu menuAula = new JMenu("Aula");
-		menuAula.setForeground(Color.BLACK);
-		menuAula.setFont(new Font("Segoe UI", Font.BOLD, 13));
-		menuBar.add(menuAula);
-		
-		JMenuItem menuItemMarcarHora = new JMenuItem("Marcar hora");
-		menuAula.add(menuItemMarcarHora);
-		
 		JMenu menuConsulta = new JMenu("Consulta");
 		menuConsulta.setForeground(Color.BLACK);
 		menuConsulta.setFont(new Font("Segoe UI", Font.BOLD, 13));
@@ -106,6 +98,21 @@ public class TelaPrincipal extends JFrame {
 			}
 		});
 		menuConsulta.add(menuItemConsultaInstrutor);
+		
+		JMenu mnEditar = new JMenu("Editar");
+		mnEditar.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		mnEditar.setForeground(Color.BLACK);
+		menuBar.add(mnEditar);
+		
+		JMenuItem menuItemAluno = new JMenuItem("Aluno");
+		menuItemAluno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				contentPane = new PainelEdicaoAluno();
+				setContentPane(contentPane);
+				revalidate();
+			}
+		});
+		mnEditar.add(menuItemAluno);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

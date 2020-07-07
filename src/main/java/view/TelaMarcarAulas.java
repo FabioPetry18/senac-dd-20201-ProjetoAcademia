@@ -33,8 +33,6 @@ import javax.swing.JComboBox;
 public class TelaMarcarAulas extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -89,16 +87,6 @@ public class TelaMarcarAulas extends JFrame {
 		panel.add(panelLogin);
 		panelLogin.setLayout(null);
 		
-		table = new JTable();
-		table.setBounds(380, 174, 443, 252);
-		panelLogin.add(table);
-		
-		textField = new JTextField();
-		textField.setBounds(10, 174, 265, 252);
-		panelLogin.add(textField);
-		textField.setText("observa\u00E7\u00E3o");
-		textField.setColumns(10);
-		
 		JComboBox nomeProfessor = new JComboBox();
 		nomeProfessor.setBounds(116, 30, 109, 20);
 		panelLogin.add(nomeProfessor);
@@ -120,11 +108,11 @@ public class TelaMarcarAulas extends JFrame {
 		panelLogin.add(horario);
 		
 		JButton btnDesmarcar = new JButton("Desmarcar");
-		btnDesmarcar.setBounds(335, 482, 106, 23);
+		btnDesmarcar.setBounds(177, 406, 106, 23);
 		panelLogin.add(btnDesmarcar);
 		
 		JButton btnEditar = new JButton("Editar");
-		btnEditar.setBounds(560, 482, 89, 23);
+		btnEditar.setBounds(386, 406, 89, 23);
 		panelLogin.add(btnEditar);
 		
 		JLabel lblImagemFundo = new JLabel("");

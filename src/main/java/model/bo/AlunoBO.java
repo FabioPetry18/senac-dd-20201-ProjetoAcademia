@@ -12,7 +12,6 @@ public class AlunoBO {
 	PessoaDAO pDAO = new PessoaDAO();
 
 	public String salvar(AlunoVO novoAluno) {
-		System.out.println(novoAluno.isSituacao());
 		String mensagem = "";
 
 		if (pDAO.verificarCpf(novoAluno.getCpf())) {
@@ -31,13 +30,11 @@ public class AlunoBO {
 		
 		String mensagem = "";
 		
-		if (mensagem == "" && dao.existeAlunoPorId(id)) {
-			
+		if (mensagem == "" && dao.existeAlunoPorId(id)) {			
 			dao.excluir(id);
-			mensagem = "Aluno excluído com sucesso.";				
-			
+			mensagem = "Aluno excluído com sucesso.";							
 		} else {
-			mensagem = "Aluno não existe na base da dados.";
+			mensagem = "Aluno não existe na base de dados.";
 		}
 		
 		return mensagem;		
@@ -52,6 +49,20 @@ public class AlunoBO {
 
 		return alunos;
 
+	}
+
+	public AlunoVO verificarAlunoPorCpf(String cpf) {
+		return dao.verificarAlunoPorCpf(cpf);
+	}
+
+	public String alterar(AlunoVO aluno) {
+		String mensagem = "";
+		
+		if(dao.alterar(aluno)) {
+			mensagem = "Alterações feitas com sucesso";
+		}
+		
+		return mensagem;
 	}
 
 }
