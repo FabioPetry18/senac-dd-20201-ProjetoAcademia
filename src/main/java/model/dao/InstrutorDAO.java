@@ -127,9 +127,9 @@ public class InstrutorDAO {
 	public ArrayList<InstrutorVO> consultarTodosInstrutores(){
 		
 		Connection conn = Banco.getConnection();
-		String query = "SELECT pessoa.nome, pessoa.dtNascimento, pessoa.cpf, instrutor.valSalario, instrutor.idInstrutor"
-					+"\nFROM instrutor, pessoa"
-				    +"\nORDER BY nome ASC";		
+		String query = "SELECT pessoa.nome, pessoa.dtNascimento, pessoa.cpf, instrutor.valSalario, instrutor.idInstrutor "
+					+"FROM instrutor, pessoa WHERE idPessoa = idInstrutor "
+				    +"ORDER BY nome ASC";		
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, query);
 		ArrayList<InstrutorVO> instrutores = new ArrayList<InstrutorVO>();
 
