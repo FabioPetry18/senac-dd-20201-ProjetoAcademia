@@ -54,7 +54,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	 * Create the panel.
 	 */
 	public PainelCadastroAlunoInstrutor() {
-		setBackground(new Color(0, 191, 255));
+		setBackground(Color.WHITE);
 		setToolTipText("Cadastro Aluno");
 		setLayout(null);
 		
@@ -66,7 +66,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		
 		JLabel lblNome = new JLabel("Nome Completo");
 		lblNome.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblNome.setForeground(new Color(255, 255, 255));
+		lblNome.setForeground(Color.BLACK);
 		lblNome.setBounds(15, 23, 111, 14);
 		add(lblNome);
 		
@@ -75,25 +75,25 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(lblSexo);
 		
 		JLabel lblCelular = new JLabel("Celular");
-		lblCelular.setForeground(new Color(255, 255, 255));
+		lblCelular.setForeground(Color.BLACK);
 		lblCelular.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblCelular.setBounds(15, 183, 111, 14);
 		add(lblCelular);
 		
 		JLabel lblCep = new JLabel("Cep");
 		lblCep.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblCep.setForeground(new Color(255, 255, 255));
+		lblCep.setForeground(Color.BLACK);
 		lblCep.setBounds(15, 223, 111, 14);
 		add(lblCep);
 		
 		JLabel lblDtNascimento = new JLabel("Data de Nascimento");
-		lblDtNascimento.setForeground(new Color(255, 255, 255));
+		lblDtNascimento.setForeground(Color.BLACK);
 		lblDtNascimento.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblDtNascimento.setBounds(15, 63, 125, 14);
 		add(lblDtNascimento);
 		
 		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setForeground(new Color(255, 255, 255));
+		lblCpf.setForeground(Color.BLACK);
 		lblCpf.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		lblCpf.setBounds(15, 103, 111, 14);
 		add(lblCpf);
@@ -104,18 +104,18 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		
 		JLabel lblBairro = new JLabel("Bairro");
 		lblBairro.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblBairro.setForeground(new Color(255, 255, 255));
+		lblBairro.setForeground(Color.BLACK);
 		lblBairro.setBounds(15, 298, 111, 14);
 		add(lblBairro);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
 		lblTelefone.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblTelefone.setForeground(new Color(255, 255, 255));
+		lblTelefone.setForeground(Color.BLACK);
 		lblTelefone.setBounds(15, 143, 111, 14);
 		add(lblTelefone);
 		
 		lblObservacoes = new JLabel("Observacoes");
-		lblObservacoes.setForeground(new Color(255, 255, 255));
+		lblObservacoes.setForeground(Color.BLACK);
 		lblObservacoes.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblObservacoes.setVisible(false);
 		lblObservacoes.setBounds(15, 425, 111, 14);
@@ -252,7 +252,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setFont(new Font("Arial", Font.BOLD, 13));
-		btnCadastrar.setBackground(new Color(0, 191, 255));
+		btnCadastrar.setBackground(Color.LIGHT_GRAY);
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String mensagem = "";
@@ -308,6 +308,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		txtFormacao.setColumns(10);
 		
 		JButton txtLimpar = new JButton("Limpar");
+		txtLimpar.setBackground(Color.LIGHT_GRAY);
 		txtLimpar.setFont(new Font("Arial", Font.BOLD, 13));
 		txtLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -319,13 +320,13 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtLimpar);
 		
 		JLabel lblEndereço = new JLabel("Endereco");
-		lblEndereço.setForeground(new Color(255, 255, 255));
+		lblEndereço.setForeground(Color.BLACK);
 		lblEndereço.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblEndereço.setBounds(15, 264, 111, 14);
 		add(lblEndereço);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setForeground(new Color(255, 255, 255));
+		lblEmail.setForeground(Color.BLACK);
 		lblEmail.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblEmail.setBounds(15, 397, 111, 14);
 		add(lblEmail);
@@ -335,14 +336,14 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(lblAtuacao);
 		
 		JLabel lblCidade = new JLabel("Cidade");
-		lblCidade.setForeground(new Color(255, 255, 255));
+		lblCidade.setForeground(Color.BLACK);
 		lblCidade.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblCidade.setBounds(15, 333, 46, 14);
 		add(lblCidade);
 		
 		JLabel lblUF = new JLabel("UF");
 		lblUF.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblUF.setForeground(new Color(255, 255, 255));
+		lblUF.setForeground(Color.BLACK);
 		lblUF.setBounds(15, 365, 46, 14);
 		add(lblUF);
 		
