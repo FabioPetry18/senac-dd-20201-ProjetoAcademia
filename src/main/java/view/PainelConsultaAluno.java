@@ -17,7 +17,7 @@ import model.vo.AlunoVO;;
 public class PainelConsultaAluno extends JPanel {
 	private JTable tblAlunos;
 	private ArrayList<AlunoVO> alunos;
-	private String[] nomeColunas = {"Id", "Nome", "Cpf","Data Nascimento"};
+	private String[] nomeColunas = {"Id", "Nome", "Cpf","Data Nascimento", "Observações"};
 	private JButton btnExcluir;
 	private JPanel contentPane;
 	
@@ -50,6 +50,7 @@ public class PainelConsultaAluno extends JPanel {
 				String idSelecionado = JOptionPane.showInputDialog("Insira um ID: ");
 				String mensagem = controller.excluir(idSelecionado);
 				JOptionPane.showMessageDialog(null, mensagem);
+				
 //				int linhaSelecionada = tblAlunos.getSelectedRow();				
 //				AlunoVO alunoSelecionado = alunos.get(linhaSelecionada - 1); 
 //				
@@ -82,11 +83,12 @@ public class PainelConsultaAluno extends JPanel {
 
 			DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 
-			Object[] novaLinhaDaTabela = new Object[4];
+			Object[] novaLinhaDaTabela = new Object[5];
 			novaLinhaDaTabela[0] = a.getId();
 			novaLinhaDaTabela[1] = a.getNome();
 			novaLinhaDaTabela[2] = a.getCpf();
 			novaLinhaDaTabela[3] = a.getDtNascimento().format(formatador);
+			novaLinhaDaTabela[4] = a.getObservacoes();
 
 			model.addRow(novaLinhaDaTabela);
 		}

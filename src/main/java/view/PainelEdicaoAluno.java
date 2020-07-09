@@ -29,7 +29,6 @@ public class PainelEdicaoAluno extends JPanel {
 	private JTextField txtEmail;
 	private JTextField txtObservacoes;
 	private JTextField txtCidade;
-	private JTextField txtUF;
 	private JFormattedTextField cpfInformado;
 	private JFormattedTextField txtTelefone;
 	private JFormattedTextField txtCelular;
@@ -39,6 +38,7 @@ public class PainelEdicaoAluno extends JPanel {
 	private JRadioButton rdbtnMasculino;
 	private JRadioButton rdbtnFeminino;
 	private JComboBox comboBoxModalidade;
+	private JComboBox cbxUF;
 	private AlunoVO aluno;
 
 	/**
@@ -71,7 +71,7 @@ public class PainelEdicaoAluno extends JPanel {
 					txtEmail.setText(aluno.getEmail());
 					txtObservacoes.setText(aluno.getObservacoes());
 					txtCidade.setText(aluno.getCidade());
-					txtUF.setText(aluno.getUf());
+					cbxUF.setSelectedItem(aluno.getUf());
 					txtCep.setText(aluno.getCep());
 					
 					if (aluno.getSexo().equals("M")) {
@@ -170,11 +170,6 @@ public class PainelEdicaoAluno extends JPanel {
 		txtCidade.setBounds(155, 315, 149, 20);
 		add(txtCidade);
 		txtCidade.setColumns(10);
-		
-		txtUF = new JTextField();
-		txtUF.setBounds(155, 345, 148, 20);
-		add(txtUF);
-		txtUF.setColumns(10);
 
 		try {
 			MaskFormatter mascaraCep = new MaskFormatter("######-##");// mascara CEP (funcionando)
@@ -240,6 +235,8 @@ public class PainelEdicaoAluno extends JPanel {
 		comboBoxModalidade.setBounds(340, 185, 182, 20);
 		add(comboBoxModalidade);
 		
+		
+		
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -249,7 +246,7 @@ public class PainelEdicaoAluno extends JPanel {
 				mensagem = controller.alterar(aluno.getId(), txtCpf.getText(), txtNome.getText(),
 						txtDataNascimento.getText(), sexo, txtTelefone.getText(),
 						txtCelular.getText(), txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(),
-						txtUF.getText(), txtCep.getText(), txtEmail.getText(),
+						cbxUF.getSelectedItem().toString(), txtCep.getText(), txtEmail.getText(),
 						comboBoxModalidade.getSelectedItem().toString(),
 						txtObservacoes.getText());
 				
@@ -258,6 +255,8 @@ public class PainelEdicaoAluno extends JPanel {
 		});
 		btnEditar.setBounds(376, 467, 89, 23);
 		add(btnEditar);
+		
+		
 
 	}
 	

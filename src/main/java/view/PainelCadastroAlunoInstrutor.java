@@ -29,6 +29,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JLabel lblObservacoes;
 	private JLabel lblFormacao;
 	private JLabel lblSalario;
+	private JLabel lblReal;
 	private JTextField txtNome;
 	private JTextField txtEndereco;
 	private JTextField txtBairro;
@@ -74,7 +75,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		lblCelular.setBounds(15, 183, 111, 14);
 		add(lblCelular);
 		
-		JLabel lblCep = new JLabel("Cep");
+		JLabel lblCep = new JLabel("CEP");
 		lblCep.setBounds(15, 223, 111, 14);
 		add(lblCep);
 		
@@ -98,6 +99,12 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		lblTelefone.setBounds(15, 143, 111, 14);
 		add(lblTelefone);
 		
+		lblReal = new JLabel("R$");
+		lblReal.setVisible(false);
+		lblReal.setBounds(615, 365, 46, 14);
+		add(lblReal);
+		
+		
 		lblObservacoes = new JLabel("Observacoes");
 		lblObservacoes.setVisible(false);
 		lblObservacoes.setBounds(15, 425, 111, 14);
@@ -107,17 +114,24 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		txtEndereco.setBounds(155, 260, 148, 20);
 		txtEndereco.setColumns(10);
 		add(txtEndereco);		
-				
-		txtNome = new JTextField();
-		txtNome.addKeyListener(new KeyAdapter() {
+		txtEndereco.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (txtNome.getText().length() >= 35 ) // limitar textfield para 3 caracteres
+		        if (txtEndereco.getText().length() >= 20 ) // limitar Endereco para 50 caracteres
 		            e.consume(); 
 		    }  
 		});
+				
+		txtNome = new JTextField();
 		txtNome.setBounds(155, 23, 148, 20);
 		txtNome.setColumns(10);
 		add(txtNome);
+		txtNome.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtNome.getText().length() >= 10 ) // limitar Nome para 35 caracteres
+		            e.consume(); 
+		    }  
+		});
+		
 		
 		
 		txtBairro = new JTextField();
@@ -126,16 +140,37 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtBairro);
 		
 		
+		txtBairro.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtBairro.getText().length() >= 6 ) // limitar Bairro para 50 caracteres
+		            e.consume(); 
+		    }  
+		});
+		
 		txtEmail = new JTextField();
 		txtEmail.setBounds(155, 394, 148, 20);
 		txtEmail.setColumns(10);
 		add(txtEmail);
+		
+		txtEmail = new JTextField();
+		txtEmail.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtEmail.getText().length() >= 20 ) // limitar Email para 100 caracteres
+		            e.consume(); 
+		    }  
+		});
 		
 		txtObservacoes = new JTextField();
 		txtObservacoes.setVisible(false);
 		txtObservacoes.setBounds(155, 425, 148, 81);
 		txtObservacoes.setColumns(10);
 		add(txtObservacoes);
+		txtObservacoes.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtObservacoes.getText().length() >= 35 ) // limitar Observacoes para 150 caracteres
+		            e.consume(); 
+		    }  
+		});
 		
 		try {
 			MaskFormatter mascaraCep = new MaskFormatter("#####-###");//mascara CEP (funcionando)
@@ -150,6 +185,8 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 			txtCpf = new JFormattedTextField(mascaraCpf);
 			txtCpf.setBounds(155, 103, 148, 20);
 			add(txtCpf);
+			
+			    
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -213,7 +250,8 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 				lblFormacao.setVisible(false);
 				lblSalario.setVisible(false);
 				txtFormacao.setVisible(false);
-				txtSalario.setVisible(false);			
+				txtSalario.setVisible(false);	
+				lblReal.setVisible(false);
 			}
 		});
 		
@@ -227,6 +265,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 				lblSalario.setVisible(true);
 				txtFormacao.setVisible(true);
 				txtSalario.setVisible(true);
+				lblReal.setVisible(true);
 				lblObservacoes.setVisible(false);
 				txtObservacoes.setVisible(false);
 			}
@@ -273,14 +312,20 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		
 		lblSalario = new JLabel("Salario");
 		lblSalario.setVisible(false);
-		lblSalario.setBounds(345, 365, 46, 14);
+		lblSalario.setBounds(365, 365, 46, 14);
 		add(lblSalario);
 		
 		txtSalario = new JTextField();
 		txtSalario.setVisible(false);
-		txtSalario.setBounds(430, 365, 229, 20);
+		txtSalario.setBounds(442, 362, 229, 20);
 		add(txtSalario);
 		txtSalario.setColumns(10);
+		txtSalario.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtSalario.getText().length() >= 4 ) // limitar Salario para 4 caracteres
+		            e.consume(); 
+		    }  
+		});
 		
 		lblFormacao = new JLabel("Formacao");
 		lblFormacao.setVisible(false);
@@ -292,6 +337,12 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		txtFormacao.setBounds(430, 285, 229, 20);
 		add(txtFormacao);
 		txtFormacao.setColumns(10);
+		txtFormacao.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtFormacao.getText().length() >= 50 ) // limitar Salario para 50 caracteres
+		            e.consume(); 
+		    }  
+		});
 		
 		JButton txtLimpar = new JButton("Limpar");
 		txtLimpar.addActionListener(new ActionListener() {
@@ -328,6 +379,8 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtCidade);
 		txtCidade.setColumns(10);
 		
+		
+		
 					
 	}
 	
@@ -358,7 +411,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		this.txtFormacao.setText("");
 		this.comboBoxModalidade.setSelectedIndex(-1);			
 	}
-	private ArrayList<String> consultarEstados() {
+	public ArrayList<String> consultarEstados() {
 
 		ArrayList<String> siglasEstados = new ArrayList<String>();
 
