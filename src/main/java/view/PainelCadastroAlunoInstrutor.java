@@ -29,6 +29,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JLabel lblObservacoes;
 	private JLabel lblFormacao;
 	private JLabel lblSalario;
+	private JLabel lblReal;
 	private JTextField txtNome;
 	private JTextField txtEndereco;
 	private JTextField txtBairro;
@@ -224,7 +225,8 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 				lblFormacao.setVisible(false);
 				lblSalario.setVisible(false);
 				txtFormacao.setVisible(false);
-				txtSalario.setVisible(false);			
+				txtSalario.setVisible(false);	
+				lblReal.setVisible(false);
 			}
 		});
 		
@@ -237,6 +239,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				lblFormacao.setVisible(true);
 				lblSalario.setVisible(true);
+				lblReal.setVisible(true);
 				txtFormacao.setVisible(true);
 				txtSalario.setVisible(true);
 				lblObservacoes.setVisible(false);
@@ -356,6 +359,11 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		txtUF.setBounds(155, 362, 148, 20);
 		add(txtUF);
 		txtUF.setColumns(10);
+		
+		lblReal = new JLabel("R$");
+		lblReal.setVisible(false);
+		lblReal.setBounds(615, 365, 46, 14);
+		add(lblReal);
 					
 	}
 	
