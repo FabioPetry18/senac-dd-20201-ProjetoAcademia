@@ -2,6 +2,8 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -43,9 +45,8 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JRadioButton rdbtnFeminino;
 	private JRadioButton rdbtnAluno;
 	private JRadioButton rdbtnInstrutor;
-	private JComboBox comboBoxModalidade;
+	private JComboBox<Object> comboBoxModalidade;
 	private JTextField txtCidade;
-	private JTextField txtUF;
 
 
 	/**
@@ -108,9 +109,16 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtEndereco);		
 				
 		txtNome = new JTextField();
+		txtNome.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtNome.getText().length() >= 35 ) // limitar textfield para 3 caracteres
+		            e.consume(); 
+		    }  
+		});
 		txtNome.setBounds(155, 23, 148, 20);
 		txtNome.setColumns(10);
 		add(txtNome);
+		
 		
 		txtBairro = new JTextField();
 		txtBairro.setBounds(155, 295, 148, 20);
@@ -130,7 +138,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtObservacoes);
 		
 		try {
-			MaskFormatter mascaraCep = new MaskFormatter("######-##");//mascara CEP (funcionando)
+			MaskFormatter mascaraCep = new MaskFormatter("#####-###");//mascara CEP (funcionando)
 		txtCep = new JFormattedTextField(mascaraCep);
 		txtCep.setBounds(155, 223, 148, 20);
 		add(txtCep);
@@ -156,7 +164,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		
 		
 		try {
-			MaskFormatter mascaraCelular = new MaskFormatter("(##) ######-####"); //mascara celular (funcionando)
+			MaskFormatter mascaraCelular = new MaskFormatter("(##) #####-####"); //mascara celular (funcionando)
 			txtCelular  = new JFormattedTextField(mascaraCelular);
 		txtCelular.setBounds(155, 183, 148, 20);
 		add(txtCelular);
@@ -165,7 +173,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		}
 		
 		try {
-			MaskFormatter mascaraTelefone = new MaskFormatter("(##)#####-####"); //mascara TELEFONE (funcionando)
+			MaskFormatter mascaraTelefone = new MaskFormatter("(##)####-####"); //mascara TELEFONE (funcionando)
 			txtTelefone = new JFormattedTextField(mascaraTelefone);
 			txtTelefone.setBounds(155, 143, 148, 20);
 			add(txtTelefone);
@@ -187,9 +195,15 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		btnGroupSexo.add(rdbtnFeminino);
 		
 		ModalidadeController modalidadeController = new ModalidadeController();
-		comboBoxModalidade = new JComboBox(modalidadeController.consultarNomeModalidade().toArray());
+		comboBoxModalidade = new JComboBox<Object>(modalidadeController.consultarNomeModalidade().toArray());
 		comboBoxModalidade.setBounds(430, 205, 182, 20);
 		add(comboBoxModalidade);
+		
+
+		ArrayList<String> siglasEstados = consultarEstados();
+		 final JComboBox cbxUF = new JComboBox(siglasEstados.toArray());
+		cbxUF.setBounds(155, 362, 67, 20);
+		add(cbxUF);
 		
 		rdbtnAluno = new JRadioButton("Aluno");
 		rdbtnAluno.addActionListener(new ActionListener() {
@@ -235,7 +249,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 					mensagem = controller.salvar(txtCpf.getText(), txtNome.getText(),
 							txtDataNascimento.getText(), sexo, txtTelefone.getText(),
 							txtCelular.getText(), txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(),
-							txtUF.getText(), txtCep.getText(), txtEmail.getText(),
+							cbxUF.getSelectedItem().toString(), txtCep.getText(), txtEmail.getText(),
 							comboBoxModalidade.getSelectedItem().toString(),
 							txtObservacoes.getText());
 					
@@ -244,7 +258,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 					mensagem = controller.cadastrarInstrutor(txtCpf.getText(), txtNome.getText(),
 							txtDataNascimento.getText(), sexo, txtTelefone.getText(), txtCelular.getText(),
 							txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(),
-							txtUF.getText(), txtCep.getText(), txtEmail.getText(),
+							cbxUF.getSelectedItem().toString(), txtCep.getText(), txtEmail.getText(),
 							comboBoxModalidade.getSelectedItem().toString(), txtFormacao.getText(), txtSalario.getText());
 					
 				} else {
@@ -314,10 +328,6 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		add(txtCidade);
 		txtCidade.setColumns(10);
 		
-		txtUF = new JTextField();
-		txtUF.setBounds(155, 362, 148, 20);
-		add(txtUF);
-		txtUF.setColumns(10);
 					
 	}
 	
@@ -342,11 +352,26 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		this.txtEmail.setText("");
 		this.txtEndereco.setText("");
 		this.txtCidade.setText("");
-		this.txtUF.setText("");
 		this.txtObservacoes.setText("");
 		this.txtTelefone.setText("");
 		this.txtSalario.setText("");
 		this.txtFormacao.setText("");
 		this.comboBoxModalidade.setSelectedIndex(-1);			
+	}
+	private ArrayList<String> consultarEstados() {
+
+		ArrayList<String> siglasEstados = new ArrayList<String>();
+
+		siglasEstados.add("AC");
+		siglasEstados.add("BA");
+		siglasEstados.add("CE");
+		siglasEstados.add("DF");
+		siglasEstados.add("GO");
+		siglasEstados.add("PR");
+		siglasEstados.add("SC");
+		siglasEstados.add("RS");
+
+
+		return siglasEstados;
 	}
 }

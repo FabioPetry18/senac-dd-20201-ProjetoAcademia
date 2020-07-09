@@ -14,16 +14,17 @@ public class AlunoDAO {
 	PessoaDAO pessoaDAO = new PessoaDAO();
 
 	public AlunoVO cadastrarAluno(AlunoVO novoAluno) {
-
+		 int idPessoa = pessoaDAO.salvar(novoAluno);
 		Connection conn = Banco.getConnection();
-		String query = "INSERT INTO ALUNO(idAluno, observacoes, dtMatricula, situacao) VALUES(?, ?, ?, ?)";
+		String query = "INSERT INTO ALUNO(idPessoa, observacoes, dtMatricula, situacao) VALUES(?, ?, ?, ?)";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, query, PreparedStatement.RETURN_GENERATED_KEYS);
 
 		try {
-			stmt.setInt(1, pessoaDAO.salvar(novoAluno));
+			stmt.setInt(1, idPessoa);
 			stmt.setString(2, novoAluno.getObservacoes());
 			stmt.setDate(3, java.sql.Date.valueOf(novoAluno.getDtMatricula()));
 			stmt.setBoolean(4, novoAluno.isSituacao());
+
 			stmt.execute();
 
 		} catch (SQLException e) {
@@ -107,7 +108,7 @@ public class AlunoDAO {
 			a.setUf(rs.getString("uf"));
 			a.setCep(rs.getString("cep"));
 			a.setObservacoes(rs.getString("observacoes"));
-			
+			// System.out.println(rs.);
 
 		} catch (SQLException e) {
 

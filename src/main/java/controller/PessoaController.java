@@ -3,7 +3,7 @@ package controller;
 public class PessoaController {
 
 	public String validarCampos(String cpf, String nome, String dataNascimento, String sexo, String telefone,
-			String celular, String endereco, String bairro, String cidade, String uf, String cep, String email) {
+			String celular, String endereco, String bairro, String cidade, Object object, String cep, String email) {
 		
 		String mensagem = "";
 		
