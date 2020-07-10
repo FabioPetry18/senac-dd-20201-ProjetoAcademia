@@ -79,7 +79,7 @@ public class AlunoDAO {
 
 			stmt.setString(1, aluno.getObservacoes());
 			stmt.setInt(2, aluno.getId());
-			stmt.setString(2, a.getUf());
+
 			registrosAlterados = stmt.executeUpdate();
 
 		} catch (SQLException e) {

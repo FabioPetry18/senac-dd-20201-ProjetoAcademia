@@ -43,6 +43,7 @@ public class PainelEdicaoAluno extends JPanel {
 	private JRadioButton rdbtnMasculino;
 	private JRadioButton rdbtnFeminino;
 	private JComboBox comboBoxModalidade;
+	private final JEditorPane txtObservacoes;
 
 	
 	private AlunoVO aluno;
@@ -56,7 +57,8 @@ public class PainelEdicaoAluno extends JPanel {
 		JLabel lblCpfInformado = new JLabel("Cpf");
 		lblCpfInformado.setBounds(36, 21, 46, 14);
 		add(lblCpfInformado);
-		final JEditorPane txtObservacoes = new JEditorPane();
+		
+		txtObservacoes = new JEditorPane();
 		txtObservacoes.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		txtObservacoes.setBounds(155, 413, 300, 89);
 		add(txtObservacoes);

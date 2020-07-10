@@ -57,7 +57,6 @@ public class AlunoBO {
 
 	public String alterar(AlunoVO aluno) {
 		String mensagem = "";
-		
 		if(dao.alterar(aluno)) {
 			mensagem = "Alterações feitas com sucesso";
 		}
