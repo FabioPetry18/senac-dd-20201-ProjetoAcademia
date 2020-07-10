@@ -17,7 +17,7 @@ import model.vo.InstrutorVO;
 public class PainelConsultaInstrutor extends JPanel {
 	private JTable tblInstrutores;
 	private ArrayList<InstrutorVO> instrutores;
-	private String[] nomeColunas = {"Nome", "Data Nascimento", "Cpf", "Salário"};
+	private String[] nomeColunas = {"Id", "Nome", "Cpf", "Data Nascimento", "Formação", "Salário"};
 
 	/**
 	 * Create the panel.
@@ -74,11 +74,13 @@ public class PainelConsultaInstrutor extends JPanel {
 
 			DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 
-			Object[] novaLinhaDaTabela = new Object[4];
-			novaLinhaDaTabela[0] = i.getNome();
-			novaLinhaDaTabela[1] = i.getDtNascimento().format(formatador);
+			Object[] novaLinhaDaTabela = new Object[6];
+			novaLinhaDaTabela[0] = i.getId();
+			novaLinhaDaTabela[1] = i.getNome();
 			novaLinhaDaTabela[2] = i.getCpf();
-			novaLinhaDaTabela[3] = i.getValSalario();
+			novaLinhaDaTabela[3] = i.getDtNascimento().format(formatador);
+			novaLinhaDaTabela[4] = i.getFormacao();
+			novaLinhaDaTabela[5] = i.getValSalario();
 
 			model.addRow(novaLinhaDaTabela);
 		}
