@@ -22,9 +22,19 @@ import controller.AlunoController;
 import controller.InstrutorController;
 import controller.ModalidadeController;
 
+
 import javax.swing.JTextPane;
+
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
+import javax.swing.JEditorPane;
+import javax.swing.border.LineBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.SoftBevelBorder;
 
 public class PainelCadastroAlunoInstrutor extends JPanel {
 	
@@ -38,8 +48,6 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JFormattedTextField txtTelefone;
 	private JFormattedTextField txtCelular;
 	private JTextField txtEmail;
-	private JTextField txtObservacoes;
-	private JTextField txtSalario;
 	private JTextField txtFormacao;
 	private JFormattedTextField txtCpf;
 	private JFormattedTextField txtCep;
@@ -51,11 +59,14 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 	private JComboBox<Object> comboBoxModalidade;
 	private JTextField txtCidade;
 
+	private JTextField txtSalario;
+
 //changes
 	/**
 	 * Create the panel.
+	 * @throws ParseException 
 	 */
-	public PainelCadastroAlunoInstrutor() {
+	public PainelCadastroAlunoInstrutor()  {
 		setBackground(Color.WHITE);
 		setToolTipText("Cadastro Aluno");
 		setLayout(null);
@@ -82,13 +93,10 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		lblCelular.setBounds(15, 183, 111, 14);
 		add(lblCelular);
 		
-<<<<<<< HEAD
+
 		JLabel lblCep = new JLabel("CEP");
-=======
-		JLabel lblCep = new JLabel("Cep");
 		lblCep.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblCep.setForeground(Color.BLACK);
->>>>>>> branch 'master' of https://github.com/FabioPetry18/senac-dd-20201-Projeto.git
 		lblCep.setBounds(15, 223, 111, 14);
 		add(lblCep);
 		
@@ -119,6 +127,87 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		lblTelefone.setForeground(Color.BLACK);
 		lblTelefone.setBounds(15, 143, 111, 14);
 		add(lblTelefone);
+		lblSalario = new JLabel("Salario");
+		lblSalario.setVisible(false);
+		lblSalario.setBounds(559, 365, 46, 14);
+		lblSalario.setBounds(531, 365, 46, 14);
+		add(lblSalario);
+		
+		lblFormacao = new JLabel("Formacao");
+		lblFormacao.setVisible(false);
+		lblFormacao.setBounds(531, 295, 61, 14);
+		add(lblFormacao);
+		
+		txtFormacao = new JTextField();
+		txtFormacao.setVisible(false);
+		txtFormacao.setBounds(633, 292, 229, 20);
+		add(txtFormacao);
+		txtFormacao.setColumns(10);
+		txtFormacao.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtFormacao.getText().length() >= 50 ) // limitar Salario para 50 caracteres
+		            e.consume(); 
+		    }  
+		});
+		
+		JButton txtLimpar = new JButton("Limpar");
+		txtLimpar.setBackground(Color.LIGHT_GRAY);
+		txtLimpar.setFont(new Font("Arial", Font.BOLD, 13));
+		txtLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 limparCampos();					
+			}			
+			
+		});
+		txtLimpar.setBounds(457, 517, 120, 25);
+		add(txtLimpar);
+		
+		JLabel lblEndereço = new JLabel("Endereco");
+		lblEndereço.setForeground(Color.BLACK);
+		lblEndereço.setFont(new Font("Arial", Font.PLAIN, 11));
+		lblEndereço.setBounds(15, 264, 111, 14);
+		add(lblEndereço);
+		
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setForeground(Color.BLACK);
+		lblEmail.setFont(new Font("Arial", Font.PLAIN, 11));
+		lblEmail.setBounds(15, 397, 111, 14);
+		add(lblEmail);
+		
+		JLabel lblAtuacao = new JLabel("Atua\u00E7\u00E3o");
+		lblAtuacao.setBounds(531, 82, 86, 14);
+		add(lblAtuacao);
+		
+		JLabel lblCidade = new JLabel("Cidade");
+		lblCidade.setForeground(Color.BLACK);
+		lblCidade.setFont(new Font("Arial", Font.PLAIN, 11));
+		lblCidade.setBounds(15, 333, 46, 14);
+		add(lblCidade);
+		
+		JLabel lblUF = new JLabel("UF");
+		lblUF.setFont(new Font("Arial", Font.PLAIN, 11));
+		lblUF.setForeground(Color.BLACK);
+		lblUF.setBounds(15, 365, 46, 14);
+		add(lblUF);
+		
+		txtCidade = new JTextField();
+		txtCidade.setBounds(154, 330, 318, 20);
+		add(txtCidade);
+		txtCidade.setColumns(10);
+		
+		txtCidade.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtCidade.getText().length() >= 35 ) // limitar Cidade para 35 caracteres
+		            e.consume(); 
+		    }  
+		});
+	
+		
+		lblReal = new JLabel("R$");
+		lblReal.setVisible(false);
+		lblReal.setBounds(615, 365, 46, 14);
+		add(lblReal);
+					
 		
 		lblReal = new JLabel("R$");
 		lblReal.setVisible(false);
@@ -130,11 +219,11 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		lblObservacoes.setForeground(Color.BLACK);
 		lblObservacoes.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblObservacoes.setVisible(false);
-		lblObservacoes.setBounds(15, 425, 111, 14);
+		lblObservacoes.setBounds(15, 445, 111, 14);
 		add(lblObservacoes);
 		
 		txtEndereco = new JTextField();
-		txtEndereco.setBounds(155, 260, 300, 20);
+		txtEndereco.setBounds(155, 260, 318, 20);
 		txtEndereco.setColumns(10);
 		add(txtEndereco);		
 		txtEndereco.addKeyListener(new KeyAdapter() {
@@ -146,12 +235,12 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 				
 		txtNome = new JTextField();
 		txtNome.setBackground(new Color(255, 255, 255));
-		txtNome.setBounds(155, 23, 300, 20);
+		txtNome.setBounds(155, 23, 600, 20);
 		txtNome.setColumns(10);
 		add(txtNome);
 		txtNome.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (txtNome.getText().length() >= 10 ) // limitar Nome para 35 caracteres
+		        if (txtNome.getText().length() >= 80 ) // limitar Nome para 100 caracteres
 		            e.consume(); 
 		    }  
 		});
@@ -159,39 +248,27 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		
 		
 		txtBairro = new JTextField();
-		txtBairro.setBounds(155, 295, 300, 20);
+		txtBairro.setBounds(155, 295, 318, 20);
 		txtBairro.setColumns(10);
 		add(txtBairro);
 		
 		
 		txtBairro.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (txtBairro.getText().length() >= 6 ) // limitar Bairro para 50 caracteres
+		        if (txtBairro.getText().length() >= 20) // limitar Bairro para 50 caracteres
 		            e.consume(); 
 		    }  
 		});
 		
 		txtEmail = new JTextField();
+		txtEmail.setBorder(new LineBorder(new Color(171, 173, 179)));
 		txtEmail.setBounds(155, 394, 300, 20);
 		txtEmail.setColumns(10);
 		add(txtEmail);
 		
-		txtEmail = new JTextField();
 		txtEmail.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (txtEmail.getText().length() >= 20 ) // limitar Email para 100 caracteres
-		            e.consume(); 
-		    }  
-		});
-		
-		txtObservacoes = new JTextField();
-		txtObservacoes.setVisible(false);
-		txtObservacoes.setBounds(155, 425, 300, 81);
-		txtObservacoes.setColumns(10);
-		add(txtObservacoes);
-		txtObservacoes.addKeyListener(new KeyAdapter() {
-		    public void keyTyped(KeyEvent e) { 
-		        if (txtObservacoes.getText().length() >= 35 ) // limitar Observacoes para 150 caracteres
+		        if (txtEmail.getText().length() >= 80 ) // limitar Email para 100 caracteres
 		            e.consume(); 
 		    }  
 		});
@@ -199,7 +276,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		try {
 			MaskFormatter mascaraCep = new MaskFormatter("#####-###");//mascara CEP (funcionando)
 		txtCep = new JFormattedTextField(mascaraCep);
-		txtCep.setBounds(155, 223, 148, 20);
+		txtCep.setBounds(155, 223, 94, 20);
 		add(txtCep);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -207,7 +284,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		try {
 			MaskFormatter mascaraCpf = new MaskFormatter("###.###.###-##");  //mascara CPF (FUNCIONANDO)
 			txtCpf = new JFormattedTextField(mascaraCpf);
-			txtCpf.setBounds(155, 103, 148, 20);
+			txtCpf.setBounds(155, 103, 100, 20);
 			add(txtCpf);
 			
 			    
@@ -217,7 +294,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		try { 
 			MaskFormatter mascaraDataNascimento = new MaskFormatter("##/##/####"); //mascara de data(funcionando)
 			txtDataNascimento= new JFormattedTextField(mascaraDataNascimento);
-		txtDataNascimento.setBounds(155, 63, 148, 20);
+		txtDataNascimento.setBounds(155, 63, 67, 20);
 		add(txtDataNascimento);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -227,7 +304,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		try {
 			MaskFormatter mascaraCelular = new MaskFormatter("(##) #####-####"); //mascara celular (funcionando)
 			txtCelular  = new JFormattedTextField(mascaraCelular);
-		txtCelular.setBounds(155, 183, 148, 20);
+		txtCelular.setBounds(155, 183, 100, 20);
 		add(txtCelular);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -236,12 +313,26 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		try {
 			MaskFormatter mascaraTelefone = new MaskFormatter("(##)####-####"); //mascara TELEFONE (funcionando)
 			txtTelefone = new JFormattedTextField(mascaraTelefone);
-			txtTelefone.setBounds(155, 143, 148, 20);
+			txtTelefone.setBounds(155, 143, 100, 20);
 			add(txtTelefone);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
+		
+		final JEditorPane txtObservacoes = new JEditorPane();
+		
+		txtObservacoes.setBorder(new LineBorder(Color.LIGHT_GRAY));
+		txtObservacoes.setVisible(false);
+		txtObservacoes.setBounds(154, 439, 301, 67);
+		add(txtObservacoes);
+		txtEmail.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtObservacoes.getText().length() >= 150 ) // limitar Observacoes para 150 caracteres
+		            e.consume(); 
+		    }  
+		});
+		 
 		
 		rdbtnMasculino = new JRadioButton("Masculino");
 		rdbtnMasculino.setBackground(Color.WHITE);
@@ -258,21 +349,19 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		btnGroupSexo.add(rdbtnFeminino);
 		
 		ModalidadeController modalidadeController = new ModalidadeController();
-<<<<<<< HEAD
 		comboBoxModalidade = new JComboBox<Object>(modalidadeController.consultarNomeModalidade().toArray());
 		comboBoxModalidade.setBounds(430, 205, 182, 20);
-=======
+
 		comboBoxModalidade = new JComboBox(modalidadeController.consultarNomeModalidade().toArray());
-		comboBoxModalidade.setForeground(Color.WHITE);
-		comboBoxModalidade.setBackground(Color.WHITE);
+		comboBoxModalidade.setForeground(Color.BLACK);
+		comboBoxModalidade.setBackground(Color.LIGHT_GRAY);
 		comboBoxModalidade.setBounds(633, 202, 182, 20);
->>>>>>> branch 'master' of https://github.com/FabioPetry18/senac-dd-20201-Projeto.git
 		add(comboBoxModalidade);
 		
 
 		ArrayList<String> siglasEstados = consultarEstados();
 		 final JComboBox cbxUF = new JComboBox(siglasEstados.toArray());
-		cbxUF.setBounds(155, 362, 67, 20);
+		 cbxUF.setBounds(155, 362, 67, 20);
 		add(cbxUF);
 		
 		rdbtnAluno = new JRadioButton("Aluno");
@@ -289,7 +378,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 			}
 		});
 		
-		rdbtnAluno.setBounds(633, 40, 81, 23);
+		rdbtnAluno.setBounds(638, 78, 81, 23);
 		add(rdbtnAluno);
 		
 		rdbtnInstrutor = new JRadioButton("Instrutor");
@@ -306,7 +395,7 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 				txtObservacoes.setVisible(false);
 			}
 		});
-		rdbtnInstrutor.setBounds(743, 40, 109, 23);
+		rdbtnInstrutor.setBounds(743, 78, 109, 23);
 		add(rdbtnInstrutor);
 		
 		ButtonGroup btnGroupTipo = new ButtonGroup();
@@ -348,109 +437,21 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		btnCadastrar.setBounds(284, 517, 120, 25);
 		add(btnCadastrar);
 		
-		lblSalario = new JLabel("Salario");
-		lblSalario.setVisible(false);
-<<<<<<< HEAD
-		lblSalario.setBounds(365, 365, 46, 14);
-=======
-		lblSalario.setBounds(531, 365, 46, 14);
->>>>>>> branch 'master' of https://github.com/FabioPetry18/senac-dd-20201-Projeto.git
-		add(lblSalario);
-		
 		txtSalario = new JTextField();
-		txtSalario.setVisible(false);
-<<<<<<< HEAD
-		txtSalario.setBounds(442, 362, 229, 20);
-=======
-		txtSalario.setBounds(633, 362, 229, 20);
->>>>>>> branch 'master' of https://github.com/FabioPetry18/senac-dd-20201-Projeto.git
-		add(txtSalario);
 		txtSalario.setColumns(10);
-		txtSalario.addKeyListener(new KeyAdapter() {
-		    public void keyTyped(KeyEvent e) { 
-		        if (txtSalario.getText().length() >= 4 ) // limitar Salario para 4 caracteres
-		            e.consume(); 
-		    }  
-		});
+		txtSalario= new JFormattedTextField();
+		txtSalario.setVisible(false);
+		txtSalario.setBounds(633, 362, 61, 20);
+		add(txtSalario);
 		
-		lblFormacao = new JLabel("Formacao");
-		lblFormacao.setVisible(false);
-		lblFormacao.setBounds(531, 295, 61, 14);
-		add(lblFormacao);
 		
-		txtFormacao = new JTextField();
-		txtFormacao.setVisible(false);
-		txtFormacao.setBounds(633, 295, 229, 20);
-		add(txtFormacao);
-		txtFormacao.setColumns(10);
-		txtFormacao.addKeyListener(new KeyAdapter() {
-		    public void keyTyped(KeyEvent e) { 
-		        if (txtFormacao.getText().length() >= 50 ) // limitar Salario para 50 caracteres
-		            e.consume(); 
-		    }  
-		});
-		
-		JButton txtLimpar = new JButton("Limpar");
-		txtLimpar.setBackground(Color.LIGHT_GRAY);
-		txtLimpar.setFont(new Font("Arial", Font.BOLD, 13));
-		txtLimpar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 limparCampos();					
-			}			
 			
-		});
-		txtLimpar.setBounds(457, 517, 120, 25);
-		add(txtLimpar);
+	
 		
-		JLabel lblEndereço = new JLabel("Endereco");
-		lblEndereço.setForeground(Color.BLACK);
-		lblEndereço.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblEndereço.setBounds(15, 264, 111, 14);
-		add(lblEndereço);
-		
-		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setForeground(Color.BLACK);
-		lblEmail.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblEmail.setBounds(15, 397, 111, 14);
-		add(lblEmail);
-		
-		JLabel lblAtuacao = new JLabel("Atua\u00E7\u00E3o");
-		lblAtuacao.setBounds(531, 40, 86, 14);
-		add(lblAtuacao);
-		
-		JLabel lblCidade = new JLabel("Cidade");
-		lblCidade.setForeground(Color.BLACK);
-		lblCidade.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblCidade.setBounds(15, 333, 46, 14);
-		add(lblCidade);
-		
-		JLabel lblUF = new JLabel("UF");
-		lblUF.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblUF.setForeground(Color.BLACK);
-		lblUF.setBounds(15, 365, 46, 14);
-		add(lblUF);
-		
-		txtCidade = new JTextField();
-		txtCidade.setBounds(154, 330, 301, 20);
-		add(txtCidade);
-		txtCidade.setColumns(10);
-		
-<<<<<<< HEAD
-		
-		
-=======
-		txtUF = new JTextField();
-		txtUF.setBounds(155, 362, 148, 20);
-		add(txtUF);
-		txtUF.setColumns(10);
-		
-		lblReal = new JLabel("R$");
-		lblReal.setVisible(false);
-		lblReal.setBounds(615, 365, 46, 14);
-		add(lblReal);
->>>>>>> branch 'master' of https://github.com/FabioPetry18/senac-dd-20201-Projeto.git
-					
+				
 	}
+		
+	
 	
 	private String verificaSexo() {
 		String sexo = "";
@@ -473,7 +474,6 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		this.txtEmail.setText("");
 		this.txtEndereco.setText("");
 		this.txtCidade.setText("");
-		this.txtObservacoes.setText("");
 		this.txtTelefone.setText("");
 		this.txtSalario.setText("");
 		this.txtFormacao.setText("");
@@ -484,14 +484,31 @@ public class PainelCadastroAlunoInstrutor extends JPanel {
 		ArrayList<String> siglasEstados = new ArrayList<String>();
 
 		siglasEstados.add("AC");
+		siglasEstados.add("AL");
+		siglasEstados.add("AM");
+		siglasEstados.add("AP");
 		siglasEstados.add("BA");
 		siglasEstados.add("CE");
 		siglasEstados.add("DF");
+		siglasEstados.add("ES");
 		siglasEstados.add("GO");
+		siglasEstados.add("MA");
+		siglasEstados.add("MG");
+		siglasEstados.add("MS");
+		siglasEstados.add("MT");
+		siglasEstados.add("PA");
+		siglasEstados.add("PB");
+		siglasEstados.add("PE");
+		siglasEstados.add("PI");
 		siglasEstados.add("PR");
-		siglasEstados.add("SC");
+		siglasEstados.add("RJ");
+		siglasEstados.add("RN");
+		siglasEstados.add("RO");
 		siglasEstados.add("RS");
-
+		siglasEstados.add("SC");
+		siglasEstados.add("SE");
+		siglasEstados.add("SP ");
+		siglasEstados.add("TO ");
 
 		return siglasEstados;
 	}

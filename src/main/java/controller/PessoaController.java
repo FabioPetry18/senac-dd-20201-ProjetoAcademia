@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PessoaController {
 
 	public String validarCampos(String cpf, String nome, String dataNascimento, String sexo, String telefone,
@@ -34,5 +37,19 @@ public class PessoaController {
 		return campo;
 	}
 	
+	private static final String EMAIL_PATTERN = "^[\\w!#$%&'+/=?`{|}~^-]+(?:\\.[\\w!#$%&'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";	
+	private static final Pattern pattern = Pattern.compile(EMAIL_PATTERN, Pattern.CASE_INSENSITIVE);
+	
+	public static String validarEmail(String email){
+	    Matcher matcher = pattern.matcher(email);
+	    String mensagem = "";
+	    
+	    if(!matcher.matches()) {
+	    	mensagem = "\nEmail inválido";
+	    }
+	    
+	    return mensagem;
+	 }
+
 
 }

@@ -2,15 +2,18 @@ package model.dao;
 
 import java.sql.Connection;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import model.vo.AlunoVO;
 import model.vo.PessoaVO;
+
 import model.dao.Banco;
 
 public class PessoaDAO {
@@ -137,5 +140,17 @@ public class PessoaDAO {
 		boolean alterado = registrosAlterados > 0;
 	}
 
-	
+
+	public ArrayList<PessoaVO> consultarUf( ) {
+		Connection conexao = Banco.getConnection();
+		String sql = " SELECT * FROM PESSOA.UF ";
+		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);
+		
+		ArrayList<PessoaVO> uf = new ArrayList<PessoaVO>();
+		
+		
+		return uf;
+	}
 }
+
+

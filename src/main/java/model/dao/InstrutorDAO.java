@@ -70,7 +70,7 @@ public class InstrutorDAO {
 	public boolean existeInstrutorPorId(int id) {
 
 		Connection conn = Banco.getConnection();
-		String query = "SELECT idInstrutor FROM INSTRUTOR WHERE ID = " + id;
+		String query = "SELECT idInstrutor FROM INSTRUTOR WHERE IdInstrutor = " + id;
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet rs = null;
 

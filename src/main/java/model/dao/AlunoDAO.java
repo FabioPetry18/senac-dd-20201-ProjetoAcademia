@@ -8,10 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.vo.AlunoVO;
+import model.vo.PessoaVO;
 
 public class AlunoDAO {
 
 	PessoaDAO pessoaDAO = new PessoaDAO();
+	AlunoVO a = new AlunoVO();
 
 	public AlunoVO cadastrarAluno(AlunoVO novoAluno) {
 		 int idPessoa = pessoaDAO.salvar(novoAluno);
@@ -63,6 +65,7 @@ public class AlunoDAO {
 
 	public boolean alterar(AlunoVO aluno) {
 		
+		
 		pessoaDAO.alterar(aluno);
 
 		Connection conn = Banco.getConnection();
@@ -76,6 +79,7 @@ public class AlunoDAO {
 
 			stmt.setString(1, aluno.getObservacoes());
 			stmt.setInt(2, aluno.getId());
+			stmt.setString(2, a.getUf());
 			registrosAlterados = stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -122,7 +126,7 @@ public class AlunoDAO {
 	public ArrayList<AlunoVO> consultarTodosAlunos() {
 
 		Connection conn = Banco.getConnection();
-		String query = "SELECT * FROM ALUNO a, PESSOA p WHERE a.idAluno = p.idPessoa";
+		String query = "SELECT * FROM ALUNO a, PESSOA p WHERE a.idAluno = p.idPessoa ORDER BY p.nome ASC";
 		PreparedStatement stmt = Banco.getPreparedStatement(conn, query);
 		ArrayList<AlunoVO> alunos = new ArrayList<AlunoVO>();
 

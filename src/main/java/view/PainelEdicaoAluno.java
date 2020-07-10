@@ -2,8 +2,11 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.naming.ldap.Rdn;
 import javax.swing.ButtonGroup;
@@ -20,6 +23,9 @@ import javax.swing.text.MaskFormatter;
 import controller.AlunoController;
 import controller.ModalidadeController;
 import model.vo.AlunoVO;
+import javax.swing.JEditorPane;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class PainelEdicaoAluno extends JPanel {
 	
@@ -27,7 +33,6 @@ public class PainelEdicaoAluno extends JPanel {
 	private JTextField txtEndereco;
 	private JTextField txtBairro;
 	private JTextField txtEmail;
-	private JTextField txtObservacoes;
 	private JTextField txtCidade;
 	private JFormattedTextField cpfInformado;
 	private JFormattedTextField txtTelefone;
@@ -38,7 +43,8 @@ public class PainelEdicaoAluno extends JPanel {
 	private JRadioButton rdbtnMasculino;
 	private JRadioButton rdbtnFeminino;
 	private JComboBox comboBoxModalidade;
-	private JComboBox cbxUF;
+
+	
 	private AlunoVO aluno;
 
 	/**
@@ -50,6 +56,15 @@ public class PainelEdicaoAluno extends JPanel {
 		JLabel lblCpfInformado = new JLabel("Cpf");
 		lblCpfInformado.setBounds(36, 21, 46, 14);
 		add(lblCpfInformado);
+		final JEditorPane txtObservacoes = new JEditorPane();
+		txtObservacoes.setBorder(new LineBorder(Color.LIGHT_GRAY));
+		txtObservacoes.setBounds(155, 413, 300, 89);
+		add(txtObservacoes);
+		
+		ArrayList<String> siglasEstados = consultarEstados();
+		final JComboBox cbxUF = new JComboBox(siglasEstados.toArray());
+		cbxUF.setBounds(155, 340, 52, 20);
+		add(cbxUF);
 
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
@@ -90,7 +105,7 @@ public class PainelEdicaoAluno extends JPanel {
 		add(lblNome);
 
 		JLabel lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(340, 79, 46, 14);
+		lblSexo.setBounds(502, 104, 46, 14);
 		add(lblSexo);
 
 		JLabel lblCelular = new JLabel("Celular");
@@ -110,7 +125,7 @@ public class PainelEdicaoAluno extends JPanel {
 		add(lblCpf);
 
 		JLabel lblModalidade = new JLabel("Modalidade");
-		lblModalidade.setBounds(340, 161, 86, 14);
+		lblModalidade.setBounds(497, 161, 86, 14);
 		add(lblModalidade);
 
 		JLabel lblBairro = new JLabel("Bairro");
@@ -142,34 +157,67 @@ public class PainelEdicaoAluno extends JPanel {
 		add(lblUF);
 
 		txtEndereco = new JTextField();
-		txtEndereco.setBounds(155, 252, 148, 20);
+		txtEndereco.setBounds(155, 252, 300, 20);
 		txtEndereco.setColumns(10);
 		add(txtEndereco);
+		txtEndereco.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtEndereco.getText().length() >= 20 ) // limitar Endereco para 50 caracteres
+		            e.consume(); 
+		    }  
+		});
 
 		txtNome = new JTextField();
-		txtNome.setBounds(155, 65, 148, 20);
+		txtNome.setBounds(155, 65, 600, 20);
 		txtNome.setColumns(10);
 		add(txtNome);
-
+		txtNome.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtNome.getText().length() >= 80 ) // limitar Nome para 100 caracteres
+		            e.consume(); 
+		    }  
+		});
+		
+		
 		txtBairro = new JTextField();
-		txtBairro.setBounds(155, 283, 148, 20);
+		txtBairro.setBounds(155, 283, 300, 20);
 		txtBairro.setColumns(10);
 		add(txtBairro);
+		txtBairro.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtBairro.getText().length() >= 50) // limitar Bairro para 50 caracteres
+		            e.consume(); 
+		    }  
+		});
+		
 
 		txtEmail = new JTextField();
-		txtEmail.setBounds(155, 372, 148, 20);
+		txtEmail.setBounds(155, 372, 300, 20);
 		txtEmail.setColumns(10);
 		add(txtEmail);
-
-		txtObservacoes = new JTextField();
-		txtObservacoes.setBounds(155, 413, 148, 81);
-		txtObservacoes.setColumns(10);
-		add(txtObservacoes);
+		txtEmail.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtEmail.getText().length() >= 80 ) // limitar Email para 100 caracteres
+		            e.consume(); 
+		    }  
+		});
+		txtEmail.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtEmail.getText().length() >= 150 ) // limitar Observacoes para 150 caracteres
+		            e.consume(); 
+		    }  
+		});
 		
 		txtCidade = new JTextField();
-		txtCidade.setBounds(155, 315, 149, 20);
+		txtCidade.setBounds(155, 315, 300, 20);
 		add(txtCidade);
 		txtCidade.setColumns(10);
+		txtCidade.addKeyListener(new KeyAdapter() {
+		    public void keyTyped(KeyEvent e) { 
+		        if (txtCidade.getText().length() >= 35 ) // limitar Cidade para 35 caracteres
+		            e.consume(); 
+		    }  
+		});
 
 		try {
 			MaskFormatter mascaraCep = new MaskFormatter("######-##");// mascara CEP (funcionando)
@@ -182,7 +230,7 @@ public class PainelEdicaoAluno extends JPanel {
 		try {
 			MaskFormatter mascaraCpf = new MaskFormatter("###.###.###-##"); // mascara CPF (FUNCIONANDO)
 			txtCpf = new JFormattedTextField(mascaraCpf);
-			txtCpf.setBounds(155, 127, 148, 20);
+			txtCpf.setBounds(155, 127, 103, 20);
 			add(txtCpf);
 			
 			cpfInformado = new JFormattedTextField(mascaraCpf);
@@ -194,36 +242,36 @@ public class PainelEdicaoAluno extends JPanel {
 		try {
 			MaskFormatter mascaraDataNascimento = new MaskFormatter("##/##/####"); // mascara de data(funcionando)
 			txtDataNascimento = new JFormattedTextField(mascaraDataNascimento);
-			txtDataNascimento.setBounds(155, 96, 148, 20);
+			txtDataNascimento.setBounds(155, 96, 67, 20);
 			add(txtDataNascimento);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 
 		try {
-			MaskFormatter mascaraCelular = new MaskFormatter("(##) ######-####"); // mascara celular (funcionando)
+			MaskFormatter mascaraCelular = new MaskFormatter("(##) #####-####"); // mascara celular (funcionando)
 			txtCelular = new JFormattedTextField(mascaraCelular);
-			txtCelular.setBounds(155, 191, 148, 20);
+			txtCelular.setBounds(155, 191, 103, 20);
 			add(txtCelular);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 
 		try {
-			MaskFormatter mascaraTelefone = new MaskFormatter("(##)#####-####"); // mascara TELEFONE (funcionando)
+			MaskFormatter mascaraTelefone = new MaskFormatter("(##)####-####"); // mascara TELEFONE (funcionando)
 			txtTelefone = new JFormattedTextField(mascaraTelefone);
-			txtTelefone.setBounds(155, 158, 148, 20);
+			txtTelefone.setBounds(155, 158, 103, 20);
 			add(txtTelefone);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
 		rdbtnMasculino = new JRadioButton("Masculino");
-		rdbtnMasculino.setBounds(340, 100, 86, 23);
+		rdbtnMasculino.setBounds(497, 120, 86, 23);
 		add(rdbtnMasculino);
 		
 		rdbtnFeminino = new JRadioButton("Feminino");
-		rdbtnFeminino.setBounds(428, 100, 86, 23);
+		rdbtnFeminino.setBounds(593, 120, 86, 23);
 		add(rdbtnFeminino);
 		
 		ButtonGroup btnGroupSexo = new ButtonGroup();
@@ -232,7 +280,7 @@ public class PainelEdicaoAluno extends JPanel {
 		
 		ModalidadeController modalidadeController = new ModalidadeController();
 		comboBoxModalidade = new JComboBox(modalidadeController.consultarNomeModalidade().toArray());
-		comboBoxModalidade.setBounds(340, 185, 182, 20);
+		comboBoxModalidade.setBounds(497, 191, 182, 20);
 		add(comboBoxModalidade);
 		
 		
@@ -253,8 +301,11 @@ public class PainelEdicaoAluno extends JPanel {
 				JOptionPane.showMessageDialog(null, mensagem);
 			}
 		});
-		btnEditar.setBounds(376, 467, 89, 23);
+		btnEditar.setBounds(684, 479, 89, 23);
 		add(btnEditar);
+		
+		
+		
 		
 		
 
@@ -269,5 +320,40 @@ public class PainelEdicaoAluno extends JPanel {
 			sexo = "F";
 		}
 		return sexo;
+	}
+	public ArrayList<String> consultarEstados() {
+
+		ArrayList<String> siglasEstados = new ArrayList<String>();
+
+		siglasEstados.add("AC");
+		siglasEstados.add("AL");
+		siglasEstados.add("AM");
+		siglasEstados.add("AP");
+		siglasEstados.add("BA");
+		siglasEstados.add("CE");
+		siglasEstados.add("DF");
+		siglasEstados.add("ES");
+		siglasEstados.add("GO");
+		siglasEstados.add("MA");
+		siglasEstados.add("MG");
+		siglasEstados.add("MS");
+		siglasEstados.add("MT");
+		siglasEstados.add("PA");
+		siglasEstados.add("PB");
+		siglasEstados.add("PE");
+		siglasEstados.add("PI");
+		siglasEstados.add("PR");
+		siglasEstados.add("RJ");
+		siglasEstados.add("RN");
+		siglasEstados.add("RO");
+		siglasEstados.add("RS");
+		siglasEstados.add("SC");
+		siglasEstados.add("SE");
+		siglasEstados.add("SP ");
+		siglasEstados.add("TO ");
+		
+
+		
+		return siglasEstados;
 	}
 }
